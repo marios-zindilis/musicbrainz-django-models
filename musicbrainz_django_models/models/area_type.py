@@ -1,7 +1,7 @@
 """
 The :code:`area_type` is referenced by the :code:`area` table.
 
-The :code:`area_type` table defined in the MusicBrainz Server as:
+The :code:`area_type` table is defined in the MusicBrainz Server as:
 
 .. code-block:: sql
 
