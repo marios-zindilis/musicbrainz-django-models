@@ -10,7 +10,7 @@ This project is an attempt to express the database schema of the
 
 1.  Model names use a `lowercase_with_underscores` naming format, for
     consistency with the naming used in the MusicBrainz Server.
-2.  The database table name is explicitly define in the `Meta` class of each
+2.  The database table name is explicitly defined in the `Meta` class of each
     model, for consistency with the naming used in the MusicBrainz Server.
 
 ## License ##
