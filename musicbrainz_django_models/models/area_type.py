@@ -1,4 +1,6 @@
 """
+.. module:: area_type
+
 The :code:`area_type` is referenced by the :code:`area` table.
 
 The :code:`area_type` table is defined in the MusicBrainz Server as:
@@ -20,6 +22,7 @@ from django.db import models
 
 
 class area_type(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
     parent = models.ForeignKey('self', null=True)
     child_order = models.IntegerField(default=0)
