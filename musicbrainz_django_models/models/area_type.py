@@ -1,4 +1,6 @@
 """
+The :code:`area_type` is referenced by the :code:`area` table.
+
 The :code:`area_type` table defined in the MusicBrainz Server as:
 
 .. code-block:: sql
@@ -21,7 +23,7 @@ class area_type(models.Model):
     name = models.CharField(max_length=255)
     parent = models.ForeignKey('self')
     child_order = models.IntegerField(default=0)
-    description = models.TextField(null=0)
+    description = models.TextField(null=True)
     gid = models.UUIDField()
 
     def __unicode__(self):
