@@ -21,7 +21,7 @@ from django.db import models
 
 class area_type(models.Model):
     name = models.CharField(max_length=255)
-    parent = models.ForeignKey('self')
+    parent = models.ForeignKey('self', null=True)
     child_order = models.IntegerField(default=0)
     description = models.TextField(null=True)
     gid = models.UUIDField()
