@@ -1,7 +1,21 @@
 """
 .. module:: area
 
-Areas are geographic regions or settlements. See Wikidata for details on how areas are added and updated. 
+An **Area** is a country, region, city settlement, or the like. Areas were
+imported in the MusicBrainz database from Wikidata once, and are not kept
+automatically in sync.
+
+Areas that can be used for filling in the Release country field of releases
+are listed, by ID, in the :code:`country_area` table. 
+
+    See the `Area Documentation on MusicBrainz`_.
+
+.. _Area Documentation on MusicBrainz: https://musicbrainz.org/doc/Area
+
+PostgreSQL Definition
+---------------------
+
+The :code:`area` table is defined in the MusicBrainz Server as:
 
 .. code-block:: sql
 
@@ -39,6 +53,7 @@ Areas are geographic regions or settlements. See Wikidata for details on how are
 """
 
 from django.db import models
+import uuid
 
 
 def update_area_ended(sender, instance, **kwargs):
@@ -50,6 +65,9 @@ class area(models.Model):
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
+    :param gid: this is interesting because it cannot be NULL but a default is
+        not defined in SQL. The default `uuid.uuid4` in Django will generate a
+        UUID during the creation of an instance.
     :param str name: `max_length` is mandatory in Django models but not in
         PostgreSQL.
     :param int edits_pending: the MusicBrainz Server uses a PostgreSQL `check`
@@ -69,17 +87,17 @@ class area(models.Model):
     """
 
     id = models.AutoField(primary_key=True)
-    gid = models.UUIDField()
+    gid = models.UUIDField(default=uuid.uuid4)
     name = models.CharField(max_length=255)
     type = models.ForeignKey('area_type')
     edits_pending = models.PositiveIntegerField(default=0)
     last_updated = models.DateTimeField(auto_now=True)
-    begin_date_year = models.SmallIntegerField()
-    begin_date_month = models.SmallIntegerField()
-    begin_date_day = models.SmallIntegerField()
-    end_date_year = models.SmallIntegerField()
-    end_date_month = models.SmallIntegerField()
-    end_date_day = models.SmallIntegerField()
+    begin_date_year = models.SmallIntegerField(null=True)
+    begin_date_month = models.SmallIntegerField(null=True)
+    begin_date_day = models.SmallIntegerField(null=True)
+    end_date_year = models.SmallIntegerField(null=True)
+    end_date_month = models.SmallIntegerField(null=True)
+    end_date_day = models.SmallIntegerField(null=True)
     ended = models.BooleanField(default=False)
     comment = models.CharField(max_length=255, default='')
 
@@ -87,8 +105,10 @@ class area(models.Model):
         """
         Set `ended` to `True` if any of the `end_*` fields is populated.
         """
-
-        return self.end_date_year or self.end_date_month or self.end_date_day
+        return (
+            self.end_date_year is not None or
+            self.end_date_month is not None or
+            self.end_date_day is not None)
 
     def __unicode__(self):
         return self.name

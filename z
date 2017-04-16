@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 
 app='musicbrainz_django_models'
+
+echo "========================================================================"
+echo "                                Testing                                 "
+echo "========================================================================"
+
+./manage.py test $app.tests -v 2
+[ "$?" -ne 0 ] && exit
+
+echo "========================================================================"
+echo "                              Remodelling                               "
+echo "========================================================================"
+
 modules=$(ls -1 $app/models/*.py | grep -v __init__)
 
 echo 'MusicBrainz Django Models' >  _docs/index.rst
@@ -46,4 +58,8 @@ do
     echo "   :caption: The \`$module_name\` Model"              >> _docs/$module_name.rst
 done
 
-sphinx-build -b html . _build
+sphinx-build -b html . /var/www/html/projects/musicbrainz-django-models/
+if [ "$1" == "bp" ]
+then
+    sphinx-build -b html . ~/Public/Dropbox/Code/marios-zindilis.github.io/projects/musicbrainz-django-models/
+fi
