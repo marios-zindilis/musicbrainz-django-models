@@ -1,4 +1,5 @@
 """
+.. module:: artist_type
 
 The **Artist Type** Model.
 

@@ -1,4 +1,5 @@
 """
+.. module:: gender
 
 The **Gender** Model is referenced by the :code:`artist` and the
 :code:`editor` models. Here's a not necessarily complete table of values:

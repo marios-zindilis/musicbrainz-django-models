@@ -1,4 +1,6 @@
 """
+.. module:: instrument
+
 The **Instrument** Model.
 
 PostgreSQL Definition

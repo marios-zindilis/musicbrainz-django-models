@@ -1,4 +1,5 @@
 """
+.. module:: artist
 
 An **Artist** is generally a musician, group of musicians, or other music
 professional (like a producer or engineer). Occasionally, it can also be a

@@ -1,4 +1,6 @@
 """
+.. module:: instrument_type
+
 The **Instrument Type** Model is referenced by the :code:`instrument` model.
 
 PostgreSQL Definition

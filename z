@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 app='musicbrainz_django_models'
+models="$app/models"
 modules=$(ls -1 $app/models/*.py | grep -v __init__)
 
 echo "========================================================================"
@@ -10,10 +11,15 @@ for module in $modules:
 do
     module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
     echo "$module_name"
+
+    rst_module=$(head -2 $models/$module_name.py | tail -1)
+    [ "$rst_module" == ".. module:: $module_name" ] || exit 1
+
     grep "from .$module_name import $module_name" $app/models/__init__.py
-    [ $? -ne 0 ] && exit
+    [ $? -ne 0 ] && exit 1
+
     grep "db_table = '$module_name'" $app/models/$module_name.py
-    [ $? -ne 0 ] && exit
+    [ $? -ne 0 ] && exit 1
 done
 
 echo "========================================================================"
@@ -21,7 +27,7 @@ echo "                              Remodelling                               "
 echo "========================================================================"
 [ -f "db.sqlite3" ] && rm "db.sqlite3"
 [ -d "$app/migrations" ] && rm -rf "$app/migrations/*"
-rm -rf "$app/models/__pycache__"
+rm -rf "$models/__pycache__"
 rm -rf "$app/tests/__pycache__"
 rm -rf "$app/migrations/__pycache__"
 rm -rf "$app/__pycache__"
@@ -78,23 +84,23 @@ for module in $modules
 do
     module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
     [ -f _docs/$module_name.rst ] && continue
-    echo "$module_name"                                         >> _docs/$module_name.rst
-    echo '============'                                         >> _docs/$module_name.rst
-    echo ''                                                     >> _docs/$module_name.rst
-    echo ".. automodule:: $app.models.$module_name"             >> _docs/$module_name.rst
-    echo '   :noindex:'                                         >> _docs/$module_name.rst
-    echo ''                                                     >> _docs/$module_name.rst
-    echo 'Model Documentation'                                  >> _docs/$module_name.rst
-    echo '-------------------'                                  >> _docs/$module_name.rst
-    echo ''                                                     >> _docs/$module_name.rst
-    echo ".. autoclass:: $app.models.$module_name"              >> _docs/$module_name.rst
-    echo ''                                                     >> _docs/$module_name.rst
-    echo 'Model Source'                                         >> _docs/$module_name.rst
-    echo '------------'                                         >> _docs/$module_name.rst
-    echo ''                                                     >> _docs/$module_name.rst
-    echo ".. literalinclude:: ../$app/models/$module_name.py"   >> _docs/$module_name.rst
-    echo "   :pyobject: $module_name"                           >> _docs/$module_name.rst
-    echo "   :caption: The \`$module_name\` Model"              >> _docs/$module_name.rst
+    echo "$module_name"                                     >> _docs/$module_name.rst
+    echo '============'                                     >> _docs/$module_name.rst
+    echo ''                                                 >> _docs/$module_name.rst
+    echo ".. automodule:: $app.models.$module_name"         >> _docs/$module_name.rst
+    echo '   :noindex:'                                     >> _docs/$module_name.rst
+    echo ''                                                 >> _docs/$module_name.rst
+    echo 'Model Documentation'                              >> _docs/$module_name.rst
+    echo '-------------------'                              >> _docs/$module_name.rst
+    echo ''                                                 >> _docs/$module_name.rst
+    echo ".. autoclass:: $app.models.$module_name"          >> _docs/$module_name.rst
+    echo ''                                                 >> _docs/$module_name.rst
+    echo 'Model Source'                                     >> _docs/$module_name.rst
+    echo '------------'                                     >> _docs/$module_name.rst
+    echo ''                                                 >> _docs/$module_name.rst
+    echo ".. literalinclude:: ../$models/$module_name.py"   >> _docs/$module_name.rst
+    echo "   :pyobject: $module_name"                       >> _docs/$module_name.rst
+    echo "   :caption: The \`$module_name\` Model"          >> _docs/$module_name.rst
 done
 
 sphinx-build -b html . /var/www/html/projects/musicbrainz-django-models/
