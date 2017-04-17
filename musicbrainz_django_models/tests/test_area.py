@@ -11,7 +11,23 @@ class test_area(TestCase):
         subject = area(name='Hell')
         self.assertEqual(subject.__unicode__(), subject.name)
 
-#   def test_end_date_year(self):
-#       at = area_type(name='Planet')
-#       subject = area(name='Earth', end_date_year=2012, type=at)
-#       self.assertTrue(subject.ended)
+    def test_end_date_year(self):
+        at = area_type(name='Country')
+        at.save()
+        subject = area(name='Utopia', end_date_year=2012, type=at)
+        subject.save()
+        self.assertTrue(subject.ended)
+
+    def test_end_date_month(self):
+        at = area_type(name='Country')
+        at.save()
+        subject = area(name='Fruitopia', end_date_month=12, type=at)
+        subject.save()
+        self.assertTrue(subject.ended)
+
+    def test_end_date_day(self):
+        at = area_type(name='Country')
+        at.save()
+        subject = area(name='Footopia', end_date_day=12, type=at)
+        subject.save()
+        self.assertTrue(subject.ended)
