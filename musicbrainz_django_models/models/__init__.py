@@ -5,3 +5,4 @@ from .instrument_type import instrument_type
 from .instrument import instrument
 from .artist_type import artist_type
 from .artist import artist
+from .artist_isni import artist_isni

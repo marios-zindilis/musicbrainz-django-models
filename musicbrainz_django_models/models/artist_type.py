@@ -1,7 +1,18 @@
 """
 .. module:: artist_type
 
-The **Artist Type** Model.
+The **Artist Type** Model. This can be one of:
+
+1. Person
+2. Group
+3. Orchestra
+4. Choir
+5. Character
+6. Other
+
+    See the `Artist Documentation on MusicBrainz`_.
+
+.. _Artist Documentation on MusicBrainz: https://musicbrainz.org/doc/Artist
 
 PostgreSQL Definition
 ---------------------
@@ -67,7 +78,7 @@ class artist_type(models.Model):
 
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
-    parent = models.ForeignKey('self')
+    parent = models.ForeignKey('self', null=True)
     child_order = models.IntegerField(default=0)
     description = models.TextField(null=True)
     gid = models.UUIDField(default=uuid.uuid4)
