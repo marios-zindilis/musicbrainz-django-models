@@ -25,15 +25,45 @@ from django.db import models
 import uuid
 
 
+def validate_artist_type_name_choice(sender, instance, **kwargs):
+    if instance.name not in sender.NAME_CHOICE_LIST:
+        from django.core.exceptions import ValidationError
+        raise ValidationError('Artist Type "{}" is not one of: {}'.format(
+            instance.name,
+            ', '.join(sender.NAME_CHOICE_LIST)))
+
+
 class artist_type(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
+    :param str name: The name can have one of the following values: "Person",
+        "Group", "Orchestra", "Choir", "Character" or "Other". This range of
+        values is not restricted in the SQL definition, but it is documented
+        in `the Artist documentation <https://musicbrainz.org/doc/Artist>`_.
+        In Django, this is implemented as a `choices` parameter to the `name`
+        field, and as a `pre_save` signal that performs the validation.
     :param gid: This cannot be NULL but a default is not defined in SQL. The
         `default=uuid.uuid4` in Django will generate a UUID during the creation
         of an instance.
     """
+
+    PERSON = 'Person'
+    GROUP = 'Group'
+    ORCHESTRA = 'Orchestra'
+    CHOIR = 'Choir'
+    CHARACTER = 'Character'
+    OTHER = 'Other'
+    NAME_CHOICES = (
+        (PERSON, PERSON),
+        (GROUP, GROUP),
+        (ORCHESTRA, ORCHESTRA),
+        (CHOIR, CHOIR),
+        (CHARACTER, CHARACTER),
+        (OTHER,OTHER),
+    )
+    NAME_CHOICE_LIST = [choice[0] for choice in NAME_CHOICES]
 
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
@@ -50,3 +80,7 @@ class artist_type(models.Model):
 
     class Meta:
         db_table = 'artist_type'
+
+
+models.signals.pre_save.connect(
+    validate_artist_type_name_choice, sender=artist_type)
