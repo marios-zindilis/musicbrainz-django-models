@@ -64,7 +64,7 @@ def pre_save_artist_alias(sender, instance, **kwargs):
         instance.primary_for_locale = False
 
     from .artist_alias_type import artist_alias_type
-    if instance.type == artist_alias_type.SEARCH_HINT:
+    if instance.type.name == artist_alias_type.SEARCH_HINT:
         instance.sort_name = instance.name
         instance.begin_date_year = None 
         instance.begin_date_month = None 
@@ -139,10 +139,10 @@ class artist_alias(models.Model):
             self.end_date_day is not None)
 
     def __unicode__(self):
-        self.name
+        return self.name
 
     def __str__(self):
-        self.name
+        return self.name
 
     class Meta:
         db_table = 'artist_alias'

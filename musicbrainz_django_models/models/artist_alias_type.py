@@ -76,7 +76,7 @@ class artist_alias_type(models.Model):
 
     id = models.AutoField(primary_key=True)
     name = models.TextField(choices=NAME_CHOICES)
-    parent = models.ForeignKey('self')
+    parent = models.ForeignKey('self', null=True)
     child_order = models.IntegerField(default=0)
     description = models.TextField(null=True)
     gid = models.UUIDField(default=uuid.uuid4)
