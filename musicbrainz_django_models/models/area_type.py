@@ -66,7 +66,7 @@ class area_type(models.Model):
         (CITY, CITY),
         (DISTRICT, DISTRICT),
         (ISLAND, ISLAND),)
-    NAME_CHOICE_LIST = [choice[0] for choice in NAME_CHOICES]
+    NAME_CHOICE_LIST = [_[0] for _ in NAME_CHOICES]
 
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, choices=NAME_CHOICES)

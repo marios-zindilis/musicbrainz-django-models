@@ -6,3 +6,6 @@ from .instrument import instrument
 from .artist_type import artist_type
 from .artist import artist
 from .artist_isni import artist_isni
+from .artist_ipi import artist_ipi
+from .artist_alias_type import artist_alias_type
+from .artist_alias import artist_alias

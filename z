@@ -29,7 +29,6 @@ echo "========================================================================"
 rm -rf "$app/migrations/*"
 rm -rf "$models/__pycache__"
 rm -rf "$app/tests/__pycache__"
-rm -rf "$app/migrations/__pycache__"
 rm -rf "$app/__pycache__"
 ./manage.py makemigrations $app
 ./manage.py migrate
