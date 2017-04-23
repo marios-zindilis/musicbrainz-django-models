@@ -72,7 +72,7 @@ class gender(models.Model):
 
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, choices=NAME_CHOICES)
-    parent = models.ForeignKey('self')
+    parent = models.ForeignKey('self', null=True)
     child_order = models.IntegerField(default=0)
     description = models.TextField(null=True)
     gid = models.UUIDField(default=uuid.uuid4)
