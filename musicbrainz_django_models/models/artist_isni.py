@@ -62,7 +62,7 @@ class artist_isni(models.Model):
         backend validation, a `pre_save` signal is used.
     :param int edits_pending: the MusicBrainz Server uses a PostgreSQL `check`
         to validate that the value is a positive integer. In Django, this is
-        done with `models.PositiveIntegerField()`.    
+        done with `models.PositiveIntegerField()`.
     """
 
     ISNI_REGEX = r'^\d{15}[\dX]$'
@@ -73,7 +73,7 @@ class artist_isni(models.Model):
         unique=True,
         validators=[
             MinLengthValidator(16),
-            RegexValidator(regex=ISNI_REGEX)            
+            RegexValidator(regex=ISNI_REGEX)
         ]
     )
     edits_pending = models.PositiveIntegerField(default=0)

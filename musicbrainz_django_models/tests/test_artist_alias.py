@@ -115,7 +115,7 @@ class test_artist_alias(TestCase):
 
         subject = artist_alias(
             name='The King',
-            sort_name = 'Not The King',
+            sort_name='Not The King',
             artist=subject_artist,
             type=subject_artist_alias_type,
             end_date_year=1977,

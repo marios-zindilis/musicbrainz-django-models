@@ -28,7 +28,7 @@ The :code:`gender` table is defined in the MusicBrainz Server as:
         parent              INTEGER, -- references gender.id
         child_order         INTEGER NOT NULL DEFAULT 0,
         description         TEXT,
-        gid                 uuid NOT NULL 
+        gid                 uuid NOT NULL
     );
 
 """

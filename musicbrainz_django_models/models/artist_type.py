@@ -46,7 +46,7 @@ The :code:`artist_type` table is defined in the MusicBrainz Server as:
         parent              INTEGER, -- references artist_type.id
         child_order         INTEGER NOT NULL DEFAULT 0,
         description         TEXT,
-        gid                 uuid NOT NULL 
+        gid                 uuid NOT NULL
     );
 
 """
@@ -91,7 +91,7 @@ class artist_type(models.Model):
         (ORCHESTRA, ORCHESTRA),
         (CHOIR, CHOIR),
         (CHARACTER, CHARACTER),
-        (OTHER,OTHER),
+        (OTHER, OTHER),
     )
     NAME_CHOICE_LIST = [_[0] for _ in NAME_CHOICES]
 

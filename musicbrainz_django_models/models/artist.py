@@ -114,9 +114,13 @@ class artist(models.Model):
     edits_pending = models.PositiveIntegerField(default=0)
     last_updated = models.DateTimeField(auto_now=True)
     ended = models.BooleanField(default=False)
-    begin_area = models.ForeignKey('area', null=True, 
+    begin_area = models.ForeignKey(
+        'area',
+        null=True, 
         related_name='artists_begun')
-    end_area = models.ForeignKey('area', null=True,
+    end_area = models.ForeignKey(
+        'area',
+        null=True,
         related_name='artists_ended')
 
     def check_ended(self):
