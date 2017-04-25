@@ -33,7 +33,7 @@ from django.core.validators import RegexValidator
 
 def validate_artist_ipi(sender, instance, **kwargs):
     import re
-    if not re.match(sender.IPI_REGEX, instance.ipi):
+    if not re.match(sender.IPI_REGEX, str(instance.ipi)):
         from django.core.exceptions import ValidationError
         raise ValidationError(RegexValidator.message)
     
@@ -73,10 +73,10 @@ class artist_ipi(models.Model):
     created = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return self.ipi
+        return str(self.ipi)
 
     def __str__(self):
-        return self.ipi
+        return str(self.ipi)
 
     class Meta:
         db_table = 'artist_ipi'
