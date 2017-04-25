@@ -37,8 +37,10 @@ echo "========================================================================"
 echo "                                Testing                                 "
 echo "========================================================================"
 
-./manage.py test $app.tests -v 2
+coverage run --source='.' ./manage.py test $app.tests -v 2
 [ "$?" -ne 0 ] && exit
+coverage report
+coverage html
 
 echo "========================================================================"
 echo "                       Generating Documentation                         "
