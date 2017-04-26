@@ -4,6 +4,7 @@ machine:
 dependencies:
   pre:
     - pip install django
+    - pip install coverage
 test:
   pre:
     - ./manage.py migrate
