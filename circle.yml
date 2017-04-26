@@ -1,3 +1,6 @@
 dependencies:
   pre:
     - pip install django
+test:
+  pre:
+    - ./manage.py migrate
