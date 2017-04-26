@@ -7,3 +7,5 @@ dependencies:
 test:
   pre:
     - ./manage.py migrate
+  override:
+    - coverage run manage.py test musicbrainz_django_models.tests
