@@ -10,3 +10,21 @@ from .artist_ipi import artist_ipi
 from .artist_alias_type import artist_alias_type
 from .artist_alias import artist_alias
 from .work_type import work_type
+from .language import language
+
+# __ALL__ silences PEP8 `module imported but unused`:
+__ALL__ = [
+    area_type,
+    area,
+    gender,
+    instrument_type,
+    instrument,
+    artist_type,
+    artist,
+    artist_isni,
+    artist_ipi,
+    artist_alias_type,
+    artist_alias,
+    work_type,
+    language,
+]
