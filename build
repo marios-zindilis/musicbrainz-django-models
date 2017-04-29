@@ -35,6 +35,7 @@ rm -rf "$app/tests/__pycache__"
 rm -rf "$app/__pycache__"
 ./manage.py makemigrations $app
 ./manage.py migrate
+./manage.py loaddata musicbrainz_django_models/fixtures/*
 
 echo "========================================================================"
 echo "                                Testing                                 "
