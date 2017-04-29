@@ -11,6 +11,7 @@ from .artist_alias_type import artist_alias_type
 from .artist_alias import artist_alias
 from .work_type import work_type
 from .language import language
+from .work import work
 
 # __ALL__ silences PEP8 `module imported but unused`:
 __ALL__ = [
@@ -27,4 +28,5 @@ __ALL__ = [
     artist_alias,
     work_type,
     language,
+    work,
 ]
