@@ -116,7 +116,7 @@ class artist(models.Model):
     ended = models.BooleanField(default=False)
     begin_area = models.ForeignKey(
         'area',
-        null=True, 
+        null=True,
         related_name='artists_begun')
     end_area = models.ForeignKey(
         'area',
