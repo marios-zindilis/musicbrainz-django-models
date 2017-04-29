@@ -43,10 +43,10 @@ def validate_artist_isni(sender, instance, **kwargs):
     if not re.match(sender.ISNI_REGEX, instance.isni):
         from django.core.exceptions import ValidationError
         raise ValidationError(RegexValidator.message)
-    
+
 
 class artist_isni(models.Model):
-    """ 
+    """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
