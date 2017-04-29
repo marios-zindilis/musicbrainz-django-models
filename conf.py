@@ -3,9 +3,10 @@
 
 import os
 import sys
+import django
+
 sys.path.append('.')
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
-import django
 django.setup()
 
 # -- General configuration ------------------------------------------------
@@ -19,7 +20,7 @@ django.setup()
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
-    'sphinx.ext.viewcode',]
+    'sphinx.ext.viewcode']
 
 # The suffix(es) of source filenames. You can specify multiple suffix as a list
 # of string: `source_suffix = ['.rst', '.md']`
