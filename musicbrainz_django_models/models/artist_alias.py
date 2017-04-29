@@ -31,24 +31,25 @@ The :code:`artist_alias` table is defined in the MusicBrainz Server as:
               (end_date_year IS NOT NULL OR
                end_date_month IS NOT NULL OR
                end_date_day IS NOT NULL) AND
-              ended = TRUE 
-            ) OR ( 
+              ended = TRUE
+            ) OR (
               -- Otherwise, all end date fields must be null
               (end_date_year IS NULL AND
                end_date_month IS NULL AND
                end_date_day IS NULL)
             )
-          ),   
-        CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),
+          ),
+        CONSTRAINT primary_check CHECK (
+            (locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),
         CONSTRAINT search_hints_are_empty
           CHECK (
-            (type <> 3) OR ( 
+            (type <> 3) OR (
               type = 3 AND sort_name = name AND
               begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND
               end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND
-              primary_for_locale IS FALSE AND locale IS NULL 
+              primary_for_locale IS FALSE AND locale IS NULL
             )
-          )    
+          )
     );
 
 """
@@ -66,18 +67,18 @@ def pre_save_artist_alias(sender, instance, **kwargs):
     from .artist_alias_type import artist_alias_type
     if instance.type.name == artist_alias_type.SEARCH_HINT:
         instance.sort_name = instance.name
-        instance.begin_date_year = None 
-        instance.begin_date_month = None 
-        instance.begin_date_day = None 
-        instance.end_date_year = None 
-        instance.end_date_month = None 
-        instance.end_date_day = None 
+        instance.begin_date_year = None
+        instance.begin_date_month = None
+        instance.begin_date_day = None
+        instance.end_date_year = None
+        instance.end_date_month = None
+        instance.end_date_day = None
         instance.primary_for_locale = False
         instance.locale = None
 
 
 class artist_alias(models.Model):
-    """ 
+    """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
@@ -103,7 +104,7 @@ class artist_alias(models.Model):
     :param smallint begin_date_day: You'd think this would be validated as a
         range of 1-31 or similar...
     :param smallint end_date_day: ditto
-    :param boolean primary_for_locale: The MusicBrainz Server uses a 
+    :param boolean primary_for_locale: The MusicBrainz Server uses a
         PostgreSQL `check` to validate that this field is False, if the
         `locale` field is empty. In Django, this is implemented with a
         `pre_save` signal.
