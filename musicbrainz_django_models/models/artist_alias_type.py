@@ -9,7 +9,7 @@ MusicBrainz database dump of 2017-04-19:
 +====+=============+========+=============+=============+======================================+
 |  1 | Artist name |        |           0 |             | 894afba6-2816-3c24-8072-eadb66bd04bc |
 +----+-------------+--------+-------------+-------------+--------------------------------------+
-|  2 | Legal name  |        |           0 |             | d4dcd0c0-b341-3612-a332-c0ce797b25cf | 
+|  2 | Legal name  |        |           0 |             | d4dcd0c0-b341-3612-a332-c0ce797b25cf |
 +----+-------------+--------+-------------+-------------+--------------------------------------+
 |  3 | Search hint |        |           0 |             | 1937e404-b981-3cb7-8151-4c86ebfc8d8e |
 +----+-------------+--------+-------------+-------------+--------------------------------------+
@@ -31,7 +31,7 @@ The :code:`artist_alias_type` table is defined in the MusicBrainz Server as:
         parent              INTEGER, -- references artist_alias_type.id
         child_order         INTEGER NOT NULL DEFAULT 0,
         description         TEXT,
-        gid                 uuid NOT NULL 
+        gid                 uuid NOT NULL
     );
 
 """
@@ -50,7 +50,7 @@ def pre_save_artist_alias_type(sender, instance, **kwargs):
 
 
 class artist_alias_type(models.Model):
-    """ 
+    """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
@@ -68,7 +68,7 @@ class artist_alias_type(models.Model):
     LEGAL_NAME = 'Legal name'
     SEARCH_HINT = 'Search hint'
     NAME_CHOICES = (
-        (ARTIST_NAME, ARTIST_NAME), 
+        (ARTIST_NAME, ARTIST_NAME),
         (LEGAL_NAME, LEGAL_NAME),
         (SEARCH_HINT, SEARCH_HINT),
     )
