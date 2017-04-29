@@ -16,7 +16,7 @@ The :code:`work_type` table is defined in the MusicBrainz Server as:
         parent              INTEGER, -- references work_type.id
         child_order         INTEGER NOT NULL DEFAULT 0,
         description         TEXT,
-        gid                 uuid NOT NULL 
+        gid                 uuid NOT NULL
     );
 
 """
