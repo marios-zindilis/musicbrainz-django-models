@@ -56,7 +56,7 @@ from django.db import models
 import uuid
 
 
-def update_area_ended(sender, instance, **kwargs):
+def pre_save_area(sender, instance, **kwargs):
     instance.ended = instance.check_ended()
 
 
@@ -119,4 +119,4 @@ class area(models.Model):
         db_table = 'area'
 
 
-models.signals.pre_save.connect(update_area_ended, sender=area)
+models.signals.pre_save.connect(pre_save_area, sender=area)
