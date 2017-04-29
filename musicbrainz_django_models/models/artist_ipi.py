@@ -36,10 +36,10 @@ def validate_artist_ipi(sender, instance, **kwargs):
     if not re.match(sender.IPI_REGEX, str(instance.ipi)):
         from django.core.exceptions import ValidationError
         raise ValidationError(RegexValidator.message)
-    
+
 
 class artist_ipi(models.Model):
-    """ 
+    """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
@@ -55,7 +55,7 @@ class artist_ipi(models.Model):
         backend validation, a `pre_save` signal is used.
     :param int edits_pending: the MusicBrainz Server uses a PostgreSQL `check`
         to validate that the value is a positive integer. In Django, this is
-        done with `models.PositiveIntegerField()`.    
+        done with `models.PositiveIntegerField()`.
     """
 
     IPI_REGEX = r'^\d{11}$'
@@ -66,7 +66,7 @@ class artist_ipi(models.Model):
         unique=True,
         validators=[
             MinLengthValidator(11),
-            RegexValidator(regex=IPI_REGEX)            
+            RegexValidator(regex=IPI_REGEX)
         ]
     )
     edits_pending = models.PositiveIntegerField(default=0)
