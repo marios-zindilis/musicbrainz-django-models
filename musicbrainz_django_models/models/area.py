@@ -6,7 +6,7 @@ imported in the MusicBrainz database from Wikidata once, and are not kept
 automatically in sync.
 
 Areas that can be used for filling in the Release country field of releases
-are listed, by ID, in the :code:`country_area` table. 
+are listed, by ID, in the :code:`country_area` table.
 
     See the `Area Documentation on MusicBrainz`_.
 
@@ -114,7 +114,7 @@ class area(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         db_table = 'area'
 
