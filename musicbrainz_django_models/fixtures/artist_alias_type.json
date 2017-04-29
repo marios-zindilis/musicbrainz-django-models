@@ -1,0 +1,35 @@
+[
+    {
+        "model": "musicbrainz_django_models.artist_alias_type",
+        "pk": 1,
+        "fields": {
+            "name": "Artist name",
+            "parent": null,
+            "child_order": 0,
+            "description": null,
+            "gid": "894afba6-2816-3c24-8072-eadb66bd04bc"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.artist_alias_type",
+        "pk": 2,
+        "fields": {
+            "name": "Legal name",
+            "parent": null,
+            "child_order": 0,
+            "description": null,
+            "gid": "d4dcd0c0-b341-3612-a332-c0ce797b25cf"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.artist_alias_type",
+        "pk": 3,
+        "fields": {
+            "name": "Search hint",
+            "parent": null,
+            "child_order": 0,
+            "description": null,
+            "gid": "1937e404-b981-3cb7-8151-4c86ebfc8d8e"
+        }
+    }
+]
