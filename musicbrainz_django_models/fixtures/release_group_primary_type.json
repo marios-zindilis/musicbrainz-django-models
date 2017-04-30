@@ -1,0 +1,57 @@
+[
+    {
+        "model": "musicbrainz_django_models.release_group_primary_type",
+        "pk": 1,
+        "fields": {
+            "name": "Album",
+            "parent": null,
+            "child_order": 1,
+            "description": null,
+            "gid": "f529b476-6e62-324f-b0aa-1f3e33d313fc"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.release_group_primary_type",
+        "pk": 2,
+        "fields": {
+            "name": "Single",
+            "parent": null,
+            "child_order": 2,
+            "description": null,
+            "gid": "d6038452-8ee0-3f68-affc-2de9a1ede0b9"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.release_group_primary_type",
+        "pk": 3,
+        "fields": {
+            "name": "EP",
+            "parent": null,
+            "child_order": 3,
+            "description": null,
+            "gid": "6d0c5bf6-7a33-3420-a519-44fc63eedebf"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.release_group_primary_type",
+        "pk": 11,
+        "fields": {
+            "name": "Other",
+            "parent": null,
+            "child_order": 99,
+            "description": null,
+            "gid": "4fc3be2b-de1e-396b-a933-beb8f1607a22"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.release_group_primary_type",
+        "pk": 12,
+        "fields": {
+            "name": "Broadcast",
+            "parent": null,
+            "child_order": 4,
+            "description": null,
+            "gid": "3b2e49e1-2875-37b8-9fa9-1f7cf3f49900"
+        }
+    }
+]
