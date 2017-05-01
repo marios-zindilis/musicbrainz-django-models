@@ -3,4 +3,4 @@ python:
   - "3.6"
 install:
   - "pip install django"
-script: "manage.py test musicbrainz_django_models.tests"
+script: "./manage.py test musicbrainz_django_models.tests"
