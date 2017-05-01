@@ -27,6 +27,7 @@ Models
    instrument
    instrument_type
    language
+   recording
    release_group_primary_type
    release_group
    release_group_secondary_type
