@@ -1,0 +1,112 @@
+[
+    {
+        "model": "musicbrainz_django_models.release_group_secondary_type",
+        "pk": 1,
+        "fields": {
+            "name": "Compilation",
+            "parent": null,
+            "child_order": 0,
+            "description": null,
+            "gid": "dd2a21e1-0c00-3729-a7a0-de60b84eb5d1"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.release_group_secondary_type",
+        "pk": 2,
+        "fields": {
+            "name": "Soundtrack",
+            "parent": null,
+            "child_order": 0,
+            "description": null,
+            "gid": "22a628ad-c082-3c4f-b1b6-d41665107b88"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.release_group_secondary_type",
+        "pk": 3,
+        "fields": {
+            "name": "Spokenword",
+            "parent": null,
+            "child_order": 0,
+            "description": null,
+            "gid": "66b8a13e-43ff-3ac0-ac6c-73659d3817c6"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.release_group_secondary_type",
+        "pk": 4,
+        "fields": {
+            "name": "Interview",
+            "parent": null,
+            "child_order": 0,
+            "description": null,
+            "gid": "12af3f5e-ce2a-3941-8b93-d482884031e5"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.release_group_secondary_type",
+        "pk": 5,
+        "fields": {
+            "name": "Audiobook",
+            "parent": null,
+            "child_order": 0,
+            "description": null,
+            "gid": "499a387e-6195-333e-91c0-9592bfec535e"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.release_group_secondary_type",
+        "pk": 6,
+        "fields": {
+            "name": "Live",
+            "parent": null,
+            "child_order": 0,
+            "description": null,
+            "gid": "6fd474e2-6b58-3102-9d17-d6f7eb7da0a0"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.release_group_secondary_type",
+        "pk": 7,
+        "fields": {
+            "name": "Remix",
+            "parent": null,
+            "child_order": 0,
+            "description": null,
+            "gid": "0c60f497-ff81-3818-befd-abfc84a4858b"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.release_group_secondary_type",
+        "pk": 8,
+        "fields": {
+            "name": "DJ-mix",
+            "parent": null,
+            "child_order": 0,
+            "description": null,
+            "gid": "0d47f47a-3fe5-3d69-ac9d-d566c23968bf"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.release_group_secondary_type",
+        "pk": 9,
+        "fields": {
+            "name": "Mixtape/Street",
+            "parent": null,
+            "child_order": 0,
+            "description": null,
+            "gid": "15c1b1f5-d893-3375-a1db-e180c5ae15ed"
+        }
+    },
+    {
+        "model": "musicbrainz_django_models.release_group_secondary_type",
+        "pk": 10,
+        "fields": {
+            "name": "Demo",
+            "parent": null,
+            "child_order": 0,
+            "description": null,
+            "gid": "81598169-0d6c-3bce-b4be-866fa658eda3"
+        }
+    }
+]
