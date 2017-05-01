@@ -15,6 +15,7 @@ from .work import work
 from .artist_credit import artist_credit
 from .release_group_primary_type import release_group_primary_type
 from .release_group_secondary_type import release_group_secondary_type
+from .release_group import release_group
 
 # __ALL__ silences PEP8 `module imported but unused`:
 __ALL__ = [
@@ -35,4 +36,5 @@ __ALL__ = [
     artist_credit,
     release_group_primary_type,
     release_group_secondary_type,
+    release_group,
 ]
