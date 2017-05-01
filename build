@@ -146,12 +146,7 @@ do
     echo "   :caption: The \`$module_name\` Model"          >> _docs/$module_name.rst
 done
 
-if [ -z "$TRAVIS" ]
-then
-    sphinx-build -b html . _build
-else
-    sphinx-build -b html . /var/www/html/projects/musicbrainz-django-models/
-fi
+sphinx-build -b html . _build
 if [ "$1" == "bp" ]
 then
     sphinx-build -b html . ~/Public/Dropbox/Code/marios-zindilis.github.io/projects/musicbrainz-django-models/
