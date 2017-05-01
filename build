@@ -2,6 +2,7 @@
 
 app='musicbrainz_django_models'
 models="$app/models"
+tests="$app/tests"
 modules=$(ls -1 $app/models/*.py | grep -v __init__)
 
 echo "========================================================================"
@@ -36,10 +37,37 @@ rm -rf "$app/__pycache__"
 ./manage.py makemigrations $app
 ./manage.py migrate
 ./manage.py loaddata musicbrainz_django_models/fixtures/*
+[ $? -ne 0 ] && exit 1
 
 echo "========================================================================"
 echo "                                Testing                                 "
 echo "========================================================================"
+
+
+# If a test does not exist for a module, create a skeleton test:
+for module in $modules:
+do
+    module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
+    module_test="$tests/test_$module_name.py"
+    [ -f "$tests/test_$module_name.py" ] && continue
+    echo "from django.test import TestCase"                                         >> $module_test
+    echo "from ..models import $module_name"                                        >> $module_test
+    echo ''                                                                         >> $module_test
+    echo ''                                                                         >> $module_test
+    echo "class test_$module_name(TestCase):"                                       >> $module_test
+    echo '    def setUp(self):'                                                     >> $module_test
+    echo "        self.subject = $module_name(name='Name')"                         >> $module_test
+    echo ''                                                                         >> $module_test
+    echo "    def test__${module_name}__instance(self):"                            >> $module_test
+    echo "        self.assertIsInstance(self.subject, $module_name)"                >> $module_test
+    echo ''                                                                         >> $module_test
+    echo "    def test__${module_name}__str(self):"                                 >> $module_test
+    echo '        self.assertEqual(str(self.subject), self.subject.name)'           >> $module_test
+    echo ''                                                                         >> $module_test
+    echo "    def test__${module_name}__unicode(self):"                             >> $module_test
+    echo '        self.assertEqual(self.subject.__unicode__(), self.subject.name)'  >> $module_test
+done
+
 
 coverage run --source='.' ./manage.py test $app.tests -v 2
 [ "$?" -ne 0 ] && exit
@@ -70,7 +98,6 @@ echo '------'                    >> _docs/index.rst
 echo ''                          >> _docs/index.rst
 echo '.. toctree::'              >> _docs/index.rst
 echo '   :maxdepth: 1'           >> _docs/index.rst
-# echo '   :caption: Models:'      >> _docs/index.rst
 echo ''                          >> _docs/index.rst
 for module in $modules
 do
