@@ -1,7 +1,10 @@
 """
 .. module:: artist_credit
 
-The **Artist Credit** model
+The **Artist Credit** model. Read more at the
+`Artist Credit documentation on MusicBrainz`_.
+
+.. _Artist Credit documentation on MusicBrainz: https://musicbrainz.org/doc/Artist_Credits
 
 PostgreSQL Definition
 ---------------------
@@ -30,11 +33,14 @@ class artist_credit(models.Model):
 
     :param str name: `max_length` is mandatory in Django models but not in
         PostgreSQL.
+    :param int artist_count: This is defined as `NOT NULL` in the SQL, but
+        there is no default value given. Looking at the database dump, all
+        values are >= 1, so that default is used here.
     """
 
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
-    artist_count = models.SmallIntegerField()
+    artist_count = models.SmallIntegerField(default=1)
     ref_count = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now=True)
 
