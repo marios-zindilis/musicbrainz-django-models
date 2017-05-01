@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 app='musicbrainz_django_models'
 models="$app/models"
