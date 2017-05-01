@@ -16,8 +16,8 @@ do
     rst_module=$(head -2 $models/$module_name.py | tail -1)
     [ "$rst_module" == ".. module:: $module_name" ] || exit 1
 
-    grep "from .$module_name import $module_name" $app/models/__init__.py
-    [ $? -ne 0 ] && exit 1
+    grep "from .$module_name import $module_name" $app/models/__init__.py > /dev/null
+    [ $? -ne 0 ] && echo "$module_name missing from __init__.py" && exit 1
 
     grep "db_table = '$module_name'" $app/models/$module_name.py
     [ $? -ne 0 ] && exit 1
