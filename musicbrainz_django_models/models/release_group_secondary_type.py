@@ -80,7 +80,7 @@ class release_group_secondary_type(models.Model):
         of an instance.
     """
 
-    COMPILATION = 'Compliation'
+    COMPILATION = 'Compilation'
     SOUNDTRACK = 'Soundtrack'
     SPOKENWORD = 'Spokenword'
     INTERVIEW = 'Interview'
