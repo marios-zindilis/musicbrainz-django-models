@@ -4,4 +4,4 @@ python:
 install:
   - "pip install django"
 script:
-  - sh build
+  - bash build
