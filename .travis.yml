@@ -3,5 +3,6 @@ python:
   - "3.6"
 install:
   - "pip install django"
+  - "pip install flake8"
 script:
   - bash build
