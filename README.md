@@ -1,6 +1,7 @@
 # MusicBrainz Django Models #
 
 [![Build Status](https://api.travis-ci.org/marios-zindilis/musicbrainz-django-models.svg?branch=master)](https://travis-ci.org/marios-zindilis/musicbrainz-django-models)
+[![Coverage Status](https://coveralls.io/repos/github/marios-zindilis/musicbrainz-django-models/badge.svg?branch=master)](https://coveralls.io/github/marios-zindilis/musicbrainz-django-models?branch=master)
 
 This project is an attempt to express the database schema of the
 [MusicBrainz Server][1] as Django models. The purpose is purely academic,
