@@ -19,7 +19,10 @@ The **Release Packaging** is one of:
 14. Super Jewel Box
 15. Digibook
 
-The Release Packaging is referenced by the Release model.
+The Release Packaging is referenced by the Release model. Read more at the
+`Release Packaging documentation on MusicBrainz`_.
+
+.. _Release Packaging documentation on MusicBrainz: https://musicbrainz.org/doc/Release/Packaging
 
 PostreSQL Definition
 --------------------

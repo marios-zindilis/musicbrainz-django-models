@@ -1,7 +1,10 @@
 """
 .. module:: release
 
-The **Release** model.
+The **Release** model. Read more at the
+`Release documentation on MusicBrainz`_.
+
+.. _Release documentation on MusicBrainz: https://musicbrainz.org/doc/Release
 
 PostgreSQL Definition
 ---------------------

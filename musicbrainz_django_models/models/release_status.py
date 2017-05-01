@@ -8,7 +8,10 @@ The **Release Status** is one of:
 3. Bootleg
 4. Pseudo-Release
 
-The Release Status is referenced by the Release model.
+The Release Status is referenced by the Release model. Read more at the
+`Release documentation on MusicBrainz`_.
+
+.. _Release documentation on MusicBrainz: https://musicbrainz.org/doc/Release
 
 PostreSQL Definition
 --------------------
@@ -32,7 +35,7 @@ from django.db import models
 import uuid
 
 
-def validate_release_status_name_choice(sender, instance, **kwargs):
+def pre_save_release_status(sender, instance, **kwargs):
     if instance.name not in sender.NAME_CHOICE_LIST:
         from django.core.exceptions import ValidationError
         raise ValidationError(
@@ -84,5 +87,4 @@ class release_status(models.Model):
         db_table = 'release_status'
 
 
-models.signals.pre_save.connect(
-    validate_release_status_name_choice, sender=release_status)
+models.signals.pre_save.connect(pre_save_release_status, sender=release_status)
