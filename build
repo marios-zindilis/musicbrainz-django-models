@@ -24,7 +24,7 @@ do
     [ $? -ne 0 ] && exit 1
 done
 
-flake8 . --exclude musicbrainz_django_models/migrations --max-line-length 100
+flake8 . --exclude musicbrainz_django_models/migrations --max-line-length 120
 [ $? -ne 0 ] && echo "flake8 failed" && exit 1
 
 echo "========================================================================"
