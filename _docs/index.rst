@@ -26,6 +26,7 @@ Models
    gender
    instrument
    instrument_type
+   label_type
    language
    recording
    release_group_primary_type
