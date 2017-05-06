@@ -12,10 +12,6 @@ class test_artist_type(TestCase):
         subject = artist_type(name=artist_type.GROUP)
         self.assertEqual(str(subject), subject.name)
 
-    def test__artist_type__unicode(self):
-        subject = artist_type(name=artist_type.CHOIR)
-        self.assertEqual(subject.__unicode__(), subject.name)
-
     def test__artict_type__name_choice(self):
         subject = artist_type(name="Invalid Type")
         with self.assertRaises(ValidationError):

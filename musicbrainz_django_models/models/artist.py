@@ -57,6 +57,7 @@ The :code:`artist` table is defined in the MusicBrainz Server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 import uuid
 
 
@@ -64,6 +65,7 @@ def update_artist_ended(sender, instance, **kwargs):
     instance.ended = instance.check_ended()
 
 
+@python_2_unicode_compatible
 class artist(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -133,9 +135,6 @@ class artist(models.Model):
             self.end_date_day is not None)
 
     def __str__(self):
-        return self.name
-
-    def __unicode__(self):
         return self.name
 
     class Meta:

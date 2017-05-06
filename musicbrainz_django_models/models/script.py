@@ -19,17 +19,16 @@ PostgreSQL Definition
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 
+@python_2_unicode_compatible
 class script(models.Model):
     id = models.AutoField(primary_key=True)
     iso_code = models.CharField(max_length=4, help_text='ISO 15924')
     iso_number = models.CharField(max_length=3, help_text='ISO 15924')
     name = models.CharField(max_length=100)
     frequency = models.IntegerField(default=0)
-
-    def __unicode__(self):
-        return self.name
 
     def __str__(self):
         return self.name

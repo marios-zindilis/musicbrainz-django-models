@@ -24,9 +24,11 @@ The :code:`instrument` table is defined in the MusicBrainz Server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 import uuid
 
 
+@python_2_unicode_compatible
 class instrument(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -52,9 +54,6 @@ class instrument(models.Model):
     description = models.TextField(null=True)
 
     def __str__(self):
-        return self.name
-
-    def __unicode__(self):
         return self.name
 
     class Meta:

@@ -13,9 +13,6 @@ class test_recording(TestCase):
     def test__recording__str(self):
         self.assertEqual(str(self.subject), self.subject.name)
 
-    def test__recording__unicode(self):
-        self.assertEqual(self.subject.__unicode__(), self.subject.name)
-
     def test__recording__length(self):
         subject_artist_credit = artist_credit(name='Something')
         subject_artist_credit.save()

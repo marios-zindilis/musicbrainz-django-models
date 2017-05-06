@@ -43,6 +43,7 @@ Server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 import uuid
 
 
@@ -55,6 +56,7 @@ def pre_save_release_group_primary_type(sender, instance, **kwargs):
                 ', '.join(sender.NAME_CHOICE_LIST)))
 
 
+@python_2_unicode_compatible
 class release_group_primary_type(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -89,9 +91,6 @@ class release_group_primary_type(models.Model):
     child_order = models.IntegerField(default=0)
     description = models.TextField(null=True)
     gid = models.UUIDField(default=uuid.uuid4)
-
-    def __unicode__(self):
-        return self.name
 
     def __str__(self):
         return self.name

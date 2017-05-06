@@ -13,9 +13,6 @@ class test_label(TestCase):
     def test__label__str(self):
         self.assertEqual(str(self.subject), self.subject.name)
 
-    def test__label__unicode(self):
-        self.assertEqual(self.subject.__unicode__(), self.subject.name)
-
     def test__label__end_date_year(self):
         self.subject.end_date_year = 2012
         self.subject.save()

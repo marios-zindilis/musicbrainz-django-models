@@ -52,6 +52,7 @@ The :code:`artist_type` table is defined in the MusicBrainz Server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 import uuid
 
 
@@ -63,6 +64,7 @@ def validate_artist_type_name_choice(sender, instance, **kwargs):
             ', '.join(sender.NAME_CHOICE_LIST)))
 
 
+@python_2_unicode_compatible
 class artist_type(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -101,9 +103,6 @@ class artist_type(models.Model):
     child_order = models.IntegerField(default=0)
     description = models.TextField(null=True)
     gid = models.UUIDField(default=uuid.uuid4)
-
-    def __unicode__(self):
-        return self.name
 
     def __str__(self):
         return self.name

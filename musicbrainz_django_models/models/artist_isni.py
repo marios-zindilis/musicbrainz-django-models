@@ -34,6 +34,7 @@ The :code:`artist_isni` table is defined in the MusicBrainz Server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.core.validators import MinLengthValidator
 from django.core.validators import RegexValidator
 
@@ -45,6 +46,7 @@ def validate_artist_isni(sender, instance, **kwargs):
         raise ValidationError(RegexValidator.message)
 
 
+@python_2_unicode_compatible
 class artist_isni(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -78,9 +80,6 @@ class artist_isni(models.Model):
     )
     edits_pending = models.PositiveIntegerField(default=0)
     created = models.DateTimeField(auto_now=True)
-
-    def __unicode__(self):
-        return self.isni
 
     def __str__(self):
         return self.isni

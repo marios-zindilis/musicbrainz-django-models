@@ -7,10 +7,6 @@ class test_artist(TestCase):
         subject = artist(name='Bob Squarepants')
         self.assertEqual(str(subject), subject.name)
 
-    def test__artist__unicode(self):
-        subject = artist(name='Bob Squarepants')
-        self.assertEqual(subject.__unicode__(), subject.name)
-
     def test__artist__end_date_year(self):
         subject = artist(name='Bob Squarepants', end_date_year=1)
         subject.save()

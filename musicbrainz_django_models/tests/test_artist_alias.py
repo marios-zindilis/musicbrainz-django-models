@@ -7,10 +7,6 @@ class test_artist_alias(TestCase):
         subject = artist_alias(name='Bob Squarepants')
         self.assertEqual(str(subject), subject.name)
 
-    def test__artist_alias__unicode(self):
-        subject = artist_alias(name='Jibbers Crabst')
-        self.assertEqual(subject.__unicode__(), subject.name)
-
     def test__artist_alias__end_date_year(self):
         """
         When the `end_date_year` of an `artist_alias` is not None, `ended`

@@ -13,9 +13,6 @@ class test_label_type(TestCase):
     def test__label_type__str(self):
         self.assertEqual(str(self.subject), self.subject.name)
 
-    def test__label_type__unicode(self):
-        self.assertEqual(self.subject.__unicode__(), self.subject.name)
-
     def test__label_type__name_choice(self):
         with self.assertRaises(ValidationError):
             self.subject.save()

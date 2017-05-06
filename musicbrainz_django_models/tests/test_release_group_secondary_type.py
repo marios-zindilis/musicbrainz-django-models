@@ -14,9 +14,6 @@ class test_release_group_secondary_type(TestCase):
     def test__release_group_secondary_type__str(self):
         self.assertEqual(str(self.subject), self.subject.name)
 
-    def test__release_group_secondary_type__unicode(self):
-        self.assertEqual(self.subject.__unicode__(), self.subject.name)
-
     def test__release_group_secondary_type__name_choice(self):
         subject = release_group_secondary_type(name="Invalid Type")
         with self.assertRaises(ValidationError):

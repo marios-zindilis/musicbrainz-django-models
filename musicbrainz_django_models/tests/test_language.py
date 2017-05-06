@@ -13,9 +13,6 @@ class test_language(TestCase):
     def test__language__str(self):
         self.assertEqual(str(self.subject), self.subject.name)
 
-    def test__language__unicode(self):
-        self.assertEqual(self.subject.__unicode__(), self.subject.name)
-
     def test__language__validation(self):
         with self.assertRaises(ValidationError):
             self.subject.save()

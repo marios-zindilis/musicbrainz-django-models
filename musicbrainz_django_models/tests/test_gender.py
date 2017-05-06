@@ -8,10 +8,6 @@ class test_gender(TestCase):
         subject = gender(name='Female')
         self.assertEqual(str(subject), subject.name)
 
-    def test__gender__unicode(self):
-        subject = gender(name='Male')
-        self.assertEqual(subject.__unicode__(), subject.name)
-
     def test__gender__name_choice(self):
         subject = gender(name='Invalid')
         with self.assertRaises(ValidationError):

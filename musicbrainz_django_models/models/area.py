@@ -53,6 +53,7 @@ The :code:`area` table is defined in the MusicBrainz Server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 import uuid
 
 
@@ -60,6 +61,7 @@ def pre_save_area(sender, instance, **kwargs):
     instance.ended = instance.check_ended()
 
 
+@python_2_unicode_compatible
 class area(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -88,7 +90,7 @@ class area(models.Model):
     id = models.AutoField(primary_key=True)
     gid = models.UUIDField(default=uuid.uuid4)
     name = models.CharField(max_length=255)
-    type = models.ForeignKey('area_type')
+    type = models.ForeignKey('area_type', null=True)
     edits_pending = models.PositiveIntegerField(default=0)
     last_updated = models.DateTimeField(auto_now=True)
     begin_date_year = models.SmallIntegerField(null=True)
@@ -108,9 +110,6 @@ class area(models.Model):
             self.end_date_year is not None or
             self.end_date_month is not None or
             self.end_date_day is not None)
-
-    def __unicode__(self):
-        return self.name
 
     def __str__(self):
         return self.name

@@ -28,6 +28,7 @@ The :code:`recording` table is defined in the MusicBrainz server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.core.validators import MinValueValidator
 from django.core.exceptions import ValidationError
 import uuid
@@ -38,6 +39,7 @@ def pre_save_recording(sender, instance, **kwargs):
         raise ValidationError('The Recording Length cannot be less that 1')
 
 
+@python_2_unicode_compatible
 class recording(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -67,9 +69,6 @@ class recording(models.Model):
     edits_pending = models.PositiveIntegerField(default=0)
     last_updated = models.DateTimeField(auto_now=True)
     video = models.BooleanField(default=False)
-
-    def __unicode__(self):
-        return self.name
 
     def __str__(self):
         return self.name

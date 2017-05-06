@@ -11,6 +11,3 @@ class test_release(TestCase):
 
     def test__release__str(self):
         self.assertEqual(str(self.subject), self.subject.name)
-
-    def test__release__unicode(self):
-        self.assertEqual(self.subject.__unicode__(), self.subject.name)

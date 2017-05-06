@@ -11,6 +11,3 @@ class test_work(TestCase):
 
     def test__work__str(self):
         self.assertEqual(str(self.subject), self.subject.name)
-
-    def test__work__unicode(self):
-        self.assertEqual(self.subject.__unicode__(), self.subject.name)

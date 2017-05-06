@@ -10,7 +10,3 @@ class test_instrument(TestCase):
     def test__instrument__str(self):
         subject = instrument(name='Piano')
         self.assertEquals(str(subject), subject.name)
-
-    def test__instrument__unicode(self):
-        subject = instrument(name='Drums')
-        self.assertEquals(subject.__unicode__(), subject.name)

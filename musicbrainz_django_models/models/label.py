@@ -50,6 +50,7 @@ The :code:`label` table is defined in the MusicBrainz Server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.core.validators import MinValueValidator
 from django.core.validators import MaxValueValidator
 from django.core.exceptions import ValidationError
@@ -68,6 +69,7 @@ def pre_save_label(sender, instance, **kwargs):
                     MIN, MAX))
 
 
+@python_2_unicode_compatible
 class label(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -130,9 +132,6 @@ class label(models.Model):
             self.end_date_year is not None or
             self.end_date_month is not None or
             self.end_date_day is not None)
-
-    def __unicode__(self):
-        return self.name
 
     def __str__(self):
         return self.name

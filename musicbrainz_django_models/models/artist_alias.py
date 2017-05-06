@@ -55,6 +55,7 @@ The :code:`artist_alias` table is defined in the MusicBrainz Server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 
 def pre_save_artist_alias(sender, instance, **kwargs):
@@ -77,6 +78,7 @@ def pre_save_artist_alias(sender, instance, **kwargs):
         instance.locale = None
 
 
+@python_2_unicode_compatible
 class artist_alias(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -138,9 +140,6 @@ class artist_alias(models.Model):
             self.end_date_year is not None or
             self.end_date_month is not None or
             self.end_date_day is not None)
-
-    def __unicode__(self):
-        return self.name
 
     def __str__(self):
         return self.name

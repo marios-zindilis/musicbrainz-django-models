@@ -34,6 +34,7 @@ The :code:`gender` table is defined in the MusicBrainz Server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 import uuid
 
 
@@ -45,6 +46,7 @@ def pre_save_gender(sender, instance, **kwargs):
             ', '.join(sender.NAME_CHOICE_LIST)))
 
 
+@python_2_unicode_compatible
 class gender(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -78,9 +80,6 @@ class gender(models.Model):
     gid = models.UUIDField(default=uuid.uuid4)
 
     def __str__(self):
-        return self.name
-
-    def __unicode__(self):
         return self.name
 
     class Meta:

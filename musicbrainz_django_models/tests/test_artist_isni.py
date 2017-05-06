@@ -8,10 +8,6 @@ class test_artist_isni(TestCase):
         subject = artist_isni(isni='1234567890123456')
         self.assertEqual(str(subject), subject.isni)
 
-    def test__artist_isni__unicode(self):
-        subject = artist_isni(isni='1234567890123456')
-        self.assertEqual(subject.__unicode__(), subject.isni)
-
     def test__artist_isni__isni_too_short(self):
         subject = artist_isni(isni='12345678901235')
         with self.assertRaises(ValidationError):

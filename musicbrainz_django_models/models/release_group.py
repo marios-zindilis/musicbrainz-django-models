@@ -26,9 +26,11 @@ The :code:`release_group` table is defined in the MusicBrainz Server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 import uuid
 
 
+@python_2_unicode_compatible
 class release_group(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -49,9 +51,6 @@ class release_group(models.Model):
     comment = models.CharField(max_length=255, default='')
     edits_pending = models.PositiveIntegerField(default=0)
     last_updated = models.DateTimeField(auto_now=True)
-
-    def __unicode__(self):
-        return self.name
 
     def __str__(self):
         return self.name

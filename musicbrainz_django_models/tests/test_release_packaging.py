@@ -13,9 +13,6 @@ class test_release_packaging(TestCase):
     def test__release_packaging__str(self):
         self.assertEqual(str(self.subject), self.subject.name)
 
-    def test__release_packaging__unicode(self):
-        self.assertEqual(self.subject.__unicode__(), self.subject.name)
-
     def test__release_packaging__name_choice(self):
         with self.assertRaises(ValidationError):
             self.subject.save()

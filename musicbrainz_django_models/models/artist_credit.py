@@ -24,8 +24,10 @@ The :code:`artist_credit` table is defined in the MusicBrainz Server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 
+@python_2_unicode_compatible
 class artist_credit(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -43,9 +45,6 @@ class artist_credit(models.Model):
     artist_count = models.SmallIntegerField(default=1)
     ref_count = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now=True)
-
-    def __unicode__(self):
-        return self.name
 
     def __str__(self):
         return self.name

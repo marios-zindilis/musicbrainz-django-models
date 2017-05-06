@@ -33,9 +33,11 @@ The :code:`release` table is defined in the MusicBrainz server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 import uuid
 
 
+@python_2_unicode_compatible
 class release(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -62,9 +64,6 @@ class release(models.Model):
     edits_pending = models.PositiveIntegerField(default=0)
     quality = models.SmallIntegerField(default=-1)
     last_updated = models.DateTimeField(auto_now=True)
-
-    def __unicode__(self):
-        return self.name
 
     def __str__(self):
         return self.name

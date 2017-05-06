@@ -24,9 +24,11 @@ The `work` table is defined in the MusicBrainz Server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 import uuid
 
 
+@python_2_unicode_compatible
 class work(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -49,9 +51,6 @@ class work(models.Model):
     language = models.ForeignKey('language')
 
     def __str__(self):
-        return self.name
-
-    def __unicode__(self):
         return self.name
 
     class Meta:

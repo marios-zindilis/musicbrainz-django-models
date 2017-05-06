@@ -27,6 +27,7 @@ The :code:`language` table is defined in the MusicBrainz Server as:
 """
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 
 
 def pre_save_language(sender, instance, **kwagrs):
@@ -36,6 +37,7 @@ def pre_save_language(sender, instance, **kwagrs):
             'Either iso_code_2t or iso_code_3 must be defined')
 
 
+@python_2_unicode_compatible
 class language(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
@@ -56,9 +58,6 @@ class language(models.Model):
     frequency = models.IntegerField(default=0)
     iso_code_3 = models.CharField(
         max_length=3, null=True, help_text='ISO 639-3')
-
-    def __unicode__(self):
-        return self.name
 
     def __str__(self):
         return self.name

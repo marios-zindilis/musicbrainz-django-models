@@ -11,6 +11,3 @@ class test_artist_credit(TestCase):
 
     def test__artist_credit__str(self):
         self.assertEqual(str(self.subject), self.subject.name)
-
-    def test__artist_credit__unicode(self):
-        self.assertEqual(self.subject.__unicode__(), self.subject.name)
