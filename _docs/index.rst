@@ -26,6 +26,7 @@ Models
    gender
    instrument
    instrument_type
+   label
    label_type
    language
    recording

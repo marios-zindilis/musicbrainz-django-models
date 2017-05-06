@@ -22,6 +22,7 @@ from .script import script
 from .release import release
 from .recording import recording
 from .label_type import label_type
+from .label import label
 
 # __ALL__ silences PEP8 `module imported but unused`:
 __ALL__ = [
@@ -49,4 +50,5 @@ __ALL__ = [
     release,
     recording,
     label_type,
+    label,
 ]
