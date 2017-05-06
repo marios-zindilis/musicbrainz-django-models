@@ -28,7 +28,7 @@ from django.utils.encoding import python_2_unicode_compatible
 import uuid
 
 
-def validate_area_type_name_choice(sender, instance, **kwargs):
+def pre_save_area_type(sender, instance, **kwargs):
     if instance.name not in sender.NAME_CHOICE_LIST:
         from django.core.exceptions import ValidationError
         raise ValidationError('Area Type Name "{}" is not one of: {}'.format(
@@ -85,5 +85,4 @@ class area_type(models.Model):
         verbose_name_plural = 'Area Types'
 
 
-models.signals.pre_save.connect(
-    validate_area_type_name_choice, sender=area_type)
+models.signals.pre_save.connect(pre_save_area_type, sender=area_type)

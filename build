@@ -126,7 +126,6 @@ do
     grep 'ValidationError' $module > /dev/null
     if [ $? -eq 0 ]
     then
-        echo ''                                                                     >> $module_test
         echo "    def test__${module_name}__name_choice(self):"                     >> $module_test
         echo '        with self.assertRaises(ValidationError):'                     >> $module_test
         echo '            self.subject.save()'                                      >> $module_test

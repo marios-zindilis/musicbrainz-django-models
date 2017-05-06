@@ -14,6 +14,8 @@ Models
 .. toctree::
    :maxdepth: 1
 
+   alternative_release
+   alternative_release_type
    area
    area_type
    artist_alias

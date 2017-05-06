@@ -23,9 +23,11 @@ from .release import release
 from .recording import recording
 from .label_type import label_type
 from .label import label
+from .alternative_release_type import alternative_release_type
+from .alternative_release import alternative_release
 
-# __ALL__ silences PEP8 `module imported but unused`:
-__ALL__ = [
+# __all__ silences PEP8 `module imported but unused`:
+__all__ = [
     area_type,
     area,
     gender,
@@ -51,4 +53,6 @@ __ALL__ = [
     recording,
     label_type,
     label,
+    alternative_release_type,
+    alternative_release,
 ]
