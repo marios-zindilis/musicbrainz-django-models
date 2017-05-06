@@ -7,27 +7,60 @@ tests="$app/tests"
 admin="$app/admin/__init__.py"
 modules=$(ls -1 $app/models/*.py | grep -v __init__)
 
-echo "========================================================================"
-echo "                           Verifying Models                             "
-echo "========================================================================"
-for module in $modules:
+function checking() {
+    printf '  %-72s' "$1"
+}
+function OK() {
+    echo -e "\e[1;32mPASSED\e[0m"
+}
+function NOK() {
+    echo -e "\e[1;31mFAILED\e[0m"
+    exit 1
+}
+
+echo "================================================================================"
+echo "                               Verifying Models                                 "
+echo "================================================================================"
+for module in $modules
 do
     module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
-    echo "$module_name"
+    echo "Verifying: $module_name"
 
+    checking 'import django.db.models' 
+    grep 'from django.db import models' $module > /dev/null && OK || NOK
+
+    checking 'from django.utils.encoding import python_2_unicode_compatible'
+    grep 'from django.utils.encoding import python_2_unicode_compatible' $module > /dev/null && OK || NOK
+
+    checking "class $module_name(models.Model)"
+    grep "^class $module_name(models.Model):" $module > /dev/null && OK || NOK
+    [ $? -ne 0 ] && echo "  Not Found: Class definition" && exit
+
+    checking '@python_2_unicode_compatible'
+    grep "^class $module_name(models.Model):" $module -B 1 | head -1 | grep '@python_2_unicode_compatible' > /dev/null && OK || NOK
+
+    checking ".. module:: $module_name"
     rst_module=$(head -2 $models/$module_name.py | tail -1)
-    [ "$rst_module" == ".. module:: $module_name" ] || exit 1
+    [ "$rst_module" == ".. module:: $module_name" ] && OK || NOK
 
-    grep "from .$module_name import $module_name" $app/models/__init__.py > /dev/null
-    [ $? -ne 0 ] && echo "$module_name missing from __init__.py" && exit 1
+    checking "$module_name in __init__.py"
+    grep "from .$module_name import $module_name" $app/models/__init__.py > /dev/null && OK || NOK
 
-    grep "db_table = '$module_name'" $app/models/$module_name.py
-    [ $? -ne 0 ] && exit 1
+    checking "db_table = $module_name"
+    grep "db_table = '$module_name'" $app/models/$module_name.py > /dev/null && OK || NOK
+
+    # All Models must define __str__:
+    checking 'def __str__(self):'
+    grep '    def __str__(self):' $module > /dev/null && OK || NOK
+
+    # All Models must NOT define __unicode__:
+    checking 'def __unicode__(self):'
+    grep '    def __unicode__(self):' $module > /dev/null && NOK || OK
 done
 
-echo "========================================================================"
-echo "                              Remodelling                               "
-echo "========================================================================"
+echo "================================================================================"
+echo "                                  Remodelling                                   "
+echo "================================================================================"
 [ -f "db.sqlite3" ] && rm "db.sqlite3"
 rm -rf "$app/migrations/*"
 rm -rf "$models/__pycache__"
@@ -38,26 +71,26 @@ rm -rf "$app/__pycache__"
 ./manage.py loaddata musicbrainz_django_models/fixtures/*
 [ $? -ne 0 ] && exit 1
 
-echo "========================================================================"
-echo "                            Building Admin                              "
-echo "========================================================================"
+echo "================================================================================"
+echo "                                Building Admin                                  "
+echo "================================================================================"
 
 rm -f $admin
 echo 'from django.contrib import admin' >> $admin
-for module in $modules:
+for module in $modules
 do
     module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
     echo "from ..models import $module_name" >> $admin
 done
 echo '' >> $admin
-for module in $modules:
+for module in $modules
 do
     module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
     echo "admin.site.register($module_name)" >> $admin
 done
 
 echo '__ALL__ = [' >> $admin
-for module in $modules:
+for module in $modules
 do
     module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
     echo "    $module_name," >> $admin
@@ -69,7 +102,7 @@ echo "                                Testing                                 "
 echo "========================================================================"
 
 # If a test does not exist for a module, create a skeleton test:
-for module in $modules:
+for module in $modules
 do
     module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
     module_test="$tests/test_$module_name.py"
@@ -90,8 +123,6 @@ do
     echo "    def test__${module_name}__str(self):"                                 >> $module_test
     echo '        self.assertEqual(str(self.subject), self.subject.name)'           >> $module_test
     echo ''                                                                         >> $module_test
-    echo "    def test__${module_name}__unicode(self):"                             >> $module_test
-    echo '        self.assertEqual(self.subject.__unicode__(), self.subject.name)'  >> $module_test
     grep 'ValidationError' $module > /dev/null
     if [ $? -eq 0 ]
     then
