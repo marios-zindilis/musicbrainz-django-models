@@ -50,3 +50,4 @@ class work_type(models.Model):
 
     class Meta:
         db_table = 'work_type'
+        verbose_name_plural = 'Work Types'

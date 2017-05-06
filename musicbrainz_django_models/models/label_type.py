@@ -119,6 +119,7 @@ class label_type(models.Model):
 
     class Meta:
         db_table = 'label_type'
+        verbose_name_plural = 'Label Types'
 
 
 models.signals.pre_save.connect(pre_save_label_type, sender=label_type)

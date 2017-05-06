@@ -83,6 +83,7 @@ class area_type(models.Model):
 
     class Meta:
         db_table = 'area_type'
+        verbose_name_plural = 'Area Types'
 
 
 models.signals.pre_save.connect(

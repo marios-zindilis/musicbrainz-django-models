@@ -98,6 +98,7 @@ class release_group_primary_type(models.Model):
 
     class Meta:
         db_table = 'release_group_primary_type'
+        verbose_name_plural = 'Release Group Primary Types'
 
 
 models.signals.pre_save.connect(

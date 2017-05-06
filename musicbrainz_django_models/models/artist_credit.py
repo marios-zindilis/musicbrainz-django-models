@@ -52,3 +52,4 @@ class artist_credit(models.Model):
 
     class Meta:
         db_table = 'artist_credit'
+        verbose_name_plural = 'Artist Credits'

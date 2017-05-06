@@ -58,3 +58,4 @@ class release_group(models.Model):
 
     class Meta:
         db_table = 'release_group'
+        verbose_name_plural = 'Release Groups'

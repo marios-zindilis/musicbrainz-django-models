@@ -50,3 +50,4 @@ class instrument_type(models.Model):
 
     class Meta:
         db_table = 'instrument_type'
+        verbose_name_plural = 'Instrument Types'

@@ -87,6 +87,7 @@ class artist_isni(models.Model):
 
     class Meta:
         db_table = 'artist_isni'
+        verbose_name_plural = 'Artist ISNIs'
 
 
 models.signals.pre_save.connect(validate_artist_isni, sender=artist_isni)

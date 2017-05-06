@@ -80,6 +80,7 @@ class artist_ipi(models.Model):
 
     class Meta:
         db_table = 'artist_ipi'
+        verbose_name_plural = 'Artist IPIs'
 
 
 models.signals.pre_save.connect(validate_artist_ipi, sender=artist_ipi)

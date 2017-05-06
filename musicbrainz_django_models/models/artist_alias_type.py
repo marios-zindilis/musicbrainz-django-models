@@ -89,6 +89,7 @@ class artist_alias_type(models.Model):
 
     class Meta:
         db_table = 'artist_alias_type'
+        verbose_name_plural = 'Artist Alias Types'
 
 
 models.signals.pre_save.connect(

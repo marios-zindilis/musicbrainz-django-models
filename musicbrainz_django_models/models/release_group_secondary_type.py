@@ -118,6 +118,7 @@ class release_group_secondary_type(models.Model):
 
     class Meta:
         db_table = 'release_group_secondary_type'
+        verbose_name_plural = 'Release Group Secondary Types'
 
 
 models.signals.pre_save.connect(

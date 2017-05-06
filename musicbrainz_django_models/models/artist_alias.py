@@ -147,6 +147,7 @@ class artist_alias(models.Model):
 
     class Meta:
         db_table = 'artist_alias'
+        verbose_name_plural = 'Artist Aliases'
 
 
 models.signals.pre_save.connect(pre_save_artist_alias, sender=artist_alias)

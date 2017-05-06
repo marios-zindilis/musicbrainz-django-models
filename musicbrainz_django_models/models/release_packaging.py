@@ -118,6 +118,7 @@ class release_packaging(models.Model):
 
     class Meta:
         db_table = 'release_packaging'
+        verbose_name_plural = 'Release Packagings'
 
 
 models.signals.pre_save.connect(

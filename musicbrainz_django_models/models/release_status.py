@@ -85,6 +85,7 @@ class release_status(models.Model):
 
     class Meta:
         db_table = 'release_status'
+        verbose_name_plural = 'Release Statuses'
 
 
 models.signals.pre_save.connect(pre_save_release_status, sender=release_status)
