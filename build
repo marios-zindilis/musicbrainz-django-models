@@ -4,7 +4,7 @@ set -e
 app='musicbrainz_django_models'
 models="$app/models"
 tests="$app/tests"
-admin="$app/admin"
+admin="$app/admin/__init__.py"
 modules=$(ls -1 $app/models/*.py | grep -v __init__)
 
 echo "========================================================================"
@@ -25,9 +25,6 @@ do
     [ $? -ne 0 ] && exit 1
 done
 
-flake8 . --exclude musicbrainz_django_models/migrations --max-line-length 120
-[ $? -ne 0 ] && echo "flake8 failed" && exit 1
-
 echo "========================================================================"
 echo "                              Remodelling                               "
 echo "========================================================================"
@@ -44,29 +41,32 @@ rm -rf "$app/__pycache__"
 echo "========================================================================"
 echo "                            Building Admin                              "
 echo "========================================================================"
+
+rm -f $admin
+echo 'from django.contrib import admin' >> $admin
 for module in $modules:
 do
     module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
-    module_admin="$admin/$module_name.py"
-    [ -f "$module_admin" ] && continue
-    echo 'from django.contrib import admin'     >> $module_admin
-    echo "from ..models import $module_name"    >> $module_admin
-    echo ''                                     >> $module_admin
-    echo "admin.site.register($module_name)"    >> $module_admin
-
+    echo "from ..models import $module_name" >> $admin
 done
-
+echo '' >> $admin
 for module in $modules:
 do
     module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
-    init_py="$admin/__init__.py"
-    echo "from .$module_name import *" >> $init_py
+    echo "admin.site.register($module_name)" >> $admin
 done
+
+echo '__ALL__ = [' >> $admin
+for module in $modules:
+do
+    module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
+    echo "    $module_name," >> $admin
+done
+echo ']' >> $admin
 
 echo "========================================================================"
 echo "                                Testing                                 "
 echo "========================================================================"
-
 
 # If a test does not exist for a module, create a skeleton test:
 for module in $modules:
@@ -102,6 +102,8 @@ do
     fi
 done
 
+flake8 . --exclude musicbrainz_django_models/migrations --max-line-length 120
+[ $? -ne 0 ] && echo "flake8 failed" && exit 1
 
 coverage run --source='.' ./manage.py test $app.tests -v 2
 [ "$?" -ne 0 ] && exit
