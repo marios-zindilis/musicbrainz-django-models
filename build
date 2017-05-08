@@ -97,9 +97,9 @@ do
 done
 echo ']' >> $admin
 
-echo "========================================================================"
-echo "                                Testing                                 "
-echo "========================================================================"
+echo "================================================================================"
+echo "                                    Testing                                     "
+echo "================================================================================"
 
 # If a test does not exist for a module, create a skeleton test:
 for module in $modules
@@ -107,29 +107,24 @@ do
     module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
     module_test="$tests/test_$module_name.py"
     [ -f "$tests/test_$module_name.py" ] && continue
-    echo "from django.test import TestCase"                                         >> $module_test
-    grep 'ValidationError' $module > /dev/null
-    [ $? -eq 0 ] && echo 'from django.core.exceptions import ValidationError'       >> $module_test
-    echo "from ..models import $module_name"                                        >> $module_test
-    echo ''                                                                         >> $module_test
-    echo ''                                                                         >> $module_test
-    echo "class test_$module_name(TestCase):"                                       >> $module_test
-    echo '    def setUp(self):'                                                     >> $module_test
-    echo "        self.subject = $module_name(name='Name')"                         >> $module_test
-    echo ''                                                                         >> $module_test
-    echo "    def test__${module_name}__instance(self):"                            >> $module_test
-    echo "        self.assertIsInstance(self.subject, $module_name)"                >> $module_test
-    echo ''                                                                         >> $module_test
-    echo "    def test__${module_name}__str(self):"                                 >> $module_test
-    echo '        self.assertEqual(str(self.subject), self.subject.name)'           >> $module_test
-    echo ''                                                                         >> $module_test
-    grep 'ValidationError' $module > /dev/null
-    if [ $? -eq 0 ]
-    then
-        echo "    def test__${module_name}__name_choice(self):"                     >> $module_test
-        echo '        with self.assertRaises(ValidationError):'                     >> $module_test
-        echo '            self.subject.save()'                                      >> $module_test
-    fi
+    echo "from django.test import TestCase"                                                                 >> $module_test
+    grep 'ValidationError' $module > /dev/null && echo 'from django.core.exceptions import ValidationError' >> $module_test
+    echo "from ..models import $module_name"                                                                >> $module_test
+    echo ''                                                                                                 >> $module_test
+    echo ''                                                                                                 >> $module_test
+    echo "class test_$module_name(TestCase):"                                                               >> $module_test
+    echo '    def setUp(self):'                                                                             >> $module_test
+    echo "        self.subject = $module_name(name='Name')"                                                 >> $module_test
+    echo ''                                                                                                 >> $module_test
+    echo "    def test__${module_name}__instance(self):"                                                    >> $module_test
+    echo "        self.assertIsInstance(self.subject, $module_name)"                                        >> $module_test
+    echo ''                                                                                                 >> $module_test
+    echo "    def test__${module_name}__str(self):"                                                         >> $module_test
+    echo '        self.assertEqual(str(self.subject), self.subject.name)'                                   >> $module_test
+    grep 'ValidationError' $module > /dev/null && echo ''                                                   >> $module_test
+    grep 'ValidationError' $module > /dev/null && echo "    def test__${module_name}__name_choice(self):"   >> $module_test
+    grep 'ValidationError' $module > /dev/null && echo '        with self.assertRaises(ValidationError):'   >> $module_test
+    grep 'ValidationError' $module > /dev/null && echo '            self.subject.save()'                    >> $module_test
 done
 
 flake8 . --exclude musicbrainz_django_models/migrations --max-line-length 120
