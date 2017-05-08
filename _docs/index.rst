@@ -14,6 +14,7 @@ Models
 .. toctree::
    :maxdepth: 1
 
+   alternative_medium
    alternative_release
    alternative_release_type
    area
@@ -31,6 +32,8 @@ Models
    label
    label_type
    language
+   medium_format
+   medium
    recording
    release_group_primary_type
    release_group

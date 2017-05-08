@@ -25,6 +25,9 @@ from .label_type import label_type
 from .label import label
 from .alternative_release_type import alternative_release_type
 from .alternative_release import alternative_release
+from .medium_format import medium_format
+from .medium import medium
+from .alternative_medium import alternative_medium
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -55,4 +58,7 @@ __all__ = [
     label,
     alternative_release_type,
     alternative_release,
+    medium_format,
+    medium,
+    alternative_medium,
 ]
