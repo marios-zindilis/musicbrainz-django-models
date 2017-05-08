@@ -1,8 +1,13 @@
 from django.contrib import admin
+from ..models import alternative_medium
+from ..models import alternative_release
+from ..models import alternative_release_type
+from .alternative_release_type_admin import alternative_release_type_admin
 from ..models import area
 from ..models import area_type
 from ..models import artist_alias
 from ..models import artist_alias_type
+from .artist_alias_type_admin import artist_alias_type_admin
 from ..models import artist_credit
 from ..models import artist_ipi
 from ..models import artist_isni
@@ -14,6 +19,8 @@ from ..models import instrument_type
 from ..models import label
 from ..models import label_type
 from ..models import language
+from ..models import medium_format
+from ..models import medium
 from ..models import recording
 from ..models import release_group_primary_type
 from ..models import release_group
@@ -25,10 +32,13 @@ from ..models import script
 from ..models import work
 from ..models import work_type
 
+admin.site.register(alternative_medium)
+admin.site.register(alternative_release)
+admin.site.register(alternative_release_type, alternative_release_type_admin)
 admin.site.register(area)
 admin.site.register(area_type)
 admin.site.register(artist_alias)
-admin.site.register(artist_alias_type)
+admin.site.register(artist_alias_type, artist_alias_type_admin)
 admin.site.register(artist_credit)
 admin.site.register(artist_ipi)
 admin.site.register(artist_isni)
@@ -40,6 +50,8 @@ admin.site.register(instrument_type)
 admin.site.register(label)
 admin.site.register(label_type)
 admin.site.register(language)
+admin.site.register(medium_format)
+admin.site.register(medium)
 admin.site.register(recording)
 admin.site.register(release_group_primary_type)
 admin.site.register(release_group)
@@ -50,30 +62,3 @@ admin.site.register(release_status)
 admin.site.register(script)
 admin.site.register(work)
 admin.site.register(work_type)
-__ALL__ = [
-    area,
-    area_type,
-    artist_alias,
-    artist_alias_type,
-    artist_credit,
-    artist_ipi,
-    artist_isni,
-    artist,
-    artist_type,
-    gender,
-    instrument,
-    instrument_type,
-    label,
-    label_type,
-    language,
-    recording,
-    release_group_primary_type,
-    release_group,
-    release_group_secondary_type,
-    release_packaging,
-    release,
-    release_status,
-    script,
-    work,
-    work_type,
-]
