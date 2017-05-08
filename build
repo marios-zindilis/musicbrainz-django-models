@@ -4,7 +4,7 @@ set -e
 app='musicbrainz_django_models'
 models="$app/models"
 tests="$app/tests"
-admin="$app/admin/__init__.py"
+admin="$app/admin"
 modules=$(ls -1 $app/models/*.py | grep -v __init__)
 
 function checking() {
@@ -75,27 +75,25 @@ echo "==========================================================================
 echo "                                Building Admin                                  "
 echo "================================================================================"
 
-rm -f $admin
-echo 'from django.contrib import admin' >> $admin
+rm -f $admin/__init__.py
+echo 'from django.contrib import admin' >> $admin/__init__.py
 for module in $modules
 do
     module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
-    echo "from ..models import $module_name" >> $admin
+    echo "from ..models import $module_name" >> $admin/__init__.py
+    [ -f $admin/${module_name}_admin.py ] && echo "from .${module_name}_admin import ${module_name}_admin" >> $admin/__init__.py
 done
-echo '' >> $admin
+echo '' >> $admin/__init__.py
 for module in $modules
 do
     module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
-    echo "admin.site.register($module_name)" >> $admin
+    if [ -f $admin/${module_name}_admin.py ]
+    then
+        echo "admin.site.register($module_name, ${module_name}_admin)" >> $admin/__init__.py
+    else
+        echo "admin.site.register($module_name)" >> $admin/__init__.py
+    fi
 done
-
-echo '__ALL__ = [' >> $admin
-for module in $modules
-do
-    module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
-    echo "    $module_name," >> $admin
-done
-echo ']' >> $admin
 
 echo "================================================================================"
 echo "                                    Testing                                     "
