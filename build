@@ -133,9 +133,9 @@ coverage run --source='.' ./manage.py test $app.tests --verbosity 2 --failfast
 coverage report
 coverage html
 
-echo "========================================================================"
-echo "                       Generating Documentation                         "
-echo "========================================================================"
+echo "================================================================================"
+echo "                           Generating Documentation                             "
+echo "================================================================================"
 
 intro='This project is an attempt to express the MusicBrainz database schema \
 as Django Models.\'
