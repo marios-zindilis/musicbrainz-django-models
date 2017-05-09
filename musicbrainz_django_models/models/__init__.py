@@ -28,6 +28,7 @@ from .alternative_release import alternative_release
 from .medium_format import medium_format
 from .medium import medium
 from .alternative_medium import alternative_medium
+from .alternative_track import alternative_track
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -61,4 +62,5 @@ __all__ = [
     medium_format,
     medium,
     alternative_medium,
+    alternative_track,
 ]

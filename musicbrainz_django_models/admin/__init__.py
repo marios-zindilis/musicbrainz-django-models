@@ -3,6 +3,7 @@ from ..models import alternative_medium
 from ..models import alternative_release
 from ..models import alternative_release_type
 from .alternative_release_type_admin import alternative_release_type_admin
+from ..models import alternative_track
 from ..models import area
 from ..models import area_type
 from ..models import artist_alias
@@ -35,6 +36,7 @@ from ..models import work_type
 admin.site.register(alternative_medium)
 admin.site.register(alternative_release)
 admin.site.register(alternative_release_type, alternative_release_type_admin)
+admin.site.register(alternative_track)
 admin.site.register(area)
 admin.site.register(area_type)
 admin.site.register(artist_alias)

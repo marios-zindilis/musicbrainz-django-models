@@ -17,6 +17,7 @@ Models
    alternative_medium
    alternative_release
    alternative_release_type
+   alternative_track
    area
    area_type
    artist_alias
