@@ -6,6 +6,8 @@ The **Alternative Medium** model.
 PostgreSQL Definition
 ---------------------
 
+.. code-block:: sql
+
 The :code:`alternative_medium` table is defined in the MusicBrainz Server as:
 
     CREATE TABLE alternative_medium ( -- replicate
