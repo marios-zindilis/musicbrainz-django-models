@@ -28,6 +28,7 @@ Models
    artist_isni
    artist
    artist_type
+   editor
    gender
    instrument
    instrument_type

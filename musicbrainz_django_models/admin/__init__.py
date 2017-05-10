@@ -15,6 +15,7 @@ from ..models import artist_ipi
 from ..models import artist_isni
 from ..models import artist
 from ..models import artist_type
+from ..models import editor
 from ..models import gender
 from ..models import instrument
 from ..models import instrument_type
@@ -49,6 +50,7 @@ admin.site.register(artist_ipi)
 admin.site.register(artist_isni)
 admin.site.register(artist)
 admin.site.register(artist_type)
+admin.site.register(editor)
 admin.site.register(gender)
 admin.site.register(instrument)
 admin.site.register(instrument_type)

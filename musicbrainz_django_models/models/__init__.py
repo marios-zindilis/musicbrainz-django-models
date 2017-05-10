@@ -31,6 +31,7 @@ from .alternative_medium import alternative_medium
 from .alternative_track import alternative_track
 from .track import track
 from .alternative_medium_track import alternative_medium_track
+from .editor import editor
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -67,4 +68,5 @@ __all__ = [
     alternative_track,
     track,
     alternative_medium_track,
+    editor,
 ]
