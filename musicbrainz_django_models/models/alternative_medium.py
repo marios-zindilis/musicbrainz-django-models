@@ -32,6 +32,8 @@ class alternative_medium(models.Model):
 
     :param str name: The maximum length is mandatory in Django but not in
         PostgreSQL.
+    :param medium: references :class:`.medium`
+    :param alternative_release: references :class:`.alternative_release`
     """
 
     id = models.AutoField(primary_key=True)
