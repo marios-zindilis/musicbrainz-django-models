@@ -195,7 +195,11 @@ do
 done
 
 sphinx-build -b html . _build
-if [ "$1" == "bp" ]
-then
-    sphinx-build -b html . ~/Public/Dropbox/Code/marios-zindilis.github.io/projects/musicbrainz-django-models/
-fi
+case "$1" in
+    "dev")
+        sphinx-build -b html . /var/www/html/projects/musicbrainz-django-models/
+        ;;
+    "prod")
+        sphinx-build -b html . ~/Public/Dropbox/Code/marios-zindilis.github.io/projects/musicbrainz-django-models/
+        ;;
+esac
