@@ -42,6 +42,9 @@ def pre_save_track(sender, instance, **kwargs):
 @python_2_unicode_compatible
 class track(models.Model):
     """
+    Not all parameters are listed here, only those that present some interest
+    in their Django implementation.
+
     :param id: Auto-Incrementing Integer Primary Key
     :param gid: this is interesting because it cannot be NULL but a default is
         not defined in SQL. The default `uuid.uuid4` in Django will generate a
