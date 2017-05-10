@@ -1,5 +1,6 @@
 from django.contrib import admin
 from ..models import alternative_medium
+from ..models import alternative_medium_track
 from ..models import alternative_release
 from ..models import alternative_release_type
 from .alternative_release_type_admin import alternative_release_type_admin
@@ -30,10 +31,12 @@ from ..models import release_packaging
 from ..models import release
 from ..models import release_status
 from ..models import script
+from ..models import track
 from ..models import work
 from ..models import work_type
 
 admin.site.register(alternative_medium)
+admin.site.register(alternative_medium_track)
 admin.site.register(alternative_release)
 admin.site.register(alternative_release_type, alternative_release_type_admin)
 admin.site.register(alternative_track)
@@ -62,5 +65,6 @@ admin.site.register(release_packaging)
 admin.site.register(release)
 admin.site.register(release_status)
 admin.site.register(script)
+admin.site.register(track)
 admin.site.register(work)
 admin.site.register(work_type)

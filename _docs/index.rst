@@ -15,6 +15,7 @@ Models
    :maxdepth: 1
 
    alternative_medium
+   alternative_medium_track
    alternative_release
    alternative_release_type
    alternative_track
@@ -43,6 +44,7 @@ Models
    release
    release_status
    script
+   track
    work
    work_type
 
