@@ -79,8 +79,11 @@ do
     echo "   :caption: The \`$module_name\` Model"          >> _docs/$module_name.rst
 done
 
-sphinx-build -b html . /var/www/html/projects/musicbrainz-django-models/
+sphinx-build -b html . _build/docs/
 case "$1" in
+    "dev")
+        sphinx-build -b html . /var/www/html/projects/musicbrainz-django-models/
+        ;;
     "prod")
         sphinx-build -b html . ~/Public/Dropbox/Code/marios-zindilis.github.io/projects/musicbrainz-django-models/
         ;;
