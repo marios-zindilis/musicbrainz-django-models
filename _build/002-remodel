@@ -29,4 +29,3 @@ rm -rf "$app/__pycache__"
 ./manage.py makemigrations $app
 ./manage.py migrate
 ./manage.py loaddata musicbrainz_django_models/fixtures/*
-[ $? -ne 0 ] && exit 1
