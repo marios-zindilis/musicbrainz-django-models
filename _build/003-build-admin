@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+set -e
+
+app='musicbrainz_django_models'
+models="$app/models"
+tests="$app/tests"
+admin="$app/admin"
+modules=$(ls -1 $app/models/*.py | grep -v __init__)
+
+function checking() {
+    printf '  %-72s' "$1"
+}
+function OK() {
+    echo -e "\e[1;32mPASSED\e[0m"
+}
+function NOK() {
+    echo -e "\e[1;31mFAILED\e[0m"
+    exit 1
+}
+
+echo "================================================================================"
+echo "                                Building Admin                                  "
+echo "================================================================================"
+
+rm -f $admin/__init__.py
+echo 'from django.contrib import admin' >> $admin/__init__.py
+for module in $modules
+do
+    module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
+    echo "from ..models import $module_name" >> $admin/__init__.py
+    [ -f $admin/${module_name}_admin.py ] && echo "from .${module_name}_admin import ${module_name}_admin" >> $admin/__init__.py
+done
+echo '' >> $admin/__init__.py
+for module in $modules
+do
+    module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
+    if [ -f $admin/${module_name}_admin.py ]
+    then
+        echo "admin.site.register($module_name, ${module_name}_admin)" >> $admin/__init__.py
+    else
+        echo "admin.site.register($module_name)" >> $admin/__init__.py
+    fi
+done

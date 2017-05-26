@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+set -e
+
+app='musicbrainz_django_models'
+models="$app/models"
+tests="$app/tests"
+admin="$app/admin"
+modules=$(ls -1 $app/models/*.py | grep -v __init__)
+
+function checking() {
+    printf '  %-72s' "$1"
+}
+function OK() {
+    echo -e "\e[1;32mPASSED\e[0m"
+}
+function NOK() {
+    echo -e "\e[1;31mFAILED\e[0m"
+    exit 1
+}
+
+echo "================================================================================"
+echo "                           Generating Documentation                             "
+echo "================================================================================"
+
+intro='This project is an attempt to express the MusicBrainz database schema \
+as Django Models.\'
+
+echo 'MusicBrainz Django Models' >  _docs/index.rst
+echo '=========================' >> _docs/index.rst
+echo ''                          >> _docs/index.rst
+cat >> _docs/index.rst << EOF
+This project is an attempt to express the MusicBrainz database schema as
+Django Models.
+
+    See the \`GitHub Repository\`_.
+
+.. _GitHub Repository: https://github.com/marios-zindilis/musicbrainz-django-models
+EOF
+echo ''                          >> _docs/index.rst
+echo 'Models'                    >> _docs/index.rst
+echo '------'                    >> _docs/index.rst
+echo ''                          >> _docs/index.rst
+echo '.. toctree::'              >> _docs/index.rst
+echo '   :maxdepth: 1'           >> _docs/index.rst
+echo ''                          >> _docs/index.rst
+for module in $modules
+do
+    module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
+    echo "   $module_name"       >> _docs/index.rst
+done
+echo ''                          >> _docs/index.rst
+echo 'Indices and tables'        >> _docs/index.rst
+echo '=================='        >> _docs/index.rst
+echo ''                          >> _docs/index.rst
+echo '* :ref:`genindex`'         >> _docs/index.rst
+echo '* :ref:`modindex`'         >> _docs/index.rst
+echo '* :ref:`search`'           >> _docs/index.rst
+
+for module in $modules
+do
+    module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
+    [ -f _docs/$module_name.rst ] && continue
+    echo "$module_name"                                     >> _docs/$module_name.rst
+    echo '============'                                     >> _docs/$module_name.rst
+    echo ''                                                 >> _docs/$module_name.rst
+    echo ".. automodule:: $app.models.$module_name"         >> _docs/$module_name.rst
+    echo '   :noindex:'                                     >> _docs/$module_name.rst
+    echo ''                                                 >> _docs/$module_name.rst
+    echo 'Model Documentation'                              >> _docs/$module_name.rst
+    echo '-------------------'                              >> _docs/$module_name.rst
+    echo ''                                                 >> _docs/$module_name.rst
+    echo ".. autoclass:: $app.models.$module_name"          >> _docs/$module_name.rst
+    echo ''                                                 >> _docs/$module_name.rst
+    echo 'Model Source'                                     >> _docs/$module_name.rst
+    echo '------------'                                     >> _docs/$module_name.rst
+    echo ''                                                 >> _docs/$module_name.rst
+    echo ".. literalinclude:: ../$models/$module_name.py"   >> _docs/$module_name.rst
+    echo "   :pyobject: $module_name"                       >> _docs/$module_name.rst
+    echo "   :caption: The \`$module_name\` Model"          >> _docs/$module_name.rst
+done
+
+sphinx-build -b html . /var/www/html/projects/musicbrainz-django-models/
+case "$1" in
+    "prod")
+        sphinx-build -b html . ~/Public/Dropbox/Code/marios-zindilis.github.io/projects/musicbrainz-django-models/
+        ;;
+esac
