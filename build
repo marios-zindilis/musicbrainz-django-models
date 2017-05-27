@@ -5,7 +5,7 @@ if [ $# -gt 0 ]
 then
     if [ "$1" == "model" ]
     then
-        build/model.py $2
+        _build/model.py $2
         exit
     fi
 fi
