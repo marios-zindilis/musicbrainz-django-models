@@ -27,13 +27,21 @@ Models
    area_gid_redirect
    area
    area_tag
+   area_tag_raw
    area_type
    artist_alias
    artist_alias_type
+   artist_annotation
+   artist_credit_name
    artist_credit
+   artist_gid_redirect
    artist_ipi
    artist_isni
+   artist_meta
    artist
+   artist_rating_raw
+   artist_tag
+   artist_tag_raw
    artist_type
    editor
    gender

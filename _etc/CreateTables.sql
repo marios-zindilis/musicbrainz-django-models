@@ -157,19 +157,19 @@ BEGIN;
 --     annotation  INTEGER NOT NULL -- PK, references annotation.id
 -- );
 
-CREATE TABLE area_tag ( -- replicate (verbose)
-    area                INTEGER NOT NULL, -- PK, references area.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    count               INTEGER NOT NULL,
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE area_tag ( -- replicate (verbose)
+--     area                INTEGER NOT NULL, -- PK, references area.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     count               INTEGER NOT NULL,
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
-CREATE TABLE area_tag_raw (
-    area                INTEGER NOT NULL, -- PK, references area.id
-    editor              INTEGER NOT NULL, -- PK, references editor.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
-);
+-- CREATE TABLE area_tag_raw (
+--     area                INTEGER NOT NULL, -- PK, references area.id
+--     editor              INTEGER NOT NULL, -- PK, references editor.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
+-- );
 
 -- CREATE TABLE artist ( -- replicate (verbose)
 --     id                  SERIAL,
@@ -259,10 +259,10 @@ CREATE TABLE area_tag_raw (
 --       )
 -- );
 
-CREATE TABLE artist_annotation ( -- replicate (verbose)
-    artist              INTEGER NOT NULL, -- PK, references artist.id
-    annotation          INTEGER NOT NULL -- PK, references annotation.id
-);
+-- CREATE TABLE artist_annotation ( -- replicate (verbose)
+--     artist              INTEGER NOT NULL, -- PK, references artist.id
+--     annotation          INTEGER NOT NULL -- PK, references annotation.id
+-- );
 
 -- CREATE TABLE artist_ipi ( -- replicate (verbose)
 --     artist              INTEGER NOT NULL, -- PK, references artist.id
@@ -278,33 +278,33 @@ CREATE TABLE artist_annotation ( -- replicate (verbose)
 --     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 -- );
 
-CREATE TABLE artist_meta ( -- replicate
-    id                  INTEGER NOT NULL, -- PK, references artist.id CASCADE
-    rating              SMALLINT CHECK (rating >= 0 AND rating <= 100),
-    rating_count        INTEGER
-);
+-- CREATE TABLE artist_meta ( -- replicate
+--     id                  INTEGER NOT NULL, -- PK, references artist.id CASCADE
+--     rating              SMALLINT CHECK (rating >= 0 AND rating <= 100),
+--     rating_count        INTEGER
+-- );
 
-CREATE TABLE artist_tag ( -- replicate (verbose)
-    artist              INTEGER NOT NULL, -- PK, references artist.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    count               INTEGER NOT NULL,
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE artist_tag ( -- replicate (verbose)
+--     artist              INTEGER NOT NULL, -- PK, references artist.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     count               INTEGER NOT NULL,
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
-CREATE TABLE artist_rating_raw
-(
-    artist              INTEGER NOT NULL, -- PK, references artist.id
-    editor              INTEGER NOT NULL, -- PK, references editor.id
-    rating              SMALLINT NOT NULL CHECK (rating >= 0 AND rating <= 100)
-);
+-- CREATE TABLE artist_rating_raw
+-- (
+--     artist              INTEGER NOT NULL, -- PK, references artist.id
+--     editor              INTEGER NOT NULL, -- PK, references editor.id
+--     rating              SMALLINT NOT NULL CHECK (rating >= 0 AND rating <= 100)
+-- );
 
-CREATE TABLE artist_tag_raw
-(
-    artist              INTEGER NOT NULL, -- PK, references artist.id
-    editor              INTEGER NOT NULL, -- PK, references editor.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
-);
+-- CREATE TABLE artist_tag_raw
+-- (
+--     artist              INTEGER NOT NULL, -- PK, references artist.id
+--     editor              INTEGER NOT NULL, -- PK, references editor.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
+-- );
 
 -- CREATE TABLE artist_credit ( -- replicate
 --     id                  SERIAL,
@@ -314,19 +314,19 @@ CREATE TABLE artist_tag_raw
 --     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 -- );
 
-CREATE TABLE artist_credit_name ( -- replicate (verbose)
-    artist_credit       INTEGER NOT NULL, -- PK, references artist_credit.id CASCADE
-    position            SMALLINT NOT NULL, -- PK
-    artist              INTEGER NOT NULL, -- references artist.id CASCADE
-    name                VARCHAR NOT NULL,
-    join_phrase         TEXT NOT NULL DEFAULT ''
-);
+-- CREATE TABLE artist_credit_name ( -- replicate (verbose)
+--     artist_credit       INTEGER NOT NULL, -- PK, references artist_credit.id CASCADE
+--     position            SMALLINT NOT NULL, -- PK
+--     artist              INTEGER NOT NULL, -- references artist.id CASCADE
+--     name                VARCHAR NOT NULL,
+--     join_phrase         TEXT NOT NULL DEFAULT ''
+-- );
 
-CREATE TABLE artist_gid_redirect ( -- replicate (verbose)
-    gid                 UUID NOT NULL, -- PK
-    new_id              INTEGER NOT NULL, -- references artist.id
-    created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE artist_gid_redirect ( -- replicate (verbose)
+--     gid                 UUID NOT NULL, -- PK
+--     new_id              INTEGER NOT NULL, -- references artist.id
+--     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 -- CREATE TABLE artist_type ( -- replicate
 --     id                  SERIAL,

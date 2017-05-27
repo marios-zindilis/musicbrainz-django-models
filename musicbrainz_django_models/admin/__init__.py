@@ -13,14 +13,22 @@ from ..models import area_annotation
 from ..models import area_gid_redirect
 from ..models import area
 from ..models import area_tag
+from ..models import area_tag_raw
 from ..models import area_type
 from ..models import artist_alias
 from ..models import artist_alias_type
 from .artist_alias_type_admin import artist_alias_type_admin
+from ..models import artist_annotation
+from ..models import artist_credit_name
 from ..models import artist_credit
+from ..models import artist_gid_redirect
 from ..models import artist_ipi
 from ..models import artist_isni
+from ..models import artist_meta
 from ..models import artist
+from ..models import artist_rating_raw
+from ..models import artist_tag
+from ..models import artist_tag_raw
 from ..models import artist_type
 from ..models import editor
 from ..models import gender
@@ -57,13 +65,21 @@ admin.site.register(area_annotation)
 admin.site.register(area_gid_redirect)
 admin.site.register(area)
 admin.site.register(area_tag)
+admin.site.register(area_tag_raw)
 admin.site.register(area_type)
 admin.site.register(artist_alias)
 admin.site.register(artist_alias_type, artist_alias_type_admin)
+admin.site.register(artist_annotation)
+admin.site.register(artist_credit_name)
 admin.site.register(artist_credit)
+admin.site.register(artist_gid_redirect)
 admin.site.register(artist_ipi)
 admin.site.register(artist_isni)
+admin.site.register(artist_meta)
 admin.site.register(artist)
+admin.site.register(artist_rating_raw)
+admin.site.register(artist_tag)
+admin.site.register(artist_tag_raw)
 admin.site.register(artist_type)
 admin.site.register(editor)
 admin.site.register(gender)

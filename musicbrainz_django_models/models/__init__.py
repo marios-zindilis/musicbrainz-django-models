@@ -40,6 +40,14 @@ from .area_gid_redirect import area_gid_redirect
 from .area_alias_type import area_alias_type
 from .area_alias import area_alias
 from .area_annotation import area_annotation
+from .area_tag_raw import area_tag_raw
+from .artist_annotation import artist_annotation
+from .artist_meta import artist_meta
+from .artist_tag import artist_tag
+from .artist_rating_raw import artist_rating_raw
+from .artist_tag_raw import artist_tag_raw
+from .artist_credit_name import artist_credit_name
+from .artist_gid_redirect import artist_gid_redirect
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -85,4 +93,12 @@ __all__ = [
     area_alias_type,
     area_alias,
     area_annotation,
+    area_tag_raw,
+    artist_annotation,
+    artist_meta,
+    artist_tag,
+    artist_rating_raw,
+    artist_tag_raw,
+    artist_credit_name,
+    artist_gid_redirect,
 ]
