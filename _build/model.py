@@ -58,7 +58,10 @@ class {MODEL_NAME}(models.Model):
 
 with open(SQL, 'r') as sql:
     for line in sql:
-        if line.startswith('CREATE TABLE {} '.format(MODEL_NAME)):
+        if (
+            line.startswith('CREATE TABLE {} '.format(MODEL_NAME)) or
+            line == 'CREATE TABLE {}\n'.format(MODEL_NAME)
+        ):
             SQL_EXISTS = True
             break
 
@@ -69,7 +72,10 @@ if not SQL_EXISTS:
 with open(SQL, 'r') as sql:
     SQL_TABLE_CAPTURE = False
     for line in sql:
-        if line.startswith('CREATE TABLE {} '.format(MODEL_NAME)):
+        if (
+            line.startswith('CREATE TABLE {} '.format(MODEL_NAME)) or
+            line == 'CREATE TABLE {}\n'.format(MODEL_NAME)
+        ):
             SQL_TABLE_CAPTURE = True
         if SQL_TABLE_CAPTURE and line.startswith(');'):
             SQL_TABLE.append(line)
