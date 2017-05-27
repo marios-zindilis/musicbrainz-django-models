@@ -1,9 +1,40 @@
 #!/usr/bin/env bash
 set -e
 
-if [ $# -eq 1 ]
+if [ $# -gt 0 ]
 then
-    run-parts _build --arg $1
-else
-    run-parts _build
+    if [ "$1" == "model" ]
+    then
+        build/model.py $2
+        exit
+    fi
 fi
+
+for build_script in $(ls -1 _build/0*)
+do
+    source $build_script "$*"
+done
+
+
+
+
+
+
+# then
+#     case "$1" in
+#         "dev" | "prod")
+#             for build_script in $(ls -1 _build/0*)
+#             do
+#                 source $build_script
+#             done
+#             ;;
+#         "model")
+#             _build/model.py $2
+#             ;;
+#         *)
+#             echo "I don't understand what is $1"
+#             ;;
+#     esac
+# else
+#     run-parts _build
+# fi

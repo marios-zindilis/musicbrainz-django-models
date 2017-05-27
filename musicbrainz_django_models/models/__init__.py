@@ -32,6 +32,14 @@ from .alternative_track import alternative_track
 from .track import track
 from .alternative_medium_track import alternative_medium_track
 from .editor import editor
+from .annotation import annotation
+from .application import application
+from .tag import tag
+from .area_tag import area_tag
+from .area_gid_redirect import area_gid_redirect
+from .area_alias_type import area_alias_type
+from .area_alias import area_alias
+from .area_annotation import area_annotation
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -69,4 +77,12 @@ __all__ = [
     track,
     alternative_medium_track,
     editor,
+    annotation,
+    application,
+    tag,
+    area_tag,
+    area_gid_redirect,
+    area_alias_type,
+    area_alias,
+    area_annotation,
 ]

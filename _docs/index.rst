@@ -19,7 +19,14 @@ Models
    alternative_release
    alternative_release_type
    alternative_track
+   annotation
+   application
+   area_alias
+   area_alias_type
+   area_annotation
+   area_gid_redirect
    area
+   area_tag
    area_type
    artist_alias
    artist_alias_type
@@ -45,6 +52,7 @@ Models
    release
    release_status
    script
+   tag
    track
    work
    work_type
