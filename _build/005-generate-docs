@@ -61,7 +61,8 @@ do
     module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
     [ -f _docs/$module_name.rst ] && continue
     echo "$module_name"                                     >> _docs/$module_name.rst
-    echo '============'                                     >> _docs/$module_name.rst
+    printf "%0.s=" $(seq 1 ${#module_name})                 >> _docs/$module_name.rst
+    echo ''                                                 >> _docs/$module_name.rst
     echo ''                                                 >> _docs/$module_name.rst
     echo ".. automodule:: $app.models.$module_name"         >> _docs/$module_name.rst
     echo '   :noindex:'                                     >> _docs/$module_name.rst
