@@ -48,6 +48,9 @@ from .artist_rating_raw import artist_rating_raw
 from .artist_tag_raw import artist_tag_raw
 from .artist_credit_name import artist_credit_name
 from .artist_gid_redirect import artist_gid_redirect
+from .autoeditor_election import autoeditor_election
+from .autoeditor_election_vote import autoeditor_election_vote
+from .cdtoc import cdtoc
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -101,4 +104,7 @@ __all__ = [
     artist_tag_raw,
     artist_credit_name,
     artist_gid_redirect,
+    autoeditor_election,
+    autoeditor_election_vote,
+    cdtoc,
 ]

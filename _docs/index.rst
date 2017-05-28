@@ -43,6 +43,9 @@ Models
    artist_tag
    artist_tag_raw
    artist_type
+   autoeditor_election
+   autoeditor_election_vote
+   cdtoc
    editor
    gender
    instrument

@@ -30,6 +30,9 @@ from ..models import artist_rating_raw
 from ..models import artist_tag
 from ..models import artist_tag_raw
 from ..models import artist_type
+from ..models import autoeditor_election
+from ..models import autoeditor_election_vote
+from ..models import cdtoc
 from ..models import editor
 from ..models import gender
 from ..models import instrument
@@ -81,6 +84,9 @@ admin.site.register(artist_rating_raw)
 admin.site.register(artist_tag)
 admin.site.register(artist_tag_raw)
 admin.site.register(artist_type)
+admin.site.register(autoeditor_election)
+admin.site.register(autoeditor_election_vote)
+admin.site.register(cdtoc)
 admin.site.register(editor)
 admin.site.register(gender)
 admin.site.register(instrument)
