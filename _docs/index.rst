@@ -46,7 +46,14 @@ Models
    autoeditor_election
    autoeditor_election_vote
    cdtoc
+   cdtoc_raw
+   country_area
+   deleted_entity
+   edit_data
+   edit_note
+   edit_note_recipient
    editor
+   edit
    gender
    instrument
    instrument_type
@@ -61,6 +68,7 @@ Models
    release_group_secondary_type
    release_packaging
    release
+   release_raw
    release_status
    script
    tag

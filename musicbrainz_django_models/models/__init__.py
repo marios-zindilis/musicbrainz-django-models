@@ -51,6 +51,14 @@ from .artist_gid_redirect import artist_gid_redirect
 from .autoeditor_election import autoeditor_election
 from .autoeditor_election_vote import autoeditor_election_vote
 from .cdtoc import cdtoc
+from .release_raw import release_raw
+from .cdtoc_raw import cdtoc_raw
+from .country_area import country_area
+from .deleted_entity import deleted_entity
+from .edit import edit
+from .edit_data import edit_data
+from .edit_note import edit_note
+from .edit_note_recipient import edit_note_recipient
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -107,4 +115,12 @@ __all__ = [
     autoeditor_election,
     autoeditor_election_vote,
     cdtoc,
+    release_raw,
+    cdtoc_raw,
+    country_area,
+    deleted_entity,
+    edit,
+    edit_data,
+    edit_note,
+    edit_note_recipient,
 ]

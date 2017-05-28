@@ -33,7 +33,14 @@ from ..models import artist_type
 from ..models import autoeditor_election
 from ..models import autoeditor_election_vote
 from ..models import cdtoc
+from ..models import cdtoc_raw
+from ..models import country_area
+from ..models import deleted_entity
+from ..models import edit_data
+from ..models import edit_note
+from ..models import edit_note_recipient
 from ..models import editor
+from ..models import edit
 from ..models import gender
 from ..models import instrument
 from ..models import instrument_type
@@ -48,6 +55,7 @@ from ..models import release_group
 from ..models import release_group_secondary_type
 from ..models import release_packaging
 from ..models import release
+from ..models import release_raw
 from ..models import release_status
 from ..models import script
 from ..models import tag
@@ -87,7 +95,14 @@ admin.site.register(artist_type)
 admin.site.register(autoeditor_election)
 admin.site.register(autoeditor_election_vote)
 admin.site.register(cdtoc)
+admin.site.register(cdtoc_raw)
+admin.site.register(country_area)
+admin.site.register(deleted_entity)
+admin.site.register(edit_data)
+admin.site.register(edit_note)
+admin.site.register(edit_note_recipient)
 admin.site.register(editor)
+admin.site.register(edit)
 admin.site.register(gender)
 admin.site.register(instrument)
 admin.site.register(instrument_type)
@@ -102,6 +117,7 @@ admin.site.register(release_group)
 admin.site.register(release_group_secondary_type)
 admin.site.register(release_packaging)
 admin.site.register(release)
+admin.site.register(release_raw)
 admin.site.register(release_status)
 admin.site.register(script)
 admin.site.register(tag)

@@ -61,7 +61,7 @@ class cdtoc(models.Model):
     created = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return 'CD TOC'
+        return self.discid
 
     class Meta:
         db_table = 'cdtoc'

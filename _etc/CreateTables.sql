@@ -379,58 +379,58 @@ BEGIN;
 --     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 -- );
 
-CREATE TABLE cdtoc_raw ( -- replicate
-    id                  SERIAL, -- PK
-    release             INTEGER NOT NULL, -- references release_raw.id
-    discid              CHAR(28) NOT NULL,
-    track_count          INTEGER NOT NULL,
-    leadout_offset       INTEGER NOT NULL,
-    track_offset         INTEGER[] NOT NULL
-);
+-- CREATE TABLE cdtoc_raw ( -- replicate
+--     id                  SERIAL, -- PK
+--     release             INTEGER NOT NULL, -- references release_raw.id
+--     discid              CHAR(28) NOT NULL,
+--     track_count          INTEGER NOT NULL,
+--     leadout_offset       INTEGER NOT NULL,
+--     track_offset         INTEGER[] NOT NULL
+-- );
 
-CREATE TABLE country_area ( -- replicate (verbose)
-    area                INTEGER -- PK, references area.id
-);
+-- CREATE TABLE country_area ( -- replicate (verbose)
+--     area                INTEGER -- PK, references area.id
+-- );
 
-CREATE TABLE deleted_entity (
-    gid UUID NOT NULL, -- PK
-    data JSONB NOT NULL,
-    deleted_at timestamptz NOT NULL DEFAULT now()
-);
+-- CREATE TABLE deleted_entity (
+--     gid UUID NOT NULL, -- PK
+--     data JSONB NOT NULL,
+--     deleted_at timestamptz NOT NULL DEFAULT now()
+-- );
 
-CREATE TABLE edit
-(
-    id                  SERIAL,
-    editor              INTEGER NOT NULL, -- references editor.id
-    type                SMALLINT NOT NULL,
-    status              SMALLINT NOT NULL,
-    autoedit            SMALLINT NOT NULL DEFAULT 0,
-    open_time            TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    close_time           TIMESTAMP WITH TIME ZONE,
-    expire_time          TIMESTAMP WITH TIME ZONE NOT NULL,
-    language            INTEGER, -- references language.id
-    quality             SMALLINT NOT NULL DEFAULT 1
-);
+-- CREATE TABLE edit
+-- (
+--     id                  SERIAL,
+--     editor              INTEGER NOT NULL, -- references editor.id
+--     type                SMALLINT NOT NULL,
+--     status              SMALLINT NOT NULL,
+--     autoedit            SMALLINT NOT NULL DEFAULT 0,
+--     open_time            TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     close_time           TIMESTAMP WITH TIME ZONE,
+--     expire_time          TIMESTAMP WITH TIME ZONE NOT NULL,
+--     language            INTEGER, -- references language.id
+--     quality             SMALLINT NOT NULL DEFAULT 1
+-- );
 
-CREATE TABLE edit_data
-(
-    edit                INTEGER NOT NULL, -- PK, references edit.id
-    data                JSONB NOT NULL
-);
+-- CREATE TABLE edit_data
+-- (
+--     edit                INTEGER NOT NULL, -- PK, references edit.id
+--     data                JSONB NOT NULL
+-- );
 
-CREATE TABLE edit_note
-(
-    id                  SERIAL,
-    editor              INTEGER NOT NULL, -- references editor.id
-    edit                INTEGER NOT NULL, -- references edit.id
-    text                TEXT NOT NULL,
-    post_time            TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE edit_note
+-- (
+--     id                  SERIAL,
+--     editor              INTEGER NOT NULL, -- references editor.id
+--     edit                INTEGER NOT NULL, -- references edit.id
+--     text                TEXT NOT NULL,
+--     post_time            TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
-CREATE TABLE edit_note_recipient (
-    recipient           INTEGER NOT NULL, -- PK, references editor.id
-    edit_note           INTEGER NOT NULL  -- PK, references edit_note.id
-);
+-- CREATE TABLE edit_note_recipient (
+--     recipient           INTEGER NOT NULL, -- PK, references editor.id
+--     edit_note           INTEGER NOT NULL  -- PK, references edit_note.id
+-- );
 
 CREATE TABLE edit_area
 (
@@ -2516,18 +2516,18 @@ CREATE TABLE release_unknown_country ( -- replicate (verbose)
   date_day SMALLINT
 );
 
-CREATE TABLE release_raw ( -- replicate
-    id                  SERIAL, -- PK
-    title               VARCHAR(255) NOT NULL,
-    artist              VARCHAR(255),
-    added               TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    last_modified        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    lookup_count         INTEGER DEFAULT 0,
-    modify_count         INTEGER DEFAULT 0,
-    source              INTEGER DEFAULT 0,
-    barcode             VARCHAR(255),
-    comment             VARCHAR(255) NOT NULL DEFAULT ''
-);
+-- CREATE TABLE release_raw ( -- replicate
+--     id                  SERIAL, -- PK
+--     title               VARCHAR(255) NOT NULL,
+--     artist              VARCHAR(255),
+--     added               TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     last_modified        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     lookup_count         INTEGER DEFAULT 0,
+--     modify_count         INTEGER DEFAULT 0,
+--     source              INTEGER DEFAULT 0,
+--     barcode             VARCHAR(255),
+--     comment             VARCHAR(255) NOT NULL DEFAULT ''
+-- );
 
 CREATE TABLE release_tag_raw
 (
