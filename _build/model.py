@@ -9,6 +9,7 @@ except IndexError:
 
 MODEL_NAME_TITLE = MODEL_NAME.title().replace('_', ' ')
 MODEL = 'musicbrainz_django_models/models/{}.py'.format(MODEL_NAME)
+INIT = 'musicbrainz_django_models/models/__init__.py'
 SQL = '_etc/CreateTables.sql'
 SQL_EXISTS = False
 SQL_TABLE = []
@@ -20,6 +21,7 @@ IMPORTS = [
 ]
 FIELDS = []
 GID_DOC = ''
+MODELS = []
 MODEL_TEMPLATE = '''"""
 .. module:: {MODEL_NAME}
 
@@ -109,3 +111,17 @@ with open(MODEL, 'w') as model:
         FIELDS='\n'.join(FIELDS),
         GID_DOC=GID_DOC
     ))
+
+with open(INIT, 'r') as init:
+    MODELS = [line.split()[-1] for line in init if line.startswith('from ')]
+    MODELS.append(MODEL_NAME)
+
+with open(INIT, 'w') as init:
+    for mod in MODELS:
+        init.write('from .{mod} import {mod}\n'.format(mod=mod))
+    init.write('\n')
+    init.write('# __all__ silences PEP8 `module imported but unused`:\n')
+    init.write('__all__ = [\n')
+    for mod in MODELS:
+        init.write('    {mod},\n'.format(mod=mod))
+    init.write(']\n')
