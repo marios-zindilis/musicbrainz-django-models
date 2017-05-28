@@ -44,7 +44,7 @@ class artist_rating_raw(models.Model):
 
     artist = models.OneToOneField('artist', primary_key=True)
     editor = models.OneToOneField('editor')
-    rating = models.PositiveSmallIntegerField(validators=MaxValueValidator(RATING_MAX))
+    rating = models.PositiveSmallIntegerField(validators=[MaxValueValidator(RATING_MAX)])
 
     def __str__(self):
         return 'Artist Rating Raw'
