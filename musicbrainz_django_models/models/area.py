@@ -57,10 +57,6 @@ from django.utils.encoding import python_2_unicode_compatible
 import uuid
 
 
-def pre_save_area(sender, instance, **kwargs):
-    instance.ended = instance.check_ended()
-
-
 @python_2_unicode_compatible
 class area(models.Model):
     """
@@ -83,8 +79,9 @@ class area(models.Model):
         range of 1-31 or similar...
     :param smallint end_date_day: ditto
     :param boolean ended: the MusicBrainz Server uses a PostgreSQL `check` to
-        set this to `True` if any of the `end_*` fields has any value. This is
-        implemented in Django with a `pre_save` signal.
+        set this to `True` if any of the `end_*` fields has any value, and to
+        verify that it is `False` if all the `end_*` fields are empty. This is
+        implemented in Django with a model class property.
     """
 
     id = models.AutoField(primary_key=True)
@@ -99,13 +96,10 @@ class area(models.Model):
     end_date_year = models.SmallIntegerField(null=True)
     end_date_month = models.SmallIntegerField(null=True)
     end_date_day = models.SmallIntegerField(null=True)
-    ended = models.BooleanField(default=False)
     comment = models.CharField(max_length=255, default='')
 
-    def check_ended(self):
-        """
-        Set `ended` to `True` if any of the `end_date_*` fields is populated.
-        """
+    @property
+    def ended(self):
         return (
             self.end_date_year is not None or
             self.end_date_month is not None or
@@ -116,6 +110,3 @@ class area(models.Model):
 
     class Meta:
         db_table = 'area'
-
-
-models.signals.pre_save.connect(pre_save_area, sender=area)
