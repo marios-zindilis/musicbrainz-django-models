@@ -7,6 +7,10 @@ then
     then
         _build/model.py $2
         exit
+    elif [ "$1" == "test" ]
+    then
+        _build/004-test
+        exit
     fi
 fi
 
@@ -14,27 +18,3 @@ for build_script in $(ls -1 _build/0*)
 do
     source $build_script "$*"
 done
-
-
-
-
-
-
-# then
-#     case "$1" in
-#         "dev" | "prod")
-#             for build_script in $(ls -1 _build/0*)
-#             do
-#                 source $build_script
-#             done
-#             ;;
-#         "model")
-#             _build/model.py $2
-#             ;;
-#         *)
-#             echo "I don't understand what is $1"
-#             ;;
-#     esac
-# else
-#     run-parts _build
-# fi
