@@ -40,9 +40,12 @@ from ..models import edit_area
 from ..models import edit_artist
 from ..models import edit_data
 from ..models import edit_event
+from ..models import edit_instrument
+from ..models import edit_label
 from ..models import edit_note
 from ..models import edit_note_recipient
 from ..models import editor
+from ..models import edit_place
 from ..models import edit
 from ..models import event
 from ..models import event_type
@@ -54,6 +57,8 @@ from ..models import label_type
 from ..models import language
 from ..models import medium_format
 from ..models import medium
+from ..models import place
+from ..models import place_type
 from ..models import recording
 from ..models import release_group_primary_type
 from ..models import release_group
@@ -107,9 +112,12 @@ admin.site.register(edit_area)
 admin.site.register(edit_artist)
 admin.site.register(edit_data)
 admin.site.register(edit_event)
+admin.site.register(edit_instrument)
+admin.site.register(edit_label)
 admin.site.register(edit_note)
 admin.site.register(edit_note_recipient)
 admin.site.register(editor)
+admin.site.register(edit_place)
 admin.site.register(edit)
 admin.site.register(event)
 admin.site.register(event_type)
@@ -121,6 +129,8 @@ admin.site.register(label_type)
 admin.site.register(language)
 admin.site.register(medium_format)
 admin.site.register(medium)
+admin.site.register(place)
+admin.site.register(place_type)
 admin.site.register(recording)
 admin.site.register(release_group_primary_type)
 admin.site.register(release_group)

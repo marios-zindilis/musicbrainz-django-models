@@ -445,30 +445,30 @@ BEGIN;
 --     status              SMALLINT NOT NULL -- materialized from edit.status
 -- );
 
-CREATE TABLE edit_event
-(
-    edit                INTEGER NOT NULL, -- PK, references edit.id
-    event               INTEGER NOT NULL  -- PK, references event.id CASCADE
-);
+-- CREATE TABLE edit_event
+-- (
+--     edit                INTEGER NOT NULL, -- PK, references edit.id
+--     event               INTEGER NOT NULL  -- PK, references event.id CASCADE
+-- );
 
-CREATE TABLE edit_instrument
-(
-    edit                INTEGER NOT NULL, -- PK, references edit.id
-    instrument          INTEGER NOT NULL  -- PK, references instrument.id CASCADE
-);
+-- CREATE TABLE edit_instrument
+-- (
+--     edit                INTEGER NOT NULL, -- PK, references edit.id
+--     instrument          INTEGER NOT NULL  -- PK, references instrument.id CASCADE
+-- );
 
-CREATE TABLE edit_label
-(
-    edit                INTEGER NOT NULL, -- PK, references edit.id
-    label               INTEGER NOT NULL, -- PK, references label.id CASCADE
-    status              SMALLINT NOT NULL -- materialized from edit.status
-);
+-- CREATE TABLE edit_label
+-- (
+--     edit                INTEGER NOT NULL, -- PK, references edit.id
+--     label               INTEGER NOT NULL, -- PK, references label.id CASCADE
+--     status              SMALLINT NOT NULL -- materialized from edit.status
+-- );
 
-CREATE TABLE edit_place
-(
-    edit                INTEGER NOT NULL, -- PK, references edit.id
-    place               INTEGER NOT NULL  -- PK, references place.id CASCADE
-);
+-- CREATE TABLE edit_place
+-- (
+--     edit                INTEGER NOT NULL, -- PK, references edit.id
+--     place               INTEGER NOT NULL  -- PK, references place.id CASCADE
+-- );
 
 CREATE TABLE edit_release
 (
@@ -2331,14 +2331,14 @@ CREATE TABLE place_tag_raw
     is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
 );
 
-CREATE TABLE place_type ( -- replicate
-    id                  SERIAL, -- PK
-    name                VARCHAR(255) NOT NULL,
-    parent              INTEGER, -- references place_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    description         TEXT,
-    gid                 uuid NOT NULL
-);
+-- CREATE TABLE place_type ( -- replicate
+--     id                  SERIAL, -- PK
+--     name                VARCHAR(255) NOT NULL,
+--     parent              INTEGER, -- references place_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     description         TEXT,
+--     gid                 uuid NOT NULL
+-- );
 
 CREATE TABLE replication_control ( -- replicate
     id                              SERIAL,

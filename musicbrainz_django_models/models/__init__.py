@@ -64,6 +64,11 @@ from .edit_artist import edit_artist
 from .event_type import event_type
 from .edit_event import edit_event
 from .event import event
+from .edit_instrument import edit_instrument
+from .edit_label import edit_label
+from .edit_place import edit_place
+from .place_type import place_type
+from .place import place
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -133,4 +138,9 @@ __all__ = [
     event_type,
     edit_event,
     event,
+    edit_instrument,
+    edit_label,
+    edit_place,
+    place_type,
+    place,
 ]

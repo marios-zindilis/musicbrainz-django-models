@@ -1,18 +1,18 @@
 from django.test import TestCase
-from ..models import edit_artist
+from ..models import edit_label
 from ..models import edit
 from ..models import editor
 from ..models import language
-from ..models import artist
+from ..models import label
 import datetime
 
 
-class test_edit_artist(TestCase):
+class test_edit_label(TestCase):
     def setUp(self):
-        self.subject = edit_artist()
-        # set up the `artist` related to `edit_artist`:
-        self.subject_artist = artist(name='Name')
-        self.subject_artist.save()
+        self.subject = edit_label()
+        # set up the `label` related to `edit_label`:
+        self.subject_label = label(name='Name')
+        self.subject_label.save()
         # set up the `language` related to `edit`:
         self.subject_language = language(name='Language', iso_code_3='ISO')
         self.subject_language.save()
@@ -31,14 +31,14 @@ class test_edit_artist(TestCase):
             language=self.subject_language)
         self.subject_edit.save()
 
-    def test__edit_artist__instance(self):
-        self.assertIsInstance(self.subject, edit_artist)
+    def test__edit_label__instance(self):
+        self.assertIsInstance(self.subject, edit_label)
 
-    def test__edit_artist__str(self):
-        self.assertEqual(str(self.subject), 'Edit Artist')
+    def test__edit_label__str(self):
+        self.assertEqual(str(self.subject), 'Edit Label')
 
-    def test__edit_artist__status(self):
+    def test__edit_label__status(self):
         self.subject.edit = self.subject_edit
-        self.subject.artist = self.subject_artist
+        self.subject.label = self.subject_label
         self.subject.save()
         self.assertEqual(self.subject.status, self.SUBJECT_EDIT_STATUS)

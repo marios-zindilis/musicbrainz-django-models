@@ -53,9 +53,12 @@ Models
    edit_artist
    edit_data
    edit_event
+   edit_instrument
+   edit_label
    edit_note
    edit_note_recipient
    editor
+   edit_place
    edit
    event
    event_type
@@ -67,6 +70,8 @@ Models
    language
    medium_format
    medium
+   place
+   place_type
    recording
    release_group_primary_type
    release_group
