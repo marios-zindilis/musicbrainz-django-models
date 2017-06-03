@@ -20,14 +20,20 @@ class test_area_alias(TestCase):
 
     def test__area_alias__end_date_year(self):
         self.subject.end_date_year = 2000
+        self.subject.area = self.subject_area
+        self.subject.save()
         self.assertTrue(self.subject.ended)
 
     def test__area_alias__end_date_month(self):
         self.subject.end_date_month = 2
+        self.subject.area = self.subject_area
+        self.subject.save()
         self.assertTrue(self.subject.ended)
 
     def test__area_alias__end_date_day(self):
         self.subject.end_date_year = 20
+        self.subject.area = self.subject_area
+        self.subject.save()
         self.assertTrue(self.subject.ended)
 
     def test__area_alias__primary_for_locale(self):

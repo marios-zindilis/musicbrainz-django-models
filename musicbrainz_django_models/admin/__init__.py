@@ -36,11 +36,16 @@ from ..models import cdtoc
 from ..models import cdtoc_raw
 from ..models import country_area
 from ..models import deleted_entity
+from ..models import edit_area
+from ..models import edit_artist
 from ..models import edit_data
+from ..models import edit_event
 from ..models import edit_note
 from ..models import edit_note_recipient
 from ..models import editor
 from ..models import edit
+from ..models import event
+from ..models import event_type
 from ..models import gender
 from ..models import instrument
 from ..models import instrument_type
@@ -98,11 +103,16 @@ admin.site.register(cdtoc)
 admin.site.register(cdtoc_raw)
 admin.site.register(country_area)
 admin.site.register(deleted_entity)
+admin.site.register(edit_area)
+admin.site.register(edit_artist)
 admin.site.register(edit_data)
+admin.site.register(edit_event)
 admin.site.register(edit_note)
 admin.site.register(edit_note_recipient)
 admin.site.register(editor)
 admin.site.register(edit)
+admin.site.register(event)
+admin.site.register(event_type)
 admin.site.register(gender)
 admin.site.register(instrument)
 admin.site.register(instrument_type)

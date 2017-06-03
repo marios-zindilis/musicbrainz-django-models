@@ -432,18 +432,18 @@ BEGIN;
 --     edit_note           INTEGER NOT NULL  -- PK, references edit_note.id
 -- );
 
-CREATE TABLE edit_area
-(
-    edit                INTEGER NOT NULL, -- PK, references edit.id
-    area                INTEGER NOT NULL  -- PK, references area.id CASCADE
-);
+-- CREATE TABLE edit_area
+-- (
+--     edit                INTEGER NOT NULL, -- PK, references edit.id
+--     area                INTEGER NOT NULL  -- PK, references area.id CASCADE
+-- );
 
-CREATE TABLE edit_artist
-(
-    edit                INTEGER NOT NULL, -- PK, references edit.id
-    artist              INTEGER NOT NULL, -- PK, references artist.id CASCADE
-    status              SMALLINT NOT NULL -- materialized from edit.status
-);
+-- CREATE TABLE edit_artist
+-- (
+--     edit                INTEGER NOT NULL, -- PK, references edit.id
+--     artist              INTEGER NOT NULL, -- PK, references artist.id CASCADE
+--     status              SMALLINT NOT NULL -- materialized from edit.status
+-- );
 
 CREATE TABLE edit_event
 (
@@ -728,14 +728,14 @@ CREATE TABLE event_tag ( -- replicate (verbose)
     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
-CREATE TABLE event_type ( -- replicate
-    id                  SERIAL,
-    name                VARCHAR(255) NOT NULL,
-    parent              INTEGER, -- references event_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    description         TEXT,
-    gid                 uuid NOT NULL
-);
+-- CREATE TABLE event_type ( -- replicate
+--     id                  SERIAL,
+--     name                VARCHAR(255) NOT NULL,
+--     parent              INTEGER, -- references event_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     description         TEXT,
+--     gid                 uuid NOT NULL
+-- );
 
 -- CREATE TABLE gender ( -- replicate
 --     id                  SERIAL,

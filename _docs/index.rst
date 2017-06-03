@@ -49,11 +49,16 @@ Models
    cdtoc_raw
    country_area
    deleted_entity
+   edit_area
+   edit_artist
    edit_data
+   edit_event
    edit_note
    edit_note_recipient
    editor
    edit
+   event
+   event_type
    gender
    instrument
    instrument_type

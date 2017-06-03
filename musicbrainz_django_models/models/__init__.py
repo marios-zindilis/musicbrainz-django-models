@@ -59,6 +59,11 @@ from .edit import edit
 from .edit_data import edit_data
 from .edit_note import edit_note
 from .edit_note_recipient import edit_note_recipient
+from .edit_area import edit_area
+from .edit_artist import edit_artist
+from .event_type import event_type
+from .edit_event import edit_event
+from .event import event
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -123,4 +128,9 @@ __all__ = [
     edit_data,
     edit_note,
     edit_note_recipient,
+    edit_area,
+    edit_artist,
+    event_type,
+    edit_event,
+    event,
 ]
