@@ -37,7 +37,7 @@ class annotation(models.Model):
     editor = models.ForeignKey('editor')
     text = models.TextField(null=True)
     changelog = models.CharField(max_length=255, null=True)
-    created = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return 'Annotation'

@@ -58,7 +58,7 @@ class cdtoc(models.Model):
     leadout_offset = models.IntegerField()
     track_offset = models.CharField(max_length=1024)
     degraded = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.discid

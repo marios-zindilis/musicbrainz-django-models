@@ -79,7 +79,7 @@ class artist_isni(models.Model):
         ]
     )
     edits_pending = models.PositiveIntegerField(default=0)
-    created = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.isni

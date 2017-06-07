@@ -37,7 +37,7 @@ class area_gid_redirect(models.Model):
 
     gid = models.UUIDField(primary_key=True, default=uuid.uuid4)
     new_id = models.ForeignKey('area')
-    created = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.gid)

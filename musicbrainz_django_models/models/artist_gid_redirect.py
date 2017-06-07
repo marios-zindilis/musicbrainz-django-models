@@ -36,7 +36,7 @@ class artist_gid_redirect(models.Model):
 
     gid = models.UUIDField(default=uuid.uuid4, primary_key=True)
     new_id = models.ForeignKey('artist')
-    created = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return 'Artist GID Redirect'
