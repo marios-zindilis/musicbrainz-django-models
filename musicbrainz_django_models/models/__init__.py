@@ -69,6 +69,15 @@ from .edit_label import edit_label
 from .edit_place import edit_place
 from .place_type import place_type
 from .place import place
+from .edit_release import edit_release
+from .edit_release_group import edit_release_group
+from .edit_recording import edit_recording
+from .edit_series import edit_series
+from .series_type import series_type
+from .link_attribute_type import link_attribute_type
+from .link_text_attribute_type import link_text_attribute_type
+from .series_ordering_type import series_ordering_type
+from .series import series
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -143,4 +152,13 @@ __all__ = [
     edit_place,
     place_type,
     place,
+    edit_release,
+    edit_release_group,
+    edit_recording,
+    edit_series,
+    series_type,
+    link_attribute_type,
+    link_text_attribute_type,
+    series_ordering_type,
+    series,
 ]

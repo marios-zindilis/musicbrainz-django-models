@@ -470,29 +470,29 @@ BEGIN;
 --     place               INTEGER NOT NULL  -- PK, references place.id CASCADE
 -- );
 
-CREATE TABLE edit_release
-(
-    edit                INTEGER NOT NULL, -- PK, references edit.id
-    release             INTEGER NOT NULL  -- PK, references release.id CASCADE
-);
+-- CREATE TABLE edit_release
+-- (
+--     edit                INTEGER NOT NULL, -- PK, references edit.id
+--     release             INTEGER NOT NULL  -- PK, references release.id CASCADE
+-- );
 
-CREATE TABLE edit_release_group
-(
-    edit                INTEGER NOT NULL, -- PK, references edit.id
-    release_group       INTEGER NOT NULL  -- PK, references release_group.id CASCADE
-);
+-- CREATE TABLE edit_release_group
+-- (
+--     edit                INTEGER NOT NULL, -- PK, references edit.id
+--     release_group       INTEGER NOT NULL  -- PK, references release_group.id CASCADE
+-- );
 
-CREATE TABLE edit_recording
-(
-    edit                INTEGER NOT NULL, -- PK, references edit.id
-    recording           INTEGER NOT NULL  -- PK, references recording.id CASCADE
-);
+-- CREATE TABLE edit_recording
+-- (
+--     edit                INTEGER NOT NULL, -- PK, references edit.id
+--     recording           INTEGER NOT NULL  -- PK, references recording.id CASCADE
+-- );
 
-CREATE TABLE edit_series
-(
-    edit                INTEGER NOT NULL, -- PK, references edit.id
-    series              INTEGER NOT NULL  -- PK, references series.id CASCADE
-);
+-- CREATE TABLE edit_series
+-- (
+--     edit                INTEGER NOT NULL, -- PK, references edit.id
+--     series              INTEGER NOT NULL  -- PK, references series.id CASCADE
+-- );
 
 CREATE TABLE edit_work
 (
@@ -2005,16 +2005,16 @@ CREATE TABLE link_attribute ( -- replicate
     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
-CREATE TABLE link_attribute_type ( -- replicate
-    id                  SERIAL,
-    parent              INTEGER, -- references link_attribute_type.id
-    root                INTEGER NOT NULL, -- references link_attribute_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    gid                 UUID NOT NULL,
-    name                VARCHAR(255) NOT NULL,
-    description         TEXT,
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE link_attribute_type ( -- replicate
+--     id                  SERIAL,
+--     parent              INTEGER, -- references link_attribute_type.id
+--     root                INTEGER NOT NULL, -- references link_attribute_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     gid                 UUID NOT NULL,
+--     name                VARCHAR(255) NOT NULL,
+--     description         TEXT,
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 CREATE TABLE link_creditable_attribute_type ( -- replicate
   attribute_type INT NOT NULL -- PK, references link_attribute_type.id CASCADE
@@ -2026,9 +2026,9 @@ CREATE TABLE link_attribute_credit ( -- replicate
   credited_as TEXT NOT NULL
 );
 
-CREATE TABLE link_text_attribute_type ( -- replicate
-    attribute_type      INT NOT NULL -- PK, references link_attribute_type.id CASCADE
-);
+-- CREATE TABLE link_text_attribute_type ( -- replicate
+--     attribute_type      INT NOT NULL -- PK, references link_attribute_type.id CASCADE
+-- );
 
 CREATE TABLE link_attribute_text_value ( -- replicate
     link                INT NOT NULL, -- PK, references link.id
@@ -2728,36 +2728,36 @@ CREATE TABLE release_group_secondary_type_join ( -- replicate (verbose)
 --     frequency           INTEGER NOT NULL DEFAULT 0
 -- );
 
-CREATE TABLE series ( -- replicate (verbose)
-    id                  SERIAL,
-    gid                 UUID NOT NULL,
-    name                VARCHAR NOT NULL,
-    comment             VARCHAR(255) NOT NULL DEFAULT '',
-    type                INTEGER NOT NULL, -- references series_type.id
-    ordering_attribute  INTEGER NOT NULL, -- references link_text_attribute_type.attribute_type
-    ordering_type       INTEGER NOT NULL, -- references series_ordering_type.id
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE series ( -- replicate (verbose)
+--     id                  SERIAL,
+--     gid                 UUID NOT NULL,
+--     name                VARCHAR NOT NULL,
+--     comment             VARCHAR(255) NOT NULL DEFAULT '',
+--     type                INTEGER NOT NULL, -- references series_type.id
+--     ordering_attribute  INTEGER NOT NULL, -- references link_text_attribute_type.attribute_type
+--     ordering_type       INTEGER NOT NULL, -- references series_ordering_type.id
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
-CREATE TABLE series_type ( -- replicate (verbose)
-    id                  SERIAL,
-    name                VARCHAR(255) NOT NULL,
-    entity_type         VARCHAR(50) NOT NULL,
-    parent              INTEGER, -- references series_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    description         TEXT,
-    gid                 uuid NOT NULL
-);
+-- CREATE TABLE series_type ( -- replicate (verbose)
+--     id                  SERIAL,
+--     name                VARCHAR(255) NOT NULL,
+--     entity_type         VARCHAR(50) NOT NULL,
+--     parent              INTEGER, -- references series_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     description         TEXT,
+--     gid                 uuid NOT NULL
+-- );
 
-CREATE TABLE series_ordering_type ( -- replicate (verbose)
-    id                  SERIAL,
-    name                VARCHAR(255) NOT NULL,
-    parent              INTEGER, -- references series_ordering_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    description         TEXT,
-    gid                 uuid NOT NULL
-);
+-- CREATE TABLE series_ordering_type ( -- replicate (verbose)
+--     id                  SERIAL,
+--     name                VARCHAR(255) NOT NULL,
+--     parent              INTEGER, -- references series_ordering_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     description         TEXT,
+--     gid                 uuid NOT NULL
+-- );
 
 CREATE TABLE series_gid_redirect ( -- replicate (verbose)
     gid                 UUID NOT NULL, -- PK

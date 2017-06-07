@@ -60,6 +60,10 @@ Models
    editor
    edit_place
    edit
+   edit_recording
+   edit_release_group
+   edit_release
+   edit_series
    event
    event_type
    gender
@@ -68,6 +72,8 @@ Models
    label
    label_type
    language
+   link_attribute_type
+   link_text_attribute_type
    medium_format
    medium
    place
@@ -81,6 +87,9 @@ Models
    release_raw
    release_status
    script
+   series_ordering_type
+   series
+   series_type
    tag
    track
    work

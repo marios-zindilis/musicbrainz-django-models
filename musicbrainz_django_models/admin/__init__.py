@@ -47,6 +47,10 @@ from ..models import edit_note_recipient
 from ..models import editor
 from ..models import edit_place
 from ..models import edit
+from ..models import edit_recording
+from ..models import edit_release_group
+from ..models import edit_release
+from ..models import edit_series
 from ..models import event
 from ..models import event_type
 from ..models import gender
@@ -55,6 +59,8 @@ from ..models import instrument_type
 from ..models import label
 from ..models import label_type
 from ..models import language
+from ..models import link_attribute_type
+from ..models import link_text_attribute_type
 from ..models import medium_format
 from ..models import medium
 from ..models import place
@@ -68,6 +74,9 @@ from ..models import release
 from ..models import release_raw
 from ..models import release_status
 from ..models import script
+from ..models import series_ordering_type
+from ..models import series
+from ..models import series_type
 from ..models import tag
 from ..models import track
 from ..models import work
@@ -119,6 +128,10 @@ admin.site.register(edit_note_recipient)
 admin.site.register(editor)
 admin.site.register(edit_place)
 admin.site.register(edit)
+admin.site.register(edit_recording)
+admin.site.register(edit_release_group)
+admin.site.register(edit_release)
+admin.site.register(edit_series)
 admin.site.register(event)
 admin.site.register(event_type)
 admin.site.register(gender)
@@ -127,6 +140,8 @@ admin.site.register(instrument_type)
 admin.site.register(label)
 admin.site.register(label_type)
 admin.site.register(language)
+admin.site.register(link_attribute_type)
+admin.site.register(link_text_attribute_type)
 admin.site.register(medium_format)
 admin.site.register(medium)
 admin.site.register(place)
@@ -140,6 +155,9 @@ admin.site.register(release)
 admin.site.register(release_raw)
 admin.site.register(release_status)
 admin.site.register(script)
+admin.site.register(series_ordering_type)
+admin.site.register(series)
+admin.site.register(series_type)
 admin.site.register(tag)
 admin.site.register(track)
 admin.site.register(work)
