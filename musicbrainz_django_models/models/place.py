@@ -47,7 +47,6 @@ The :code:`place` table is defined in the MusicBrainz Server as:
 """
 
 from django.db import models
-from django.contrib.gis.db.models import PointField
 from django.utils.encoding import python_2_unicode_compatible
 import uuid
 
@@ -71,7 +70,11 @@ class place(models.Model):
     :param coordinates: This field uses a `POINT` data type which is specific
         to Postgres for storing coordinates for points on a plane. An example
         is `(51.53192,-0.17835)` for Abbey Road Studions. In Django, this can
-        be implemented as a `PointField` from the GeoDjango Model API.
+        be implemented as a `PointField` from the GeoDjango Model API. However
+        this requires a database backend that supports that data type, and
+        SQLite (that is used in this project) does not support it. It is
+        possible to add it with Spatialite, but that is out of the scope of
+        this effort. Therefore, a `CharField` is used here.
     :param int edits_pending: the MusicBrainz Server uses a PostgreSQL `check`
         to validate that the value is a positive integer. In Django, this is
         done with `models.PositiveIntegerField()`.
@@ -86,7 +89,7 @@ class place(models.Model):
     type = models.ForeignKey('place_type')
     address = models.CharField(max_length=255)
     area = models.ForeignKey('area')
-    coordinates = PointField(null=True)
+    coordinates = models.CharField(max_length=255, null=True)
     comment = models.CharField(max_length=255, default='')
     edits_pending = models.PositiveIntegerField(default=0)
     last_updated = models.DateTimeField(auto_now=True)

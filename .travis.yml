@@ -1,10 +1,6 @@
-dist: trusty
-sudo: required
 language: python
 python:
   - "3.6"
-before_install:
-  - "sudo apt-get install libsqlite3-mod-spatialite"
 install:
   - "pip install django"
   - "pip install flake8"
