@@ -14,7 +14,7 @@ class test_link_text_attribute_type(TestCase):
         self.assertIsInstance(self.subject, link_text_attribute_type)
 
     def test__link_text_attribute_type__str(self):
-        # The str() of the subject `link_text_attribute_type` should be 
+        # The str() of the subject `link_text_attribute_type` should be
         # the same as that of the referenced `link_attribute_type`:
         self.subject.attribute_type = self.subject_link_attribute_type
         self.assertEqual(str(self.subject), str(self.subject_link_attribute_type_name))
