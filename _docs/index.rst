@@ -57,6 +57,7 @@ Models
    edit_label
    edit_note
    edit_note_recipient
+   editor_language
    editor
    edit_place
    edit
@@ -64,6 +65,8 @@ Models
    edit_release_group
    edit_release
    edit_series
+   edit_url
+   edit_work
    event
    event_type
    gender
@@ -92,6 +95,7 @@ Models
    series_type
    tag
    track
+   url
    work
    work_type
 

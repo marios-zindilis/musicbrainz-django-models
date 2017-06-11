@@ -494,17 +494,17 @@ BEGIN;
 --     series              INTEGER NOT NULL  -- PK, references series.id CASCADE
 -- );
 
-CREATE TABLE edit_work
-(
-    edit                INTEGER NOT NULL, -- PK, references edit.id
-    work                INTEGER NOT NULL  -- PK, references work.id CASCADE
-);
+-- CREATE TABLE edit_work
+-- (
+--     edit                INTEGER NOT NULL, -- PK, references edit.id
+--     work                INTEGER NOT NULL  -- PK, references work.id CASCADE
+-- );
 
-CREATE TABLE edit_url
-(
-    edit                INTEGER NOT NULL, -- PK, references edit.id
-    url                 INTEGER NOT NULL  -- PK, references url.id CASCADE
-);
+-- CREATE TABLE edit_url
+-- (
+--     edit                INTEGER NOT NULL, -- PK, references edit.id
+--     url                 INTEGER NOT NULL  -- PK, references url.id CASCADE
+-- );
 
 -- CREATE TABLE editor
 -- (
@@ -526,13 +526,13 @@ CREATE TABLE edit_url
 --     deleted             BOOLEAN NOT NULL DEFAULT FALSE
 -- );
 
-CREATE TYPE FLUENCY AS ENUM ('basic', 'intermediate', 'advanced', 'native');
+-- CREATE TYPE FLUENCY AS ENUM ('basic', 'intermediate', 'advanced', 'native');
 
-CREATE TABLE editor_language (
-    editor   INTEGER NOT NULL,  -- PK, references editor.id
-    language INTEGER NOT NULL,  -- PK, references language.id
-    fluency  FLUENCY NOT NULL
-);
+-- CREATE TABLE editor_language (
+--     editor   INTEGER NOT NULL,  -- PK, references editor.id
+--     language INTEGER NOT NULL,  -- PK, references language.id
+--     fluency  FLUENCY NOT NULL
+-- );
 
 CREATE TABLE editor_preference
 (
@@ -2885,13 +2885,13 @@ CREATE TABLE medium_index ( -- replicate
     toc                 CUBE
 );
 
-CREATE TABLE url ( -- replicate
-    id                  SERIAL,
-    gid                 UUID NOT NULL,
-    url                 TEXT NOT NULL,
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE url ( -- replicate
+--     id                  SERIAL,
+--     gid                 UUID NOT NULL,
+--     url                 TEXT NOT NULL,
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 CREATE TABLE url_gid_redirect ( -- replicate
     gid                 UUID NOT NULL, -- PK

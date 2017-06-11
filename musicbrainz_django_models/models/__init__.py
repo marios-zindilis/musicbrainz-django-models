@@ -78,6 +78,10 @@ from .link_attribute_type import link_attribute_type
 from .link_text_attribute_type import link_text_attribute_type
 from .series_ordering_type import series_ordering_type
 from .series import series
+from .edit_work import edit_work
+from .url import url
+from .edit_url import edit_url
+from .editor_language import editor_language
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -161,4 +165,8 @@ __all__ = [
     link_text_attribute_type,
     series_ordering_type,
     series,
+    edit_work,
+    url,
+    edit_url,
+    editor_language,
 ]

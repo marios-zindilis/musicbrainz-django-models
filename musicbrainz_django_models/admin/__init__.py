@@ -44,6 +44,7 @@ from ..models import edit_instrument
 from ..models import edit_label
 from ..models import edit_note
 from ..models import edit_note_recipient
+from ..models import editor_language
 from ..models import editor
 from ..models import edit_place
 from ..models import edit
@@ -51,6 +52,8 @@ from ..models import edit_recording
 from ..models import edit_release_group
 from ..models import edit_release
 from ..models import edit_series
+from ..models import edit_url
+from ..models import edit_work
 from ..models import event
 from ..models import event_type
 from ..models import gender
@@ -79,6 +82,7 @@ from ..models import series
 from ..models import series_type
 from ..models import tag
 from ..models import track
+from ..models import url
 from ..models import work
 from ..models import work_type
 
@@ -125,6 +129,7 @@ admin.site.register(edit_instrument)
 admin.site.register(edit_label)
 admin.site.register(edit_note)
 admin.site.register(edit_note_recipient)
+admin.site.register(editor_language)
 admin.site.register(editor)
 admin.site.register(edit_place)
 admin.site.register(edit)
@@ -132,6 +137,8 @@ admin.site.register(edit_recording)
 admin.site.register(edit_release_group)
 admin.site.register(edit_release)
 admin.site.register(edit_series)
+admin.site.register(edit_url)
+admin.site.register(edit_work)
 admin.site.register(event)
 admin.site.register(event_type)
 admin.site.register(gender)
@@ -160,5 +167,6 @@ admin.site.register(series)
 admin.site.register(series_type)
 admin.site.register(tag)
 admin.site.register(track)
+admin.site.register(url)
 admin.site.register(work)
 admin.site.register(work_type)

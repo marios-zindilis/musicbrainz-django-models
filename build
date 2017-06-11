@@ -5,6 +5,7 @@ if [ $# -gt 0 ]
 then
     if [ "$1" == "model" ]
     then
+        [ -f "musicbrainz_django_models/models/$2.py" ] && echo "Already Exists" && exit
         _build/model.py $2
         exit
     elif [ "$1" == "test" ]
