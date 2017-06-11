@@ -534,38 +534,38 @@ BEGIN;
 --     fluency  FLUENCY NOT NULL
 -- );
 
-CREATE TABLE editor_preference
-(
-    id                  SERIAL,
-    editor              INTEGER NOT NULL, -- references editor.id
-    name                VARCHAR(50) NOT NULL,
-    value               VARCHAR(100) NOT NULL
-);
+-- CREATE TABLE editor_preference
+-- (
+--     id                  SERIAL,
+--     editor              INTEGER NOT NULL, -- references editor.id
+--     name                VARCHAR(50) NOT NULL,
+--     value               VARCHAR(100) NOT NULL
+-- );
 
-CREATE TABLE editor_subscribe_artist
-(
-    id                  SERIAL,
-    editor              INTEGER NOT NULL, -- references editor.id
-    artist              INTEGER NOT NULL, -- references artist.id
-    last_edit_sent      INTEGER NOT NULL -- references edit.id
-);
+-- CREATE TABLE editor_subscribe_artist
+-- (
+--     id                  SERIAL,
+--     editor              INTEGER NOT NULL, -- references editor.id
+--     artist              INTEGER NOT NULL, -- references artist.id
+--     last_edit_sent      INTEGER NOT NULL -- references edit.id
+-- );
 
-CREATE TABLE editor_subscribe_artist_deleted
-(
-    editor INTEGER NOT NULL, -- PK, references editor.id
-    gid UUID NOT NULL, -- PK, references deleted_entity.gid
-    deleted_by INTEGER NOT NULL -- references edit.id
-);
+-- CREATE TABLE editor_subscribe_artist_deleted
+-- (
+--     editor INTEGER NOT NULL, -- PK, references editor.id
+--     gid UUID NOT NULL, -- PK, references deleted_entity.gid
+--     deleted_by INTEGER NOT NULL -- references edit.id
+-- );
 
-CREATE TABLE editor_subscribe_collection
-(
-    id                  SERIAL,
-    editor              INTEGER NOT NULL,              -- references editor.id
-    collection          INTEGER NOT NULL,              -- weakly references editor_collection.id
-    last_edit_sent      INTEGER NOT NULL,              -- weakly references edit.id
-    available           BOOLEAN NOT NULL DEFAULT TRUE,
-    last_seen_name      VARCHAR(255)
-);
+-- CREATE TABLE editor_subscribe_collection
+-- (
+--     id                  SERIAL,
+--     editor              INTEGER NOT NULL,              -- references editor.id
+--     collection          INTEGER NOT NULL,              -- weakly references editor_collection.id
+--     last_edit_sent      INTEGER NOT NULL,              -- weakly references edit.id
+--     available           BOOLEAN NOT NULL DEFAULT TRUE,
+--     last_seen_name      VARCHAR(255)
+-- );
 
 CREATE TABLE editor_subscribe_label
 (
@@ -2064,26 +2064,26 @@ CREATE TABLE link_type_attribute_type ( -- replicate
     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
-CREATE TABLE editor_collection
-(
-    id                  SERIAL,
-    gid                 UUID NOT NULL,
-    editor              INTEGER NOT NULL, -- references editor.id
-    name                VARCHAR NOT NULL,
-    public              BOOLEAN NOT NULL DEFAULT FALSE,
-    description         TEXT DEFAULT '' NOT NULL,
-    type                INTEGER NOT NULL -- references editor_collection_type.id
-);
+-- CREATE TABLE editor_collection
+-- (
+--     id                  SERIAL,
+--     gid                 UUID NOT NULL,
+--     editor              INTEGER NOT NULL, -- references editor.id
+--     name                VARCHAR NOT NULL,
+--     public              BOOLEAN NOT NULL DEFAULT FALSE,
+--     description         TEXT DEFAULT '' NOT NULL,
+--     type                INTEGER NOT NULL -- references editor_collection_type.id
+-- );
 
-CREATE TABLE editor_collection_type ( -- replicate
-    id                  SERIAL,
-    name                VARCHAR(255) NOT NULL,
-    entity_type         VARCHAR(50) NOT NULL,
-    parent              INTEGER, -- references editor_collection_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    description         TEXT,
-    gid                 uuid NOT NULL
-);
+-- CREATE TABLE editor_collection_type ( -- replicate
+--     id                  SERIAL,
+--     name                VARCHAR(255) NOT NULL,
+--     entity_type         VARCHAR(50) NOT NULL,
+--     parent              INTEGER, -- references editor_collection_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     description         TEXT,
+--     gid                 uuid NOT NULL
+-- );
 
 CREATE TABLE editor_collection_area (
     collection INTEGER NOT NULL, -- PK, references editor_collection.id

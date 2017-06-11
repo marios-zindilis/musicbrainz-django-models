@@ -57,8 +57,14 @@ Models
    edit_label
    edit_note
    edit_note_recipient
+   editor_collection
+   editor_collection_type
    editor_language
+   editor_preference
    editor
+   editor_subscribe_artist_deleted
+   editor_subscribe_artist
+   editor_subscribe_collection
    edit_place
    edit
    edit_recording

@@ -82,6 +82,12 @@ from .edit_work import edit_work
 from .url import url
 from .edit_url import edit_url
 from .editor_language import editor_language
+from .editor_preference import editor_preference
+from .editor_subscribe_artist import editor_subscribe_artist
+from .editor_subscribe_artist_deleted import editor_subscribe_artist_deleted
+from .editor_collection_type import editor_collection_type
+from .editor_collection import editor_collection
+from .editor_subscribe_collection import editor_subscribe_collection
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -169,4 +175,10 @@ __all__ = [
     url,
     edit_url,
     editor_language,
+    editor_preference,
+    editor_subscribe_artist,
+    editor_subscribe_artist_deleted,
+    editor_collection_type,
+    editor_collection,
+    editor_subscribe_collection,
 ]

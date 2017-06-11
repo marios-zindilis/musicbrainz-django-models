@@ -44,8 +44,14 @@ from ..models import edit_instrument
 from ..models import edit_label
 from ..models import edit_note
 from ..models import edit_note_recipient
+from ..models import editor_collection
+from ..models import editor_collection_type
 from ..models import editor_language
+from ..models import editor_preference
 from ..models import editor
+from ..models import editor_subscribe_artist_deleted
+from ..models import editor_subscribe_artist
+from ..models import editor_subscribe_collection
 from ..models import edit_place
 from ..models import edit
 from ..models import edit_recording
@@ -129,8 +135,14 @@ admin.site.register(edit_instrument)
 admin.site.register(edit_label)
 admin.site.register(edit_note)
 admin.site.register(edit_note_recipient)
+admin.site.register(editor_collection)
+admin.site.register(editor_collection_type)
 admin.site.register(editor_language)
+admin.site.register(editor_preference)
 admin.site.register(editor)
+admin.site.register(editor_subscribe_artist_deleted)
+admin.site.register(editor_subscribe_artist)
+admin.site.register(editor_subscribe_collection)
 admin.site.register(edit_place)
 admin.site.register(edit)
 admin.site.register(edit_recording)
