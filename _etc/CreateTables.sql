@@ -567,43 +567,43 @@ BEGIN;
 --     last_seen_name      VARCHAR(255)
 -- );
 
-CREATE TABLE editor_subscribe_label
-(
-    id                  SERIAL,
-    editor              INTEGER NOT NULL, -- references editor.id
-    label               INTEGER NOT NULL, -- references label.id
-    last_edit_sent      INTEGER NOT NULL -- references edit.id
-);
+-- CREATE TABLE editor_subscribe_label
+-- (
+--     id                  SERIAL,
+--     editor              INTEGER NOT NULL, -- references editor.id
+--     label               INTEGER NOT NULL, -- references label.id
+--     last_edit_sent      INTEGER NOT NULL -- references edit.id
+-- );
 
-CREATE TABLE editor_subscribe_label_deleted
-(
-    editor INTEGER NOT NULL, -- PK, references editor.id
-    gid UUID NOT NULL, -- PK, references deleted_entity.gid
-    deleted_by INTEGER NOT NULL -- references edit.id
-);
+-- CREATE TABLE editor_subscribe_label_deleted
+-- (
+--     editor INTEGER NOT NULL, -- PK, references editor.id
+--     gid UUID NOT NULL, -- PK, references deleted_entity.gid
+--     deleted_by INTEGER NOT NULL -- references edit.id
+-- );
 
-CREATE TABLE editor_subscribe_editor
-(
-    id                  SERIAL,
-    editor              INTEGER NOT NULL, -- references editor.id (the one who has subscribed)
-    subscribed_editor   INTEGER NOT NULL, -- references editor.id (the one being subscribed)
-    last_edit_sent      INTEGER NOT NULL  -- weakly references edit.id
-);
+---CREATE TABLE editor_subscribe_editor
+-- (
+--     id                  SERIAL,
+--     editor              INTEGER NOT NULL, -- references editor.id (the one who has subscribed)
+--     subscribed_editor   INTEGER NOT NULL, -- references editor.id (the one being subscribed)
+--     last_edit_sent      INTEGER NOT NULL  -- weakly references edit.id
+-- );
 
-CREATE TABLE editor_subscribe_series
-(
-    id                  SERIAL,
-    editor              INTEGER NOT NULL, -- references editor.id
-    series              INTEGER NOT NULL, -- references series.id
-    last_edit_sent      INTEGER NOT NULL -- references edit.id
-);
+-- CREATE TABLE editor_subscribe_series
+-- (
+--     id                  SERIAL,
+--     editor              INTEGER NOT NULL, -- references editor.id
+--     series              INTEGER NOT NULL, -- references series.id
+--     last_edit_sent      INTEGER NOT NULL -- references edit.id
+-- );
 
-CREATE TABLE editor_subscribe_series_deleted
-(
-    editor              INTEGER NOT NULL, -- PK, references editor.id
-    gid                 UUID NOT NULL, -- PK, references deleted_entity.gid
-    deleted_by          INTEGER NOT NULL -- references edit.id
-);
+-- CREATE TABLE editor_subscribe_series_deleted
+-- (
+--     editor              INTEGER NOT NULL, -- PK, references editor.id
+--     gid                 UUID NOT NULL, -- PK, references deleted_entity.gid
+--     deleted_by          INTEGER NOT NULL -- references edit.id
+-- );
 
 CREATE TABLE event ( -- replicate (verbose)
     id                  SERIAL,

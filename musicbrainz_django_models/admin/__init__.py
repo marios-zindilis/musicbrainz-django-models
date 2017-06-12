@@ -52,6 +52,11 @@ from ..models import editor
 from ..models import editor_subscribe_artist_deleted
 from ..models import editor_subscribe_artist
 from ..models import editor_subscribe_collection
+from ..models import editor_subscribe_editor
+from ..models import editor_subscribe_label_deleted
+from ..models import editor_subscribe_label
+from ..models import editor_subscribe_series_deleted
+from ..models import editor_subscribe_series
 from ..models import edit_place
 from ..models import edit
 from ..models import edit_recording
@@ -143,6 +148,11 @@ admin.site.register(editor)
 admin.site.register(editor_subscribe_artist_deleted)
 admin.site.register(editor_subscribe_artist)
 admin.site.register(editor_subscribe_collection)
+admin.site.register(editor_subscribe_editor)
+admin.site.register(editor_subscribe_label_deleted)
+admin.site.register(editor_subscribe_label)
+admin.site.register(editor_subscribe_series_deleted)
+admin.site.register(editor_subscribe_series)
 admin.site.register(edit_place)
 admin.site.register(edit)
 admin.site.register(edit_recording)

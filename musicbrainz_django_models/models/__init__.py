@@ -88,6 +88,11 @@ from .editor_subscribe_artist_deleted import editor_subscribe_artist_deleted
 from .editor_collection_type import editor_collection_type
 from .editor_collection import editor_collection
 from .editor_subscribe_collection import editor_subscribe_collection
+from .editor_subscribe_label import editor_subscribe_label
+from .editor_subscribe_label_deleted import editor_subscribe_label_deleted
+from .editor_subscribe_editor import editor_subscribe_editor
+from .editor_subscribe_series import editor_subscribe_series
+from .editor_subscribe_series_deleted import editor_subscribe_series_deleted
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -181,4 +186,9 @@ __all__ = [
     editor_collection_type,
     editor_collection,
     editor_subscribe_collection,
+    editor_subscribe_label,
+    editor_subscribe_label_deleted,
+    editor_subscribe_editor,
+    editor_subscribe_series,
+    editor_subscribe_series_deleted,
 ]

@@ -65,6 +65,11 @@ Models
    editor_subscribe_artist_deleted
    editor_subscribe_artist
    editor_subscribe_collection
+   editor_subscribe_editor
+   editor_subscribe_label_deleted
+   editor_subscribe_label
+   editor_subscribe_series_deleted
+   editor_subscribe_series
    edit_place
    edit
    edit_recording
