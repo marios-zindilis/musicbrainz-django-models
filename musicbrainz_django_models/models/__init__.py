@@ -93,6 +93,11 @@ from .editor_subscribe_label_deleted import editor_subscribe_label_deleted
 from .editor_subscribe_editor import editor_subscribe_editor
 from .editor_subscribe_series import editor_subscribe_series
 from .editor_subscribe_series_deleted import editor_subscribe_series_deleted
+from .event_meta import event_meta
+from .event_rating_raw import event_rating_raw
+from .event_tag_raw import event_tag_raw
+from .event_alias_type import event_alias_type
+from .event_alias import event_alias
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -191,4 +196,9 @@ __all__ = [
     editor_subscribe_editor,
     editor_subscribe_series,
     editor_subscribe_series_deleted,
+    event_meta,
+    event_rating_raw,
+    event_tag_raw,
+    event_alias_type,
+    event_alias,
 ]

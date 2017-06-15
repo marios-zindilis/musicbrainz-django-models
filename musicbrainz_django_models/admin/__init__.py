@@ -65,7 +65,12 @@ from ..models import edit_release
 from ..models import edit_series
 from ..models import edit_url
 from ..models import edit_work
+from ..models import event_alias
+from ..models import event_alias_type
+from ..models import event_meta
 from ..models import event
+from ..models import event_rating_raw
+from ..models import event_tag_raw
 from ..models import event_type
 from ..models import gender
 from ..models import instrument
@@ -161,7 +166,12 @@ admin.site.register(edit_release)
 admin.site.register(edit_series)
 admin.site.register(edit_url)
 admin.site.register(edit_work)
+admin.site.register(event_alias)
+admin.site.register(event_alias_type)
+admin.site.register(event_meta)
 admin.site.register(event)
+admin.site.register(event_rating_raw)
+admin.site.register(event_tag_raw)
 admin.site.register(event_type)
 admin.site.register(gender)
 admin.site.register(instrument)

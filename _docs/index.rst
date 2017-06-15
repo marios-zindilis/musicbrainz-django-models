@@ -78,7 +78,12 @@ Models
    edit_series
    edit_url
    edit_work
+   event_alias
+   event_alias_type
+   event_meta
    event
+   event_rating_raw
+   event_tag_raw
    event_type
    gender
    instrument

@@ -96,7 +96,7 @@ class event(models.Model):
     end_date_month = models.SmallIntegerField(null=True)
     end_date_day = models.SmallIntegerField(null=True)
     time = models.TimeField(null=True)
-    type = models.ForeignKey('event_type')
+    type = models.ForeignKey('event_type', null=True)
     cancelled = models.BooleanField(default=False)
     setlist = models.TextField()
     comment = models.CharField(max_length=255, default='')

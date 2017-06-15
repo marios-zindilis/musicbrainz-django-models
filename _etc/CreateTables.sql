@@ -605,67 +605,67 @@ BEGIN;
 --     deleted_by          INTEGER NOT NULL -- references edit.id
 -- );
 
-CREATE TABLE event ( -- replicate (verbose)
-    id                  SERIAL,
-    gid                 UUID NOT NULL,
-    name                VARCHAR NOT NULL,
-    begin_date_year     SMALLINT,
-    begin_date_month    SMALLINT,
-    begin_date_day      SMALLINT,
-    end_date_year       SMALLINT,
-    end_date_month      SMALLINT,
-    end_date_day        SMALLINT,
-    time                TIME WITHOUT TIME ZONE,
-    type                INTEGER, -- references event_type.id
-    cancelled           BOOLEAN NOT NULL DEFAULT FALSE,
-    setlist             TEXT,
-    comment             VARCHAR(255) NOT NULL DEFAULT '',
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    ended               BOOLEAN NOT NULL DEFAULT FALSE
-      CONSTRAINT event_ended_check CHECK (
-        (
-          -- If any end date fields are not null, then ended must be true
-          (end_date_year IS NOT NULL OR
-           end_date_month IS NOT NULL OR
-           end_date_day IS NOT NULL) AND
-          ended = TRUE
-        ) OR (
-          -- Otherwise, all end date fields must be null
-          (end_date_year IS NULL AND
-           end_date_month IS NULL AND
-           end_date_day IS NULL)
-        )
-      )
-);
+-- CREATE TABLE event ( -- replicate (verbose)
+--     id                  SERIAL,
+--     gid                 UUID NOT NULL,
+--     name                VARCHAR NOT NULL,
+--     begin_date_year     SMALLINT,
+--     begin_date_month    SMALLINT,
+--     begin_date_day      SMALLINT,
+--     end_date_year       SMALLINT,
+--     end_date_month      SMALLINT,
+--     end_date_day        SMALLINT,
+--     time                TIME WITHOUT TIME ZONE,
+--     type                INTEGER, -- references event_type.id
+--     cancelled           BOOLEAN NOT NULL DEFAULT FALSE,
+--     setlist             TEXT,
+--     comment             VARCHAR(255) NOT NULL DEFAULT '',
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     ended               BOOLEAN NOT NULL DEFAULT FALSE
+--       CONSTRAINT event_ended_check CHECK (
+--         (
+--           -- If any end date fields are not null, then ended must be true
+--           (end_date_year IS NOT NULL OR
+--            end_date_month IS NOT NULL OR
+--            end_date_day IS NOT NULL) AND
+--           ended = TRUE
+--         ) OR (
+--           -- Otherwise, all end date fields must be null
+--           (end_date_year IS NULL AND
+--            end_date_month IS NULL AND
+--            end_date_day IS NULL)
+--         )
+--       )
+-- );
 
-CREATE TABLE event_meta ( -- replicate
-    id                  INTEGER NOT NULL, -- PK, references event.id CASCADE
-    rating              SMALLINT CHECK (rating >= 0 AND rating <= 100),
-    rating_count        INTEGER
-);
+-- CREATE TABLE event_meta ( -- replicate
+--     id                  INTEGER NOT NULL, -- PK, references event.id CASCADE
+--     rating              SMALLINT CHECK (rating >= 0 AND rating <= 100),
+--     rating_count        INTEGER
+-- );
 
-CREATE TABLE event_rating_raw (
-    event               INTEGER NOT NULL, -- PK, references event.id
-    editor              INTEGER NOT NULL, -- PK, references editor.id
-    rating              SMALLINT NOT NULL CHECK (rating >= 0 AND rating <= 100)
-);
+-- CREATE TABLE event_rating_raw (
+--     event               INTEGER NOT NULL, -- PK, references event.id
+--     editor              INTEGER NOT NULL, -- PK, references editor.id
+--     rating              SMALLINT NOT NULL CHECK (rating >= 0 AND rating <= 100)
+-- );
 
-CREATE TABLE event_tag_raw (
-    event               INTEGER NOT NULL, -- PK, references event.id
-    editor              INTEGER NOT NULL, -- PK, references editor.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
-);
+-- CREATE TABLE event_tag_raw (
+--     event               INTEGER NOT NULL, -- PK, references event.id
+--     editor              INTEGER NOT NULL, -- PK, references editor.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
+-- );
 
-CREATE TABLE event_alias_type ( -- replicate
-    id                  SERIAL,
-    name                TEXT NOT NULL,
-    parent              INTEGER, -- references event_alias_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    description         TEXT,
-    gid                 uuid NOT NULL
-);
+-- CREATE TABLE event_alias_type ( -- replicate
+--     id                  SERIAL,
+--     name                TEXT NOT NULL,
+--     parent              INTEGER, -- references event_alias_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     description         TEXT,
+--     gid                 uuid NOT NULL
+-- );
 
 CREATE TABLE event_alias ( -- replicate (verbose)
     id                  SERIAL,
