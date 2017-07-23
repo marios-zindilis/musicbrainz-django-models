@@ -824,37 +824,37 @@ BEGIN;
 --       )
 -- );
 
-CREATE TABLE instrument_annotation ( -- replicate (verbose)
-    instrument  INTEGER NOT NULL, -- PK, references instrument.id
-    annotation  INTEGER NOT NULL -- PK, references annotation.id
-);
+-- CREATE TABLE instrument_annotation ( -- replicate (verbose)
+--     instrument  INTEGER NOT NULL, -- PK, references instrument.id
+--     annotation  INTEGER NOT NULL -- PK, references annotation.id
+-- );
 
-CREATE TABLE instrument_tag ( -- replicate (verbose)
-    instrument          INTEGER NOT NULL, -- PK, references instrument.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    count               INTEGER NOT NULL,
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE instrument_tag ( -- replicate (verbose)
+--     instrument          INTEGER NOT NULL, -- PK, references instrument.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     count               INTEGER NOT NULL,
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
-CREATE TABLE instrument_tag_raw (
-    instrument          INTEGER NOT NULL, -- PK, references instrument.id
-    editor              INTEGER NOT NULL, -- PK, references editor.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
-);
+-- CREATE TABLE instrument_tag_raw (
+--     instrument          INTEGER NOT NULL, -- PK, references instrument.id
+--     editor              INTEGER NOT NULL, -- PK, references editor.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
+-- );
 
-CREATE TABLE iso_3166_1 ( -- replicate
-    area      INTEGER NOT NULL, -- references area.id
-    code      CHAR(2) -- PK
-);
-CREATE TABLE iso_3166_2 ( -- replicate
-    area      INTEGER NOT NULL, -- references area.id
-    code      VARCHAR(10) -- PK
-);
-CREATE TABLE iso_3166_3 ( -- replicate
-    area      INTEGER NOT NULL, -- references area.id
-    code      CHAR(4) -- PK
-);
+-- CREATE TABLE iso_3166_1 ( -- replicate
+--     area      INTEGER NOT NULL, -- references area.id
+--     code      CHAR(2) -- PK
+-- );
+-- CREATE TABLE iso_3166_2 ( -- replicate
+--     area      INTEGER NOT NULL, -- references area.id
+--     code      VARCHAR(10) -- PK
+-- );
+-- CREATE TABLE iso_3166_3 ( -- replicate
+--     area      INTEGER NOT NULL, -- references area.id
+--     code      CHAR(4) -- PK
+-- );
 
 CREATE TABLE isrc ( -- replicate (verbose)
     id                  SERIAL,
@@ -2036,25 +2036,25 @@ CREATE TABLE link_attribute_text_value ( -- replicate
     text_value          TEXT NOT NULL
 );
 
-CREATE TABLE link_type ( -- replicate
-    id                  SERIAL,
-    parent              INTEGER, -- references link_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    gid                 UUID NOT NULL,
-    entity_type0        VARCHAR(50) NOT NULL,
-    entity_type1        VARCHAR(50) NOT NULL,
-    name                VARCHAR(255) NOT NULL,
-    description         TEXT,
-    link_phrase         VARCHAR(255) NOT NULL,
-    reverse_link_phrase VARCHAR(255) NOT NULL,
-    long_link_phrase    VARCHAR(255) NOT NULL,
-    priority            INTEGER NOT NULL DEFAULT 0,
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    is_deprecated       BOOLEAN NOT NULL DEFAULT false,
-    has_dates           BOOLEAN NOT NULL DEFAULT true,
-    entity0_cardinality INTEGER NOT NULL DEFAULT 0,
-    entity1_cardinality INTEGER NOT NULL DEFAULT 0
-);
+-- CREATE TABLE link_type ( -- replicate
+--     id                  SERIAL,
+--     parent              INTEGER, -- references link_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     gid                 UUID NOT NULL,
+--     entity_type0        VARCHAR(50) NOT NULL,
+--     entity_type1        VARCHAR(50) NOT NULL,
+--     name                VARCHAR(255) NOT NULL,
+--     description         TEXT,
+--     link_phrase         VARCHAR(255) NOT NULL,
+--     reverse_link_phrase VARCHAR(255) NOT NULL,
+--     long_link_phrase    VARCHAR(255) NOT NULL,
+--     priority            INTEGER NOT NULL DEFAULT 0,
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     is_deprecated       BOOLEAN NOT NULL DEFAULT false,
+--     has_dates           BOOLEAN NOT NULL DEFAULT true,
+--     entity0_cardinality INTEGER NOT NULL DEFAULT 0,
+--     entity1_cardinality INTEGER NOT NULL DEFAULT 0
+-- );
 
 CREATE TABLE link_type_attribute_type ( -- replicate
     link_type           INTEGER NOT NULL, -- PK, references link_type.id

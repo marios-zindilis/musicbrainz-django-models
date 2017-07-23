@@ -78,14 +78,21 @@ from ..models import event_type
 from ..models import gender
 from ..models import instrument_alias
 from ..models import instrument_alias_type
+from ..models import instrument_annotation
 from ..models import instrument_gid_redirect
 from ..models import instrument
+from ..models import instrument_tag
+from ..models import instrument_tag_raw
 from ..models import instrument_type
+from ..models import iso_3166_1
+from ..models import iso_3166_2
+from ..models import iso_3166_3
 from ..models import label
 from ..models import label_type
 from ..models import language
 from ..models import link_attribute_type
 from ..models import link_text_attribute_type
+from ..models import link_type
 from ..models import medium_format
 from ..models import medium
 from ..models import place
@@ -185,14 +192,21 @@ admin.site.register(event_type)
 admin.site.register(gender)
 admin.site.register(instrument_alias)
 admin.site.register(instrument_alias_type)
+admin.site.register(instrument_annotation)
 admin.site.register(instrument_gid_redirect)
 admin.site.register(instrument)
+admin.site.register(instrument_tag)
+admin.site.register(instrument_tag_raw)
 admin.site.register(instrument_type)
+admin.site.register(iso_3166_1)
+admin.site.register(iso_3166_2)
+admin.site.register(iso_3166_3)
 admin.site.register(label)
 admin.site.register(label_type)
 admin.site.register(language)
 admin.site.register(link_attribute_type)
 admin.site.register(link_text_attribute_type)
+admin.site.register(link_type)
 admin.site.register(medium_format)
 admin.site.register(medium)
 admin.site.register(place)

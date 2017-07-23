@@ -91,14 +91,21 @@ Models
    gender
    instrument_alias
    instrument_alias_type
+   instrument_annotation
    instrument_gid_redirect
    instrument
+   instrument_tag
+   instrument_tag_raw
    instrument_type
+   iso_3166_1
+   iso_3166_2
+   iso_3166_3
    label
    label_type
    language
    link_attribute_type
    link_text_attribute_type
+   link_type
    medium_format
    medium
    place

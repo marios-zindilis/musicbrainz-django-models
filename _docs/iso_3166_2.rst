@@ -1,0 +1,17 @@
+iso_3166_2
+==========
+
+.. automodule:: musicbrainz_django_models.models.iso_3166_2
+   :noindex:
+
+Model Documentation
+-------------------
+
+.. autoclass:: musicbrainz_django_models.models.iso_3166_2
+
+Model Source
+------------
+
+.. literalinclude:: ../musicbrainz_django_models/models/iso_3166_2.py
+   :pyobject: iso_3166_2
+   :caption: The `iso_3166_2` Model

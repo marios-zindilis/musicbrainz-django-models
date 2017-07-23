@@ -104,6 +104,13 @@ from .event_tag import event_tag
 from .instrument_gid_redirect import instrument_gid_redirect
 from .instrument_alias_type import instrument_alias_type
 from .instrument_alias import instrument_alias
+from .instrument_annotation import instrument_annotation
+from .link_type import link_type
+from .instrument_tag import instrument_tag
+from .instrument_tag_raw import instrument_tag_raw
+from .iso_3166_1 import iso_3166_1
+from .iso_3166_2 import iso_3166_2
+from .iso_3166_3 import iso_3166_3
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -213,4 +220,11 @@ __all__ = [
     instrument_gid_redirect,
     instrument_alias_type,
     instrument_alias,
+    instrument_annotation,
+    link_type,
+    instrument_tag,
+    instrument_tag_raw,
+    iso_3166_1,
+    iso_3166_2,
+    iso_3166_3,
 ]
