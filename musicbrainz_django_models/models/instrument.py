@@ -47,7 +47,7 @@ class instrument(models.Model):
     id = models.AutoField(primary_key=True)
     gid = models.UUIDField(default=uuid.uuid4)
     name = models.CharField(max_length=255)
-    type = models.ForeignKey('instrument_type')
+    type = models.ForeignKey('instrument_type', null=True)
     edits_pending = models.PositiveIntegerField(default=0)
     last_updated = models.DateTimeField(auto_now=True)
     comment = models.CharField(max_length=255, default='')

@@ -80,12 +80,18 @@ Models
    edit_work
    event_alias
    event_alias_type
+   event_annotation
+   event_gid_redirect
    event_meta
    event
    event_rating_raw
+   event_tag
    event_tag_raw
    event_type
    gender
+   instrument_alias
+   instrument_alias_type
+   instrument_gid_redirect
    instrument
    instrument_type
    label

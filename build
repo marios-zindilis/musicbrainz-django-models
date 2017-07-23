@@ -7,6 +7,7 @@ then
     then
         [ -f "musicbrainz_django_models/models/$2.py" ] && echo "Already Exists" && exit
         _build/model.py $2
+        vim "musicbrainz_django_models/models/$2.py" <`tty` >`tty`
         exit
     elif [ "$1" == "test" ]
     then

@@ -98,6 +98,12 @@ from .event_rating_raw import event_rating_raw
 from .event_tag_raw import event_tag_raw
 from .event_alias_type import event_alias_type
 from .event_alias import event_alias
+from .event_annotation import event_annotation
+from .event_gid_redirect import event_gid_redirect
+from .event_tag import event_tag
+from .instrument_gid_redirect import instrument_gid_redirect
+from .instrument_alias_type import instrument_alias_type
+from .instrument_alias import instrument_alias
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -201,4 +207,10 @@ __all__ = [
     event_tag_raw,
     event_alias_type,
     event_alias,
+    event_annotation,
+    event_gid_redirect,
+    event_tag,
+    instrument_gid_redirect,
+    instrument_alias_type,
+    instrument_alias,
 ]

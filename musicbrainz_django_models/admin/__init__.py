@@ -67,12 +67,18 @@ from ..models import edit_url
 from ..models import edit_work
 from ..models import event_alias
 from ..models import event_alias_type
+from ..models import event_annotation
+from ..models import event_gid_redirect
 from ..models import event_meta
 from ..models import event
 from ..models import event_rating_raw
+from ..models import event_tag
 from ..models import event_tag_raw
 from ..models import event_type
 from ..models import gender
+from ..models import instrument_alias
+from ..models import instrument_alias_type
+from ..models import instrument_gid_redirect
 from ..models import instrument
 from ..models import instrument_type
 from ..models import label
@@ -168,12 +174,18 @@ admin.site.register(edit_url)
 admin.site.register(edit_work)
 admin.site.register(event_alias)
 admin.site.register(event_alias_type)
+admin.site.register(event_annotation)
+admin.site.register(event_gid_redirect)
 admin.site.register(event_meta)
 admin.site.register(event)
 admin.site.register(event_rating_raw)
+admin.site.register(event_tag)
 admin.site.register(event_tag_raw)
 admin.site.register(event_type)
 admin.site.register(gender)
+admin.site.register(instrument_alias)
+admin.site.register(instrument_alias_type)
+admin.site.register(instrument_gid_redirect)
 admin.site.register(instrument)
 admin.site.register(instrument_type)
 admin.site.register(label)

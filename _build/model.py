@@ -99,9 +99,6 @@ if SQL_TABLE_INCLUDES_GID:
         not defined in SQL. The default `uuid.uuid4` in Django will generate a
         UUID during the creation of an instance."""
 
-print('MODEL_NAME: {}'.format(MODEL_NAME))
-print(''.join(SQL_TABLE))
-
 with open(MODEL, 'w') as model:
     model.write(MODEL_TEMPLATE.format(
         MODEL_NAME=MODEL_NAME,

@@ -53,9 +53,9 @@ from django.utils.encoding import python_2_unicode_compatible
 def pre_save_area_alias(sender, instance, **kwargs):
     # `ended` must be True if any of the end dates is not empty:
     instance.ended = (
-            instance.end_date_year is not None or
-            instance.end_date_month is not None or
-            instance.end_date_day is not None)
+        instance.end_date_year is not None or
+        instance.end_date_month is not None or
+        instance.end_date_day is not None)
 
     # `primary_for_locale` cannot be True if locale is empty:
     if instance.locale is None:

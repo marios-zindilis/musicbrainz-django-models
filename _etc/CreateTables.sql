@@ -667,66 +667,66 @@ BEGIN;
 --     gid                 uuid NOT NULL
 -- );
 
-CREATE TABLE event_alias ( -- replicate (verbose)
-    id                  SERIAL,
-    event               INTEGER NOT NULL, -- references event.id
-    name                VARCHAR NOT NULL,
-    locale              TEXT,
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    type                INTEGER, -- references event_alias_type.id
-    sort_name           VARCHAR NOT NULL,
-    begin_date_year     SMALLINT,
-    begin_date_month    SMALLINT,
-    begin_date_day      SMALLINT,
-    end_date_year       SMALLINT,
-    end_date_month      SMALLINT,
-    end_date_day        SMALLINT,
-    primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
-    ended               BOOLEAN NOT NULL DEFAULT FALSE
-      CHECK (
-        (
-          -- If any end date fields are not null, then ended must be true
-          (end_date_year IS NOT NULL OR
-           end_date_month IS NOT NULL OR
-           end_date_day IS NOT NULL) AND
-          ended = TRUE
-        ) OR (
-          -- Otherwise, all end date fields must be null
-          (end_date_year IS NULL AND
-           end_date_month IS NULL AND
-           end_date_day IS NULL)
-        )
-      ),
-    CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),
-    CONSTRAINT search_hints_are_empty
-      CHECK (
-        (type <> 2) OR (
-          type = 2 AND sort_name = name AND
-          begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND
-          end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND
-          primary_for_locale IS FALSE AND locale IS NULL
-        )
-      )
-);
+-- CREATE TABLE event_alias ( -- replicate (verbose)
+--     id                  SERIAL,
+--     event               INTEGER NOT NULL, -- references event.id
+--     name                VARCHAR NOT NULL,
+--     locale              TEXT,
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     type                INTEGER, -- references event_alias_type.id
+--     sort_name           VARCHAR NOT NULL,
+--     begin_date_year     SMALLINT,
+--     begin_date_month    SMALLINT,
+--     begin_date_day      SMALLINT,
+--     end_date_year       SMALLINT,
+--     end_date_month      SMALLINT,
+--     end_date_day        SMALLINT,
+--     primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
+--     ended               BOOLEAN NOT NULL DEFAULT FALSE
+--       CHECK (
+--         (
+--           -- If any end date fields are not null, then ended must be true
+--           (end_date_year IS NOT NULL OR
+--            end_date_month IS NOT NULL OR
+--            end_date_day IS NOT NULL) AND
+--           ended = TRUE
+--         ) OR (
+--           -- Otherwise, all end date fields must be null
+--           (end_date_year IS NULL AND
+--            end_date_month IS NULL AND
+--            end_date_day IS NULL)
+--         )
+--       ),
+--     CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),
+--     CONSTRAINT search_hints_are_empty
+--       CHECK (
+--         (type <> 2) OR (
+--           type = 2 AND sort_name = name AND
+--           begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND
+--           end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND
+--           primary_for_locale IS FALSE AND locale IS NULL
+--         )
+--       )
+-- );
 
-CREATE TABLE event_annotation ( -- replicate (verbose)
-    event               INTEGER NOT NULL, -- PK, references event.id
-    annotation          INTEGER NOT NULL -- PK, references annotation.id
-);
+-- CREATE TABLE event_annotation ( -- replicate (verbose)
+--     event               INTEGER NOT NULL, -- PK, references event.id
+--     annotation          INTEGER NOT NULL -- PK, references annotation.id
+-- );
 
-CREATE TABLE event_gid_redirect ( -- replicate (verbose)
-    gid                 UUID NOT NULL, -- PK
-    new_id              INTEGER NOT NULL, -- references event.id
-    created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE event_gid_redirect ( -- replicate (verbose)
+--     gid                 UUID NOT NULL, -- PK
+--     new_id              INTEGER NOT NULL, -- references event.id
+--     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
-CREATE TABLE event_tag ( -- replicate (verbose)
-    event               INTEGER NOT NULL, -- PK, references event.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    count               INTEGER NOT NULL,
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE event_tag ( -- replicate (verbose)
+--     event               INTEGER NOT NULL, -- PK, references event.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     count               INTEGER NOT NULL,
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 -- CREATE TABLE event_type ( -- replicate
 --     id                  SERIAL,
@@ -766,63 +766,63 @@ CREATE TABLE event_tag ( -- replicate (verbose)
 --     description         TEXT NOT NULL DEFAULT ''
 -- );
 
-CREATE TABLE instrument_gid_redirect ( -- replicate (verbose)
-    gid                 UUID NOT NULL, -- PK
-    new_id              INTEGER NOT NULL, -- references instrument.id
-    created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE instrument_gid_redirect ( -- replicate (verbose)
+--     gid                 UUID NOT NULL, -- PK
+--     new_id              INTEGER NOT NULL, -- references instrument.id
+--     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
-CREATE TABLE instrument_alias_type ( -- replicate
-    id                  SERIAL, -- PK,
-    name                TEXT NOT NULL,
-    parent              INTEGER, -- references instrument_alias_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    description         TEXT,
-    gid                 uuid NOT NULL
-);
+-- CREATE TABLE instrument_alias_type ( -- replicate
+--     id                  SERIAL, -- PK,
+--     name                TEXT NOT NULL,
+--     parent              INTEGER, -- references instrument_alias_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     description         TEXT,
+--     gid                 uuid NOT NULL
+-- );
 
-CREATE TABLE instrument_alias ( -- replicate (verbose)
-    id                  SERIAL, --PK
-    instrument          INTEGER NOT NULL, -- references instrument.id
-    name                VARCHAR NOT NULL,
-    locale              TEXT,
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >=0),
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    type                INTEGER, -- references instrument_alias_type.id
-    sort_name           VARCHAR NOT NULL,
-    begin_date_year     SMALLINT,
-    begin_date_month    SMALLINT,
-    begin_date_day      SMALLINT,
-    end_date_year       SMALLINT,
-    end_date_month      SMALLINT,
-    end_date_day        SMALLINT,
-    primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
-    ended               BOOLEAN NOT NULL DEFAULT FALSE
-      CHECK (
-        (
-          -- If any end date fields are not null, then ended must be true
-          (end_date_year IS NOT NULL OR
-           end_date_month IS NOT NULL OR
-           end_date_day IS NOT NULL) AND
-          ended = TRUE
-        ) OR (
-          -- Otherwise, all end date fields must be null
-          (end_date_year IS NULL AND
-           end_date_month IS NULL AND
-           end_date_day IS NULL)
-        )
-      ),
-    CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),
-    CONSTRAINT search_hints_are_empty
-      CHECK (
-        (type <> 2) OR (
-          type = 2 AND sort_name = name AND
-          begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND
-          end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND
-          primary_for_locale IS FALSE AND locale IS NULL
-        )
-      )
-);
+-- CREATE TABLE instrument_alias ( -- replicate (verbose)
+--     id                  SERIAL, --PK
+--     instrument          INTEGER NOT NULL, -- references instrument.id
+--     name                VARCHAR NOT NULL,
+--     locale              TEXT,
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >=0),
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     type                INTEGER, -- references instrument_alias_type.id
+--     sort_name           VARCHAR NOT NULL,
+--     begin_date_year     SMALLINT,
+--     begin_date_month    SMALLINT,
+--     begin_date_day      SMALLINT,
+--     end_date_year       SMALLINT,
+--     end_date_month      SMALLINT,
+--     end_date_day        SMALLINT,
+--     primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
+--     ended               BOOLEAN NOT NULL DEFAULT FALSE
+--       CHECK (
+--         (
+--           -- If any end date fields are not null, then ended must be true
+--           (end_date_year IS NOT NULL OR
+--            end_date_month IS NOT NULL OR
+--            end_date_day IS NOT NULL) AND
+--           ended = TRUE
+--         ) OR (
+--           -- Otherwise, all end date fields must be null
+--           (end_date_year IS NULL AND
+--            end_date_month IS NULL AND
+--            end_date_day IS NULL)
+--         )
+--       ),
+--     CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),
+--     CONSTRAINT search_hints_are_empty
+--       CHECK (
+--         (type <> 2) OR (
+--           type = 2 AND sort_name = name AND
+--           begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND
+--           end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND
+--           primary_for_locale IS FALSE AND locale IS NULL
+--         )
+--       )
+-- );
 
 CREATE TABLE instrument_annotation ( -- replicate (verbose)
     instrument  INTEGER NOT NULL, -- PK, references instrument.id
