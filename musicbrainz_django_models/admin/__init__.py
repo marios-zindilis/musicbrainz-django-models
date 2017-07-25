@@ -87,6 +87,8 @@ from ..models import instrument_type
 from ..models import iso_3166_1
 from ..models import iso_3166_2
 from ..models import iso_3166_3
+from ..models import isrc
+from ..models import iswc
 from ..models import label
 from ..models import label_type
 from ..models import language
@@ -201,6 +203,8 @@ admin.site.register(instrument_type)
 admin.site.register(iso_3166_1)
 admin.site.register(iso_3166_2)
 admin.site.register(iso_3166_3)
+admin.site.register(isrc)
+admin.site.register(iswc)
 admin.site.register(label)
 admin.site.register(label_type)
 admin.site.register(language)

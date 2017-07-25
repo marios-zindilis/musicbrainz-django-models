@@ -100,6 +100,8 @@ Models
    iso_3166_1
    iso_3166_2
    iso_3166_3
+   isrc
+   iswc
    label
    label_type
    language
