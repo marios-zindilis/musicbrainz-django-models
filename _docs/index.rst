@@ -103,6 +103,7 @@ Models
    isrc
    iswc
    label
+   label_rating_raw
    label_type
    language
    l_area_area
@@ -192,6 +193,7 @@ Models
    place
    place_type
    recording
+   recording_rating_raw
    release_group_primary_type
    release_group
    release_group_secondary_type
@@ -206,6 +208,7 @@ Models
    tag
    track
    url
+   vote
    work
    work_type
 

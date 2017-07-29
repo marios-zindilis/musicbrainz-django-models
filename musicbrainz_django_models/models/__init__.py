@@ -192,6 +192,9 @@ from .l_series_work import l_series_work
 from .l_url_url import l_url_url
 from .l_url_work import l_url_work
 from .l_work_work import l_work_work
+from .vote import vote
+from .label_rating_raw import label_rating_raw
+from .recording_rating_raw import recording_rating_raw
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -389,4 +392,7 @@ __all__ = [
     l_url_url,
     l_url_work,
     l_work_work,
+    vote,
+    label_rating_raw,
+    recording_rating_raw,
 ]

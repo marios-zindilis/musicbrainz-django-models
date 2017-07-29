@@ -90,6 +90,7 @@ from ..models import iso_3166_3
 from ..models import isrc
 from ..models import iswc
 from ..models import label
+from ..models import label_rating_raw
 from ..models import label_type
 from ..models import language
 from ..models import l_area_area
@@ -179,6 +180,7 @@ from ..models import medium
 from ..models import place
 from ..models import place_type
 from ..models import recording
+from ..models import recording_rating_raw
 from ..models import release_group_primary_type
 from ..models import release_group
 from ..models import release_group_secondary_type
@@ -193,6 +195,7 @@ from ..models import series_type
 from ..models import tag
 from ..models import track
 from ..models import url
+from ..models import vote
 from ..models import work
 from ..models import work_type
 
@@ -285,6 +288,7 @@ admin.site.register(iso_3166_3)
 admin.site.register(isrc)
 admin.site.register(iswc)
 admin.site.register(label)
+admin.site.register(label_rating_raw)
 admin.site.register(label_type)
 admin.site.register(language)
 admin.site.register(l_area_area)
@@ -374,6 +378,7 @@ admin.site.register(medium)
 admin.site.register(place)
 admin.site.register(place_type)
 admin.site.register(recording)
+admin.site.register(recording_rating_raw)
 admin.site.register(release_group_primary_type)
 admin.site.register(release_group)
 admin.site.register(release_group_secondary_type)
@@ -388,5 +393,6 @@ admin.site.register(series_type)
 admin.site.register(tag)
 admin.site.register(track)
 admin.site.register(url)
+admin.site.register(vote)
 admin.site.register(work)
 admin.site.register(work_type)
