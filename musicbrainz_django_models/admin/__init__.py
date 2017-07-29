@@ -92,10 +92,88 @@ from ..models import iswc
 from ..models import label
 from ..models import label_type
 from ..models import language
+from ..models import l_area_area
+from ..models import l_area_artist
+from ..models import l_area_event
+from ..models import l_area_instrument
+from ..models import l_area_label
+from ..models import l_area_place
+from ..models import l_area_recording
+from ..models import l_area_release_group
+from ..models import l_area_release
+from ..models import l_area_series
+from ..models import l_area_url
+from ..models import l_area_work
+from ..models import l_artist_artist
+from ..models import l_artist_event
+from ..models import l_artist_instrument
+from ..models import l_artist_label
+from ..models import l_artist_place
+from ..models import l_artist_recording
+from ..models import l_artist_release_group
+from ..models import l_artist_release
+from ..models import l_artist_series
+from ..models import l_artist_url
+from ..models import l_artist_work
+from ..models import l_event_event
+from ..models import l_event_instrument
+from ..models import l_event_label
+from ..models import l_event_place
+from ..models import l_event_recording
+from ..models import l_event_release_group
+from ..models import l_event_release
+from ..models import l_event_series
+from ..models import l_event_url
+from ..models import l_event_work
 from ..models import link_attribute_type
 from ..models import link
 from ..models import link_text_attribute_type
 from ..models import link_type
+from ..models import l_instrument_instrument
+from ..models import l_instrument_label
+from ..models import l_instrument_place
+from ..models import l_instrument_recording
+from ..models import l_instrument_release_group
+from ..models import l_instrument_release
+from ..models import l_instrument_series
+from ..models import l_instrument_url
+from ..models import l_instrument_work
+from ..models import l_label_label
+from ..models import l_label_place
+from ..models import l_label_recording
+from ..models import l_label_release_group
+from ..models import l_label_release
+from ..models import l_label_series
+from ..models import l_label_url
+from ..models import l_label_work
+from ..models import l_place_place
+from ..models import l_place_recording
+from ..models import l_place_release_group
+from ..models import l_place_release
+from ..models import l_place_series
+from ..models import l_place_url
+from ..models import l_place_work
+from ..models import l_recording_recording
+from ..models import l_recording_release_group
+from ..models import l_recording_release
+from ..models import l_recording_series
+from ..models import l_recording_url
+from ..models import l_recording_work
+from ..models import l_release_group_release_group
+from ..models import l_release_group_series
+from ..models import l_release_group_url
+from ..models import l_release_group_work
+from ..models import l_release_release_group
+from ..models import l_release_release
+from ..models import l_release_series
+from ..models import l_release_url
+from ..models import l_release_work
+from ..models import l_series_series
+from ..models import l_series_url
+from ..models import l_series_work
+from ..models import l_url_url
+from ..models import l_url_work
+from ..models import l_work_work
 from ..models import medium_format
 from ..models import medium
 from ..models import place
@@ -209,10 +287,88 @@ admin.site.register(iswc)
 admin.site.register(label)
 admin.site.register(label_type)
 admin.site.register(language)
+admin.site.register(l_area_area)
+admin.site.register(l_area_artist)
+admin.site.register(l_area_event)
+admin.site.register(l_area_instrument)
+admin.site.register(l_area_label)
+admin.site.register(l_area_place)
+admin.site.register(l_area_recording)
+admin.site.register(l_area_release_group)
+admin.site.register(l_area_release)
+admin.site.register(l_area_series)
+admin.site.register(l_area_url)
+admin.site.register(l_area_work)
+admin.site.register(l_artist_artist)
+admin.site.register(l_artist_event)
+admin.site.register(l_artist_instrument)
+admin.site.register(l_artist_label)
+admin.site.register(l_artist_place)
+admin.site.register(l_artist_recording)
+admin.site.register(l_artist_release_group)
+admin.site.register(l_artist_release)
+admin.site.register(l_artist_series)
+admin.site.register(l_artist_url)
+admin.site.register(l_artist_work)
+admin.site.register(l_event_event)
+admin.site.register(l_event_instrument)
+admin.site.register(l_event_label)
+admin.site.register(l_event_place)
+admin.site.register(l_event_recording)
+admin.site.register(l_event_release_group)
+admin.site.register(l_event_release)
+admin.site.register(l_event_series)
+admin.site.register(l_event_url)
+admin.site.register(l_event_work)
 admin.site.register(link_attribute_type)
 admin.site.register(link)
 admin.site.register(link_text_attribute_type)
 admin.site.register(link_type)
+admin.site.register(l_instrument_instrument)
+admin.site.register(l_instrument_label)
+admin.site.register(l_instrument_place)
+admin.site.register(l_instrument_recording)
+admin.site.register(l_instrument_release_group)
+admin.site.register(l_instrument_release)
+admin.site.register(l_instrument_series)
+admin.site.register(l_instrument_url)
+admin.site.register(l_instrument_work)
+admin.site.register(l_label_label)
+admin.site.register(l_label_place)
+admin.site.register(l_label_recording)
+admin.site.register(l_label_release_group)
+admin.site.register(l_label_release)
+admin.site.register(l_label_series)
+admin.site.register(l_label_url)
+admin.site.register(l_label_work)
+admin.site.register(l_place_place)
+admin.site.register(l_place_recording)
+admin.site.register(l_place_release_group)
+admin.site.register(l_place_release)
+admin.site.register(l_place_series)
+admin.site.register(l_place_url)
+admin.site.register(l_place_work)
+admin.site.register(l_recording_recording)
+admin.site.register(l_recording_release_group)
+admin.site.register(l_recording_release)
+admin.site.register(l_recording_series)
+admin.site.register(l_recording_url)
+admin.site.register(l_recording_work)
+admin.site.register(l_release_group_release_group)
+admin.site.register(l_release_group_series)
+admin.site.register(l_release_group_url)
+admin.site.register(l_release_group_work)
+admin.site.register(l_release_release_group)
+admin.site.register(l_release_release)
+admin.site.register(l_release_series)
+admin.site.register(l_release_url)
+admin.site.register(l_release_work)
+admin.site.register(l_series_series)
+admin.site.register(l_series_url)
+admin.site.register(l_series_work)
+admin.site.register(l_url_url)
+admin.site.register(l_url_work)
+admin.site.register(l_work_work)
 admin.site.register(medium_format)
 admin.site.register(medium)
 admin.site.register(place)

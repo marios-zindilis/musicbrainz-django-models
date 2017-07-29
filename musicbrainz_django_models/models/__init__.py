@@ -114,6 +114,84 @@ from .iso_3166_3 import iso_3166_3
 from .isrc import isrc
 from .iswc import iswc
 from .link import link
+from .l_area_area import l_area_area
+from .l_area_artist import l_area_artist
+from .l_area_event import l_area_event
+from .l_area_instrument import l_area_instrument
+from .l_area_label import l_area_label
+from .l_area_place import l_area_place
+from .l_area_recording import l_area_recording
+from .l_area_release import l_area_release
+from .l_area_release_group import l_area_release_group
+from .l_area_series import l_area_series
+from .l_area_url import l_area_url
+from .l_area_work import l_area_work
+from .l_artist_artist import l_artist_artist
+from .l_artist_event import l_artist_event
+from .l_artist_instrument import l_artist_instrument
+from .l_artist_label import l_artist_label
+from .l_artist_place import l_artist_place
+from .l_artist_recording import l_artist_recording
+from .l_artist_release import l_artist_release
+from .l_artist_release_group import l_artist_release_group
+from .l_artist_series import l_artist_series
+from .l_artist_url import l_artist_url
+from .l_artist_work import l_artist_work
+from .l_event_event import l_event_event
+from .l_event_instrument import l_event_instrument
+from .l_event_label import l_event_label
+from .l_event_place import l_event_place
+from .l_event_recording import l_event_recording
+from .l_event_release import l_event_release
+from .l_event_release_group import l_event_release_group
+from .l_event_series import l_event_series
+from .l_event_url import l_event_url
+from .l_event_work import l_event_work
+from .l_label_label import l_label_label
+from .l_instrument_instrument import l_instrument_instrument
+from .l_instrument_label import l_instrument_label
+from .l_instrument_place import l_instrument_place
+from .l_instrument_recording import l_instrument_recording
+from .l_instrument_release import l_instrument_release
+from .l_instrument_release_group import l_instrument_release_group
+from .l_instrument_series import l_instrument_series
+from .l_instrument_url import l_instrument_url
+from .l_instrument_work import l_instrument_work
+from .l_label_place import l_label_place
+from .l_label_recording import l_label_recording
+from .l_label_release import l_label_release
+from .l_label_release_group import l_label_release_group
+from .l_label_series import l_label_series
+from .l_label_url import l_label_url
+from .l_label_work import l_label_work
+from .l_place_place import l_place_place
+from .l_place_recording import l_place_recording
+from .l_place_release import l_place_release
+from .l_place_release_group import l_place_release_group
+from .l_place_series import l_place_series
+from .l_place_url import l_place_url
+from .l_place_work import l_place_work
+from .l_recording_recording import l_recording_recording
+from .l_recording_release import l_recording_release
+from .l_recording_release_group import l_recording_release_group
+from .l_recording_series import l_recording_series
+from .l_recording_url import l_recording_url
+from .l_recording_work import l_recording_work
+from .l_release_release import l_release_release
+from .l_release_release_group import l_release_release_group
+from .l_release_series import l_release_series
+from .l_release_url import l_release_url
+from .l_release_work import l_release_work
+from .l_release_group_release_group import l_release_group_release_group
+from .l_release_group_series import l_release_group_series
+from .l_release_group_url import l_release_group_url
+from .l_release_group_work import l_release_group_work
+from .l_series_series import l_series_series
+from .l_series_url import l_series_url
+from .l_series_work import l_series_work
+from .l_url_url import l_url_url
+from .l_url_work import l_url_work
+from .l_work_work import l_work_work
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -233,4 +311,82 @@ __all__ = [
     isrc,
     iswc,
     link,
+    l_area_area,
+    l_area_artist,
+    l_area_event,
+    l_area_instrument,
+    l_area_label,
+    l_area_place,
+    l_area_recording,
+    l_area_release,
+    l_area_release_group,
+    l_area_series,
+    l_area_url,
+    l_area_work,
+    l_artist_artist,
+    l_artist_event,
+    l_artist_instrument,
+    l_artist_label,
+    l_artist_place,
+    l_artist_recording,
+    l_artist_release,
+    l_artist_release_group,
+    l_artist_series,
+    l_artist_url,
+    l_artist_work,
+    l_event_event,
+    l_event_instrument,
+    l_event_label,
+    l_event_place,
+    l_event_recording,
+    l_event_release,
+    l_event_release_group,
+    l_event_series,
+    l_event_url,
+    l_event_work,
+    l_label_label,
+    l_instrument_instrument,
+    l_instrument_label,
+    l_instrument_place,
+    l_instrument_recording,
+    l_instrument_release,
+    l_instrument_release_group,
+    l_instrument_series,
+    l_instrument_url,
+    l_instrument_work,
+    l_label_place,
+    l_label_recording,
+    l_label_release,
+    l_label_release_group,
+    l_label_series,
+    l_label_url,
+    l_label_work,
+    l_place_place,
+    l_place_recording,
+    l_place_release,
+    l_place_release_group,
+    l_place_series,
+    l_place_url,
+    l_place_work,
+    l_recording_recording,
+    l_recording_release,
+    l_recording_release_group,
+    l_recording_series,
+    l_recording_url,
+    l_recording_work,
+    l_release_release,
+    l_release_release_group,
+    l_release_series,
+    l_release_url,
+    l_release_work,
+    l_release_group_release_group,
+    l_release_group_series,
+    l_release_group_url,
+    l_release_group_work,
+    l_series_series,
+    l_series_url,
+    l_series_work,
+    l_url_url,
+    l_url_work,
+    l_work_work,
 ]
