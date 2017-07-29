@@ -106,6 +106,7 @@ Models
    label_type
    language
    link_attribute_type
+   link
    link_text_attribute_type
    link_type
    medium_format

@@ -93,6 +93,7 @@ from ..models import label
 from ..models import label_type
 from ..models import language
 from ..models import link_attribute_type
+from ..models import link
 from ..models import link_text_attribute_type
 from ..models import link_type
 from ..models import medium_format
@@ -209,6 +210,7 @@ admin.site.register(label)
 admin.site.register(label_type)
 admin.site.register(language)
 admin.site.register(link_attribute_type)
+admin.site.register(link)
 admin.site.register(link_text_attribute_type)
 admin.site.register(link_type)
 admin.site.register(medium_format)

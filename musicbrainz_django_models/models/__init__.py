@@ -113,6 +113,7 @@ from .iso_3166_2 import iso_3166_2
 from .iso_3166_3 import iso_3166_3
 from .isrc import isrc
 from .iswc import iswc
+from .link import link
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -231,4 +232,5 @@ __all__ = [
     iso_3166_3,
     isrc,
     iswc,
+    link,
 ]
