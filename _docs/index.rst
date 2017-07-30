@@ -102,8 +102,10 @@ Models
    iso_3166_3
    isrc
    iswc
+   label_alias_type
    label
    label_rating_raw
+   label_tag_raw
    label_type
    language
    l_area_area

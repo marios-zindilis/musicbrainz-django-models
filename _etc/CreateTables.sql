@@ -1850,22 +1850,22 @@ BEGIN;
 --     rating              SMALLINT NOT NULL CHECK (rating >= 0 AND rating <= 100)
 -- );
 
-CREATE TABLE label_tag_raw
-(
-    label               INTEGER NOT NULL, -- PK, references label.id
-    editor              INTEGER NOT NULL, -- PK, references editor.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
-);
+-- CREATE TABLE label_tag_raw
+-- (
+--     label               INTEGER NOT NULL, -- PK, references label.id
+--     editor              INTEGER NOT NULL, -- PK, references editor.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
+-- );
 
-CREATE TABLE label_alias_type ( -- replicate
-    id                  SERIAL,
-    name                TEXT NOT NULL,
-    parent              INTEGER, -- references label_alias_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    description         TEXT,
-    gid                 uuid NOT NULL
-);
+-- CREATE TABLE label_alias_type ( -- replicate
+--     id                  SERIAL,
+--     name                TEXT NOT NULL,
+--     parent              INTEGER, -- references label_alias_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     description         TEXT,
+--     gid                 uuid NOT NULL
+-- );
 
 CREATE TABLE label_alias ( -- replicate (verbose)
     id                  SERIAL,

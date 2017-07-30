@@ -89,8 +89,10 @@ from ..models import iso_3166_2
 from ..models import iso_3166_3
 from ..models import isrc
 from ..models import iswc
+from ..models import label_alias_type
 from ..models import label
 from ..models import label_rating_raw
+from ..models import label_tag_raw
 from ..models import label_type
 from ..models import language
 from ..models import l_area_area
@@ -287,8 +289,10 @@ admin.site.register(iso_3166_2)
 admin.site.register(iso_3166_3)
 admin.site.register(isrc)
 admin.site.register(iswc)
+admin.site.register(label_alias_type)
 admin.site.register(label)
 admin.site.register(label_rating_raw)
+admin.site.register(label_tag_raw)
 admin.site.register(label_type)
 admin.site.register(language)
 admin.site.register(l_area_area)
