@@ -3,15 +3,13 @@ set -e
 
 app='musicbrainz_django_models'
 models="$app/models"
-tests="$app/tests"
-admin="$app/admin"
 modules=$(ls -1 $app/models/*.py | grep -v __init__)
 
-function checking() {
-    printf '  %-72s' "$1"
+function PASSED() {
+    echo -e "\e[1;32m PASSED\e[0m"
 }
 function OK() {
-    echo -e "\e[1;32mPASSED\e[0m"
+    echo -n '.'
 }
 function NOK() {
     echo -e "\e[1;31mFAILED\e[0m"
@@ -24,36 +22,28 @@ echo "==========================================================================
 for module in $modules
 do
     module_name=$(echo $module | cut -d '/' -f 3 | cut -d '.' -f 1)
-    echo "Verifying: $module_name"
+    printf '%-64s' "Verifying: $module_name"
 
-    checking 'import django.db.models' 
     grep 'from django.db import models' $module > /dev/null && OK || NOK
 
-    checking 'from django.utils.encoding import python_2_unicode_compatible'
     grep 'from django.utils.encoding import python_2_unicode_compatible' $module > /dev/null && OK || NOK
 
-    checking "class $module_name(models.Model)"
     grep "^class $module_name(models.Model):" $module > /dev/null && OK || NOK
-    [ $? -ne 0 ] && echo "  Not Found: Class definition" && exit
 
-    checking '@python_2_unicode_compatible'
     grep "^class $module_name(models.Model):" $module -B 1 | head -1 | grep '@python_2_unicode_compatible' > /dev/null && OK || NOK
 
-    checking ".. module:: $module_name"
     rst_module=$(head -2 $models/$module_name.py | tail -1)
     [ "$rst_module" == ".. module:: $module_name" ] && OK || NOK
 
-    checking "$module_name in __init__.py"
     grep "from .$module_name import $module_name" $app/models/__init__.py > /dev/null && OK || NOK
 
-    checking "db_table = $module_name"
     grep "db_table = '$module_name'" $app/models/$module_name.py > /dev/null && OK || NOK
 
     # All Models must define __str__:
-    checking 'def __str__(self):'
     grep '    def __str__(self):' $module > /dev/null && OK || NOK
 
     # All Models must NOT define __unicode__:
-    checking 'def __unicode__(self):'
     grep '    def __unicode__(self):' $module > /dev/null && NOK || OK
+
+    PASSED
 done
