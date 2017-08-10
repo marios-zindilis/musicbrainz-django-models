@@ -102,6 +102,7 @@ Models
    iso_3166_3
    isrc
    iswc
+   label_alias
    label_alias_type
    label
    label_rating_raw

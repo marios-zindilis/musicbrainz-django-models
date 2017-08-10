@@ -37,9 +37,16 @@ class label_alias_type(models.Model):
         UUID during the creation of an instance.
     """
 
+    LABEL_NAME = 'Label name'
+    SEARCH_HINT = 'Search hint'
+    NAME_CHOICES = (
+        (LABEL_NAME, LABEL_NAME),
+        (SEARCH_HINT, SEARCH_HINT))
+    NAME_CHOICES_LIST = [_[0] for _ in NAME_CHOICES]
+
     id = models.AutoField(primary_key=True)
-    name = models.TextField()
-    parent = models.ForeignKey('self')
+    name = models.TextField(choices=NAME_CHOICES)
+    parent = models.ForeignKey('self', null=True)
     child_order = models.IntegerField(default=0)
     description = models.TextField(null=True)
     gid = models.UUIDField(default=uuid.uuid4)
