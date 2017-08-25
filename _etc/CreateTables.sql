@@ -1867,60 +1867,60 @@ BEGIN;
 --     gid                 uuid NOT NULL
 -- );
 
-CREATE TABLE label_alias ( -- replicate (verbose)
-    id                  SERIAL,
-    label               INTEGER NOT NULL, -- references label.id
-    name                VARCHAR NOT NULL,
-    locale              TEXT,
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    type                INTEGER, -- references label_alias_type.id
-    sort_name           VARCHAR NOT NULL,
-    begin_date_year     SMALLINT,
-    begin_date_month    SMALLINT,
-    begin_date_day      SMALLINT,
-    end_date_year       SMALLINT,
-    end_date_month      SMALLINT,
-    end_date_day        SMALLINT,
-    primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
-    ended               BOOLEAN NOT NULL DEFAULT FALSE
-      CHECK (
-        (
-          -- If any end date fields are not null, then ended must be true
-          (end_date_year IS NOT NULL OR
-           end_date_month IS NOT NULL OR
-           end_date_day IS NOT NULL) AND
-          ended = TRUE
-        ) OR (
-          -- Otherwise, all end date fields must be null
-          (end_date_year IS NULL AND
-           end_date_month IS NULL AND
-           end_date_day IS NULL)
-        )
-      ),
-    CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),
-    CONSTRAINT search_hints_are_empty
-      CHECK (
-        (type <> 2) OR (
-          type = 2 AND sort_name = name AND
-          begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND
-          end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND
-          primary_for_locale IS FALSE AND locale IS NULL
-        )
-      )
-);
+-- CREATE TABLE label_alias ( -- replicate (verbose)
+--     id                  SERIAL,
+--     label               INTEGER NOT NULL, -- references label.id
+--     name                VARCHAR NOT NULL,
+--     locale              TEXT,
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     type                INTEGER, -- references label_alias_type.id
+--     sort_name           VARCHAR NOT NULL,
+--     begin_date_year     SMALLINT,
+--     begin_date_month    SMALLINT,
+--     begin_date_day      SMALLINT,
+--     end_date_year       SMALLINT,
+--     end_date_month      SMALLINT,
+--     end_date_day        SMALLINT,
+--     primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
+--     ended               BOOLEAN NOT NULL DEFAULT FALSE
+--       CHECK (
+--         (
+--           -- If any end date fields are not null, then ended must be true
+--           (end_date_year IS NOT NULL OR
+--            end_date_month IS NOT NULL OR
+--            end_date_day IS NOT NULL) AND
+--           ended = TRUE
+--         ) OR (
+--           -- Otherwise, all end date fields must be null
+--           (end_date_year IS NULL AND
+--            end_date_month IS NULL AND
+--            end_date_day IS NULL)
+--         )
+--       ),
+--     CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),
+--     CONSTRAINT search_hints_are_empty
+--       CHECK (
+--         (type <> 2) OR (
+--           type = 2 AND sort_name = name AND
+--           begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND
+--           end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND
+--           primary_for_locale IS FALSE AND locale IS NULL
+--         )
+--       )
+-- );
 
-CREATE TABLE label_annotation ( -- replicate (verbose)
-    label               INTEGER NOT NULL, -- PK, references label.id
-    annotation          INTEGER NOT NULL -- PK, references annotation.id
-);
+-- CREATE TABLE label_annotation ( -- replicate (verbose)
+--     label               INTEGER NOT NULL, -- PK, references label.id
+--     annotation          INTEGER NOT NULL -- PK, references annotation.id
+-- );
 
-CREATE TABLE label_ipi ( -- replicate (verbose)
-    label               INTEGER NOT NULL, -- PK, references label.id
-    ipi                 CHAR(11) NOT NULL CHECK (ipi ~ E'^\\d{11}$'), -- PK
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
-    created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE label_ipi ( -- replicate (verbose)
+--     label               INTEGER NOT NULL, -- PK, references label.id
+--     ipi                 CHAR(11) NOT NULL CHECK (ipi ~ E'^\\d{11}$'), -- PK
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
+--     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 CREATE TABLE label_isni ( -- replicate (verbose)
     label               INTEGER NOT NULL, -- PK, references label.id

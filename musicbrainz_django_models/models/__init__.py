@@ -198,6 +198,8 @@ from .recording_rating_raw import recording_rating_raw
 from .label_tag_raw import label_tag_raw
 from .label_alias_type import label_alias_type
 from .label_alias import label_alias
+from .label_annotation import label_annotation
+from .label_ipi import label_ipi
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -401,4 +403,6 @@ __all__ = [
     label_tag_raw,
     label_alias_type,
     label_alias,
+    label_annotation,
+    label_ipi,
 ]

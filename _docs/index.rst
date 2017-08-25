@@ -104,6 +104,8 @@ Models
    iswc
    label_alias
    label_alias_type
+   label_annotation
+   label_ipi
    label
    label_rating_raw
    label_tag_raw
