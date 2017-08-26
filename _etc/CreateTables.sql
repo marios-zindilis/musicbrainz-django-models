@@ -1935,11 +1935,11 @@ BEGIN;
 --     rating_count        INTEGER
 -- );
 
-CREATE TABLE label_gid_redirect ( -- replicate (verbose)
-    gid                 UUID NOT NULL, -- PK
-    new_id              INTEGER NOT NULL, -- references label.id
-    created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE label_gid_redirect ( -- replicate (verbose)
+--     gid                 UUID NOT NULL, -- PK
+--     new_id              INTEGER NOT NULL, -- references label.id
+--     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 CREATE TABLE label_tag ( -- replicate (verbose)
     label               INTEGER NOT NULL, -- PK, references label.id
@@ -2310,11 +2310,11 @@ CREATE TABLE place_annotation ( -- replicate (verbose)
     annotation          INTEGER NOT NULL -- PK, references annotation.id
 );
 
-CREATE TABLE place_gid_redirect ( -- replicate (verbose)
-    gid                 UUID NOT NULL, -- PK
-    new_id              INTEGER NOT NULL, -- references place.id
-    created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE place_gid_redirect ( -- replicate (verbose)
+--     gid                 UUID NOT NULL, -- PK
+--     new_id              INTEGER NOT NULL, -- references place.id
+--     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 CREATE TABLE place_tag ( -- replicate (verbose)
     place               INTEGER NOT NULL, -- PK, references place.id
@@ -2428,11 +2428,11 @@ CREATE TABLE recording_annotation ( -- replicate (verbose)
 --     rating_count        INTEGER
 -- );
 
-CREATE TABLE recording_gid_redirect ( -- replicate (verbose)
-    gid                 UUID NOT NULL, -- PK
-    new_id              INTEGER NOT NULL, -- references recording.id
-    created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE recording_gid_redirect ( -- replicate (verbose)
+--     gid                 UUID NOT NULL, -- PK
+--     new_id              INTEGER NOT NULL, -- references recording.id
+--     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 CREATE TABLE recording_tag ( -- replicate (verbose)
     recording           INTEGER NOT NULL, -- PK, references recording.id
@@ -2542,11 +2542,11 @@ CREATE TABLE release_annotation ( -- replicate (verbose)
     annotation          INTEGER NOT NULL -- PK, references annotation.id
 );
 
-CREATE TABLE release_gid_redirect ( -- replicate (verbose)
-    gid                 UUID NOT NULL, -- PK
-    new_id              INTEGER NOT NULL, -- references release.id
-    created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE release_gid_redirect ( -- replicate (verbose)
+--     gid                 UUID NOT NULL, -- PK
+--     new_id              INTEGER NOT NULL, -- references release.id
+--     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 CREATE TYPE cover_art_presence AS ENUM ('absent', 'present', 'darkened');
 
@@ -2673,11 +2673,11 @@ CREATE TABLE release_group_annotation ( -- replicate (verbose)
     annotation          INTEGER NOT NULL -- PK, references annotation.id
 );
 
-CREATE TABLE release_group_gid_redirect ( -- replicate (verbose)
-    gid                 UUID NOT NULL, -- PK
-    new_id              INTEGER NOT NULL, -- references release_group.id
-    created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE release_group_gid_redirect ( -- replicate (verbose)
+--     gid                 UUID NOT NULL, -- PK
+--     new_id              INTEGER NOT NULL, -- references release_group.id
+--     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 CREATE TABLE release_group_meta ( -- replicate
     id                  INTEGER NOT NULL, -- PK, references release_group.id CASCADE
@@ -2759,11 +2759,11 @@ CREATE TABLE release_group_secondary_type_join ( -- replicate (verbose)
 --     gid                 uuid NOT NULL
 -- );
 
-CREATE TABLE series_gid_redirect ( -- replicate (verbose)
-    gid                 UUID NOT NULL, -- PK
-    new_id              INTEGER NOT NULL, -- references series.id
-    created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE series_gid_redirect ( -- replicate (verbose)
+--     gid                 UUID NOT NULL, -- PK
+--     new_id              INTEGER NOT NULL, -- references series.id
+--     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 CREATE TABLE series_alias_type ( -- replicate (verbose)
     id                  SERIAL, -- PK
@@ -2866,11 +2866,11 @@ CREATE TABLE tag_relation
 --     is_data_track       BOOLEAN NOT NULL DEFAULT FALSE
 -- );
 
-CREATE TABLE track_gid_redirect ( -- replicate (verbose)
-    gid                 UUID NOT NULL, -- PK
-    new_id              INTEGER NOT NULL, -- references track.id
-    created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE track_gid_redirect ( -- replicate (verbose)
+--     gid                 UUID NOT NULL, -- PK
+--     new_id              INTEGER NOT NULL, -- references track.id
+--     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 CREATE TABLE track_raw ( -- replicate
     id                  SERIAL, -- PK
@@ -2893,11 +2893,11 @@ CREATE TABLE medium_index ( -- replicate
 --     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 -- );
 
-CREATE TABLE url_gid_redirect ( -- replicate
-    gid                 UUID NOT NULL, -- PK
-    new_id              INTEGER NOT NULL, -- references url.id
-    created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE url_gid_redirect ( -- replicate
+--     gid                 UUID NOT NULL, -- PK
+--     new_id              INTEGER NOT NULL, -- references url.id
+--     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 -- CREATE TABLE vote
 -- (
@@ -2992,11 +2992,11 @@ CREATE TABLE work_annotation ( -- replicate (verbose)
     annotation          INTEGER NOT NULL -- PK, references annotation.id
 );
 
-CREATE TABLE work_gid_redirect ( -- replicate (verbose)
-    gid                 UUID NOT NULL, -- PK
-    new_id              INTEGER NOT NULL, -- references work.id
-    created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE work_gid_redirect ( -- replicate (verbose)
+--     gid                 UUID NOT NULL, -- PK
+--     new_id              INTEGER NOT NULL, -- references work.id
+--     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 -- CREATE TABLE work_meta ( -- replicate
 --     id                  INTEGER NOT NULL, -- PK, references work.id CASCADE

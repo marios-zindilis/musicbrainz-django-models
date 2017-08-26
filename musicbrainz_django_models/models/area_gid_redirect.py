@@ -20,27 +20,22 @@ The :code:`area_gid_redirect` table is defined in the MusicBrainz Server as:
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-import uuid
+from .abstract__model_gid_redirect import abstract__model_gid_redirect
 
 
 @python_2_unicode_compatible
-class area_gid_redirect(models.Model):
+class area_gid_redirect(abstract__model_gid_redirect):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
-    :param gid: this is interesting because it cannot be NULL but a default is
-        not defined in SQL. The default `uuid.uuid4` in Django will generate a
-        UUID during the creation of an instance.
     :param new_id: references :class:`.area`
     """
 
-    gid = models.UUIDField(primary_key=True, default=uuid.uuid4)
     new_id = models.ForeignKey('area')
-    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.gid)
+        return 'Area GID Redirect'
 
     class Meta:
         db_table = 'area_gid_redirect'

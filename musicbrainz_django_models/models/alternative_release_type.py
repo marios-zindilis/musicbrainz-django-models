@@ -49,7 +49,7 @@ class alternative_release_type(models.Model):
     """
 
     TRANSLATION = 'Translation'
-    OFFICIAL_TRANSLATION = 'Official Ttranslation'
+    OFFICIAL_TRANSLATION = 'Official Translation'
     EXACTLY_AS_ON_COVER = 'Exactly as on cover'
     NAME_CHOICES = (
         (TRANSLATION, TRANSLATION),

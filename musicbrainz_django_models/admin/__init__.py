@@ -92,6 +92,7 @@ from ..models import iswc
 from ..models import label_alias
 from ..models import label_alias_type
 from ..models import label_annotation
+from ..models import label_gid_redirect
 from ..models import label_ipi
 from ..models import label_isni
 from ..models import label_meta
@@ -184,11 +185,15 @@ from ..models import l_url_work
 from ..models import l_work_work
 from ..models import medium_format
 from ..models import medium
+from ..models import place_gid_redirect
 from ..models import place
 from ..models import place_type
+from ..models import recording_gid_redirect
 from ..models import recording_meta
 from ..models import recording
 from ..models import recording_rating_raw
+from ..models import release_gid_redirect
+from ..models import release_group_gid_redirect
 from ..models import release_group_primary_type
 from ..models import release_group
 from ..models import release_group_secondary_type
@@ -197,13 +202,17 @@ from ..models import release
 from ..models import release_raw
 from ..models import release_status
 from ..models import script
+from ..models import series_gid_redirect
 from ..models import series_ordering_type
 from ..models import series
 from ..models import series_type
 from ..models import tag
+from ..models import track_gid_redirect
 from ..models import track
+from ..models import url_gid_redirect
 from ..models import url
 from ..models import vote
+from ..models import work_gid_redirect
 from ..models import work_meta
 from ..models import work
 from ..models import work_type
@@ -299,6 +308,7 @@ admin.site.register(iswc)
 admin.site.register(label_alias)
 admin.site.register(label_alias_type)
 admin.site.register(label_annotation)
+admin.site.register(label_gid_redirect)
 admin.site.register(label_ipi)
 admin.site.register(label_isni)
 admin.site.register(label_meta)
@@ -391,11 +401,15 @@ admin.site.register(l_url_work)
 admin.site.register(l_work_work)
 admin.site.register(medium_format)
 admin.site.register(medium)
+admin.site.register(place_gid_redirect)
 admin.site.register(place)
 admin.site.register(place_type)
+admin.site.register(recording_gid_redirect)
 admin.site.register(recording_meta)
 admin.site.register(recording)
 admin.site.register(recording_rating_raw)
+admin.site.register(release_gid_redirect)
+admin.site.register(release_group_gid_redirect)
 admin.site.register(release_group_primary_type)
 admin.site.register(release_group)
 admin.site.register(release_group_secondary_type)
@@ -404,13 +418,17 @@ admin.site.register(release)
 admin.site.register(release_raw)
 admin.site.register(release_status)
 admin.site.register(script)
+admin.site.register(series_gid_redirect)
 admin.site.register(series_ordering_type)
 admin.site.register(series)
 admin.site.register(series_type)
 admin.site.register(tag)
+admin.site.register(track_gid_redirect)
 admin.site.register(track)
+admin.site.register(url_gid_redirect)
 admin.site.register(url)
 admin.site.register(vote)
+admin.site.register(work_gid_redirect)
 admin.site.register(work_meta)
 admin.site.register(work)
 admin.site.register(work_type)

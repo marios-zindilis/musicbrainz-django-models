@@ -20,23 +20,19 @@ The :code:`instrument_gid_redirect` table is defined in the MusicBrainz Server a
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-import uuid
+from .abstract__model_gid_redirect import abstract__model_gid_redirect
 
 
 @python_2_unicode_compatible
-class instrument_gid_redirect(models.Model):
+class instrument_gid_redirect(abstract__model_gid_redirect):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
-    :param gid: this is interesting because it cannot be NULL but a default is
-        not defined in SQL. The default `uuid.uuid4` in Django will generate a
-        UUID during the creation of an instance.
+    :param new_id: References :class:`instrument`.
     """
 
-    gid = models.UUIDField(default=uuid.uuid4, primary_key=True)
     new_id = models.ForeignKey('instrument')
-    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return 'Instrument GID Redirect'

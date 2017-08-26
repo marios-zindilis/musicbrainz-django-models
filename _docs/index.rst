@@ -14,6 +14,7 @@ Models
 .. toctree::
    :maxdepth: 1
 
+   abstract__model_gid_redirect
    abstract__model_meta
    alternative_medium
    alternative_medium_track
@@ -106,6 +107,7 @@ Models
    label_alias
    label_alias_type
    label_annotation
+   label_gid_redirect
    label_ipi
    label_isni
    label_meta
@@ -198,11 +200,15 @@ Models
    l_work_work
    medium_format
    medium
+   place_gid_redirect
    place
    place_type
+   recording_gid_redirect
    recording_meta
    recording
    recording_rating_raw
+   release_gid_redirect
+   release_group_gid_redirect
    release_group_primary_type
    release_group
    release_group_secondary_type
@@ -211,13 +217,17 @@ Models
    release_raw
    release_status
    script
+   series_gid_redirect
    series_ordering_type
    series
    series_type
    tag
+   track_gid_redirect
    track
+   url_gid_redirect
    url
    vote
+   work_gid_redirect
    work_meta
    work
    work_type

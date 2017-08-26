@@ -204,6 +204,15 @@ from .label_isni import label_isni
 from .label_meta import label_meta
 from .recording_meta import recording_meta
 from .work_meta import work_meta
+from .label_gid_redirect import label_gid_redirect
+from .place_gid_redirect import place_gid_redirect
+from .recording_gid_redirect import recording_gid_redirect
+from .release_gid_redirect import release_gid_redirect
+from .release_group_gid_redirect import release_group_gid_redirect
+from .series_gid_redirect import series_gid_redirect
+from .track_gid_redirect import track_gid_redirect
+from .url_gid_redirect import url_gid_redirect
+from .work_gid_redirect import work_gid_redirect
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -413,4 +422,13 @@ __all__ = [
     label_meta,
     recording_meta,
     work_meta,
+    label_gid_redirect,
+    place_gid_redirect,
+    recording_gid_redirect,
+    release_gid_redirect,
+    release_group_gid_redirect,
+    series_gid_redirect,
+    track_gid_redirect,
+    url_gid_redirect,
+    work_gid_redirect,
 ]

@@ -1,18 +1,18 @@
 """
-.. module:: event_gid_redirect
+.. module:: place_gid_redirect
 
-The **Event Gid Redirect** Model.
+The **Place Gid Redirect** Model.
 
 PostgreSQL Definition
 ---------------------
 
-The :code:`event_gid_redirect` table is defined in the MusicBrainz Server as:
+The :code:`place_gid_redirect` table is defined in the MusicBrainz Server as:
 
 .. code-block:: sql
 
-    CREATE TABLE event_gid_redirect ( -- replicate (verbose)
+    CREATE TABLE place_gid_redirect ( -- replicate (verbose)
         gid                 UUID NOT NULL, -- PK
-        new_id              INTEGER NOT NULL, -- references event.id
+        new_id              INTEGER NOT NULL, -- references place.id
         created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
     );
 
@@ -24,18 +24,18 @@ from .abstract__model_gid_redirect import abstract__model_gid_redirect
 
 
 @python_2_unicode_compatible
-class event_gid_redirect(abstract__model_gid_redirect):
+class place_gid_redirect(abstract__model_gid_redirect):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
-    :param new_id: References :class:`event`
+    :param new_id: References :class:`place`
     """
 
-    new_id = models.ForeignKey('event')
+    new_id = models.ForeignKey('place')
 
     def __str__(self):
-        return 'Event GID Redirect'
+        return 'Place GID Redirect'
 
     class Meta:
-        db_table = 'event_gid_redirect'
+        db_table = 'place_gid_redirect'
