@@ -1929,11 +1929,11 @@ BEGIN;
 --     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 -- );
 
-CREATE TABLE label_meta ( -- replicate
-    id                  INTEGER NOT NULL, -- PK, references label.id CASCADE
-    rating              SMALLINT CHECK (rating >= 0 AND rating <= 100),
-    rating_count        INTEGER
-);
+-- CREATE TABLE label_meta ( -- replicate
+--     id                  INTEGER NOT NULL, -- PK, references label.id CASCADE
+--     rating              SMALLINT CHECK (rating >= 0 AND rating <= 100),
+--     rating_count        INTEGER
+-- );
 
 CREATE TABLE label_gid_redirect ( -- replicate (verbose)
     gid                 UUID NOT NULL, -- PK
@@ -2422,11 +2422,11 @@ CREATE TABLE recording_annotation ( -- replicate (verbose)
     annotation          INTEGER NOT NULL -- PK, references annotation.id
 );
 
-CREATE TABLE recording_meta ( -- replicate
-    id                  INTEGER NOT NULL, -- PK, references recording.id CASCADE
-    rating              SMALLINT CHECK (rating >= 0 AND rating <= 100),
-    rating_count        INTEGER
-);
+-- CREATE TABLE recording_meta ( -- replicate
+--     id                  INTEGER NOT NULL, -- PK, references recording.id CASCADE
+--     rating              SMALLINT CHECK (rating >= 0 AND rating <= 100),
+--     rating_count        INTEGER
+-- );
 
 CREATE TABLE recording_gid_redirect ( -- replicate (verbose)
     gid                 UUID NOT NULL, -- PK
@@ -2998,11 +2998,11 @@ CREATE TABLE work_gid_redirect ( -- replicate (verbose)
     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
-CREATE TABLE work_meta ( -- replicate
-    id                  INTEGER NOT NULL, -- PK, references work.id CASCADE
-    rating              SMALLINT CHECK (rating >= 0 AND rating <= 100),
-    rating_count        INTEGER
-);
+-- CREATE TABLE work_meta ( -- replicate
+--     id                  INTEGER NOT NULL, -- PK, references work.id CASCADE
+--     rating              SMALLINT CHECK (rating >= 0 AND rating <= 100),
+--     rating_count        INTEGER
+-- );
 
 CREATE TABLE work_tag ( -- replicate (verbose)
     work                INTEGER NOT NULL, -- PK, references work.id

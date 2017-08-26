@@ -3,7 +3,7 @@ set -e
 
 app='musicbrainz_django_models'
 models="$app/models"
-modules=$(ls -1 $app/models/*.py | grep -v __init__)
+modules=$(ls -1 $app/models/*.py | grep -v __init__ | grep -v abstract__)
 
 function PASSED() {
     echo -e "\e[1;32m PASSED\e[0m"
@@ -28,9 +28,9 @@ do
 
     grep 'from django.utils.encoding import python_2_unicode_compatible' $module > /dev/null && OK || NOK
 
-    grep "^class $module_name(models.Model):" $module > /dev/null && OK || NOK
+    grep "^class $module_name" $module > /dev/null && OK || NOK
 
-    grep "^class $module_name(models.Model):" $module -B 1 | head -1 | grep '@python_2_unicode_compatible' > /dev/null && OK || NOK
+    grep "^class $module_name" $module -B 1 | head -1 | grep '@python_2_unicode_compatible' > /dev/null && OK || NOK
 
     rst_module=$(head -2 $models/$module_name.py | tail -1)
     [ "$rst_module" == ".. module:: $module_name" ] && OK || NOK

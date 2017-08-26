@@ -201,6 +201,9 @@ from .label_alias import label_alias
 from .label_annotation import label_annotation
 from .label_ipi import label_ipi
 from .label_isni import label_isni
+from .label_meta import label_meta
+from .recording_meta import recording_meta
+from .work_meta import work_meta
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -407,4 +410,7 @@ __all__ = [
     label_annotation,
     label_ipi,
     label_isni,
+    label_meta,
+    recording_meta,
+    work_meta,
 ]

@@ -94,6 +94,7 @@ from ..models import label_alias_type
 from ..models import label_annotation
 from ..models import label_ipi
 from ..models import label_isni
+from ..models import label_meta
 from ..models import label
 from ..models import label_rating_raw
 from ..models import label_tag_raw
@@ -185,6 +186,7 @@ from ..models import medium_format
 from ..models import medium
 from ..models import place
 from ..models import place_type
+from ..models import recording_meta
 from ..models import recording
 from ..models import recording_rating_raw
 from ..models import release_group_primary_type
@@ -202,6 +204,7 @@ from ..models import tag
 from ..models import track
 from ..models import url
 from ..models import vote
+from ..models import work_meta
 from ..models import work
 from ..models import work_type
 
@@ -298,6 +301,7 @@ admin.site.register(label_alias_type)
 admin.site.register(label_annotation)
 admin.site.register(label_ipi)
 admin.site.register(label_isni)
+admin.site.register(label_meta)
 admin.site.register(label)
 admin.site.register(label_rating_raw)
 admin.site.register(label_tag_raw)
@@ -389,6 +393,7 @@ admin.site.register(medium_format)
 admin.site.register(medium)
 admin.site.register(place)
 admin.site.register(place_type)
+admin.site.register(recording_meta)
 admin.site.register(recording)
 admin.site.register(recording_rating_raw)
 admin.site.register(release_group_primary_type)
@@ -406,5 +411,6 @@ admin.site.register(tag)
 admin.site.register(track)
 admin.site.register(url)
 admin.site.register(vote)
+admin.site.register(work_meta)
 admin.site.register(work)
 admin.site.register(work_type)

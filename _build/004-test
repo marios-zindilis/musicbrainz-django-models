@@ -5,7 +5,7 @@ app='musicbrainz_django_models'
 models="$app/models"
 tests="$app/tests"
 admin="$app/admin"
-modules=$(ls -1 $app/models/*.py | grep -v __init__)
+modules=$(ls -1 $app/models/*.py | grep -v __init__ | grep -v abstract__)
 
 echo "================================================================================"
 echo "                                    Testing                                     "

@@ -13,6 +13,10 @@ then
     then
         _build/004-test
         exit
+    elif [ "$1" == "docs" ]
+    then
+        _build/005-generate-docs "$2"
+        exit
     fi
 fi
 
