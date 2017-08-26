@@ -82,7 +82,7 @@ class artist_isni(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.isni
+        return str(self.isni)
 
     class Meta:
         db_table = 'artist_isni'

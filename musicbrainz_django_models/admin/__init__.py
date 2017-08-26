@@ -93,6 +93,7 @@ from ..models import label_alias
 from ..models import label_alias_type
 from ..models import label_annotation
 from ..models import label_ipi
+from ..models import label_isni
 from ..models import label
 from ..models import label_rating_raw
 from ..models import label_tag_raw
@@ -296,6 +297,7 @@ admin.site.register(label_alias)
 admin.site.register(label_alias_type)
 admin.site.register(label_annotation)
 admin.site.register(label_ipi)
+admin.site.register(label_isni)
 admin.site.register(label)
 admin.site.register(label_rating_raw)
 admin.site.register(label_tag_raw)

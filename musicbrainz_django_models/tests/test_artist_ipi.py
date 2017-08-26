@@ -11,7 +11,8 @@ class test_artist_ipi(TestCase):
         self.assertIsInstance(self.subject, artist_ipi)
 
     def test__artist_ipi__str(self):
-        self.assertEqual(str(self.subject), self.subject.ipi)
+        self.subject.ipi = 12345678901
+        self.assertEqual(str(self.subject), str(self.subject.ipi))
 
     def test__artist_ipi__empty_ipi(self):
         """Raises ValidationError if the IPI is empty."""

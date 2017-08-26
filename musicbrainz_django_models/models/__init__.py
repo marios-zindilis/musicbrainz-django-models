@@ -200,6 +200,7 @@ from .label_alias_type import label_alias_type
 from .label_alias import label_alias
 from .label_annotation import label_annotation
 from .label_ipi import label_ipi
+from .label_isni import label_isni
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -405,4 +406,5 @@ __all__ = [
     label_alias,
     label_annotation,
     label_ipi,
+    label_isni,
 ]

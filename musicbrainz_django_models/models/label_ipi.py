@@ -76,7 +76,7 @@ class label_ipi(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.ipi
+        return str(self.ipi)
 
     class Meta:
         db_table = 'label_ipi'
