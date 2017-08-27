@@ -1,17 +1,17 @@
 """
-.. module:: artist_tag
+.. module:: label_tag
 
-The **Artist Tag** Model.
+The **Label Tag** Model.
 
 PostgreSQL Definition
 ---------------------
 
-The :code:`artist_tag` table is defined in the MusicBrainz Server as:
+The :code:`label_tag` table is defined in the MusicBrainz Server as:
 
 .. code-block:: sql
 
-    CREATE TABLE artist_tag ( -- replicate (verbose)
-        artist              INTEGER NOT NULL, -- PK, references artist.id
+    CREATE TABLE label_tag ( -- replicate (verbose)
+        label               INTEGER NOT NULL, -- PK, references label.id
         tag                 INTEGER NOT NULL, -- PK, references tag.id
         count               INTEGER NOT NULL,
         last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
@@ -25,18 +25,18 @@ from .abstract__model_tag import abstract__model_tag
 
 
 @python_2_unicode_compatible
-class artist_tag(abstract__model_tag):
+class label_tag(abstract__model_tag):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
-    :param artist: References :class:`artist`
+    :param label: References :class:`label`.
     """
 
-    artist = models.OneToOneField('artist', primary_key=True)
+    label = models.OneToOneField('label', primary_key=True)
 
     def __str__(self):
-        return 'Artist Tag'
+        return 'Label Tag'
 
     class Meta:
-        db_table = 'artist_tag'
+        db_table = 'label_tag'

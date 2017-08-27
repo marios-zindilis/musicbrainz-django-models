@@ -21,19 +21,19 @@ The :code:`instrument_tag` table is defined in the MusicBrainz Server as:
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from .abstract__model_tag import abstract__model_tag
 
 
 @python_2_unicode_compatible
-class instrument_tag(models.Model):
+class instrument_tag(abstract__model_tag):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
+
+    :param instrument: References :class:`instrument`.
     """
 
     instrument = models.OneToOneField('instrument', primary_key=True)
-    tag = models.OneToOneField('tag')
-    count = models.IntegerField()
-    last_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return 'Instrument Tag'

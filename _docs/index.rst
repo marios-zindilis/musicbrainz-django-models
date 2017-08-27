@@ -16,6 +16,7 @@ Models
 
    abstract__model_gid_redirect
    abstract__model_meta
+   abstract__model_tag
    alternative_medium
    alternative_medium_track
    alternative_release
@@ -113,6 +114,7 @@ Models
    label_meta
    label
    label_rating_raw
+   label_tag
    label_tag_raw
    label_type
    language
@@ -202,24 +204,29 @@ Models
    medium
    place_gid_redirect
    place
+   place_tag
    place_type
    recording_gid_redirect
    recording_meta
    recording
    recording_rating_raw
+   recording_tag
    release_gid_redirect
    release_group_gid_redirect
    release_group_primary_type
    release_group
    release_group_secondary_type
+   release_group_tag
    release_packaging
    release
    release_raw
    release_status
+   release_tag
    script
    series_gid_redirect
    series_ordering_type
    series
+   series_tag
    series_type
    tag
    track_gid_redirect
@@ -230,6 +237,7 @@ Models
    work_gid_redirect
    work_meta
    work
+   work_tag
    work_type
 
 Indices and tables

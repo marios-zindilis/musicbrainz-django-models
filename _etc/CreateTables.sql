@@ -1941,12 +1941,12 @@ BEGIN;
 --     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 -- );
 
-CREATE TABLE label_tag ( -- replicate (verbose)
-    label               INTEGER NOT NULL, -- PK, references label.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    count               INTEGER NOT NULL,
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE label_tag ( -- replicate (verbose)
+--     label               INTEGER NOT NULL, -- PK, references label.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     count               INTEGER NOT NULL,
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 -- CREATE TABLE label_type ( -- replicate
 --     id                  SERIAL,
@@ -2316,12 +2316,12 @@ CREATE TABLE place_annotation ( -- replicate (verbose)
 --     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 -- );
 
-CREATE TABLE place_tag ( -- replicate (verbose)
-    place               INTEGER NOT NULL, -- PK, references place.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    count               INTEGER NOT NULL,
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE place_tag ( -- replicate (verbose)
+--     place               INTEGER NOT NULL, -- PK, references place.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     count               INTEGER NOT NULL,
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 CREATE TABLE place_tag_raw
 (
@@ -2434,12 +2434,12 @@ CREATE TABLE recording_annotation ( -- replicate (verbose)
 --     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 -- );
 
-CREATE TABLE recording_tag ( -- replicate (verbose)
-    recording           INTEGER NOT NULL, -- PK, references recording.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    count               INTEGER NOT NULL,
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE recording_tag ( -- replicate (verbose)
+--     recording           INTEGER NOT NULL, -- PK, references recording.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     count               INTEGER NOT NULL,
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 -- CREATE TABLE release ( -- replicate (verbose)
 --     id                  SERIAL,
@@ -2592,12 +2592,12 @@ CREATE TABLE release_label ( -- replicate (verbose)
 --     gid                 uuid NOT NULL
 -- );
 
-CREATE TABLE release_tag ( -- replicate (verbose)
-    release             INTEGER NOT NULL, -- PK, references release.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    count               INTEGER NOT NULL,
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE release_tag ( -- replicate (verbose)
+--     release             INTEGER NOT NULL, -- PK, references release.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     count               INTEGER NOT NULL,
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 -- CREATE TABLE release_group ( -- replicate (verbose)
 --     id                  SERIAL,
@@ -2689,12 +2689,12 @@ CREATE TABLE release_group_meta ( -- replicate
     rating_count        INTEGER
 );
 
-CREATE TABLE release_group_tag ( -- replicate (verbose)
-    release_group       INTEGER NOT NULL, -- PK, references release_group.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    count               INTEGER NOT NULL,
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE release_group_tag ( -- replicate (verbose)
+--     release_group       INTEGER NOT NULL, -- PK, references release_group.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     count               INTEGER NOT NULL,
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 -- CREATE TABLE release_group_primary_type ( -- replicate
 --     id                  SERIAL,
@@ -2822,12 +2822,12 @@ CREATE TABLE series_annotation ( -- replicate (verbose)
     annotation          INTEGER NOT NULL -- PK, references annotation.id
 );
 
-CREATE TABLE series_tag ( -- replicate (verbose)
-    series              INTEGER NOT NULL, -- PK, references series.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    count               INTEGER NOT NULL,
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE series_tag ( -- replicate (verbose)
+--     series              INTEGER NOT NULL, -- PK, references series.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     count               INTEGER NOT NULL,
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 CREATE TABLE series_tag_raw (
     series              INTEGER NOT NULL, -- PK, references series.id
@@ -3004,12 +3004,12 @@ CREATE TABLE work_annotation ( -- replicate (verbose)
 --     rating_count        INTEGER
 -- );
 
-CREATE TABLE work_tag ( -- replicate (verbose)
-    work                INTEGER NOT NULL, -- PK, references work.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    count               INTEGER NOT NULL,
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE work_tag ( -- replicate (verbose)
+--     work                INTEGER NOT NULL, -- PK, references work.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     count               INTEGER NOT NULL,
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 -- CREATE TABLE work_type ( -- replicate
 --     id                  SERIAL,

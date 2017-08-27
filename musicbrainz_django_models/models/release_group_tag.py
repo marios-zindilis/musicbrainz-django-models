@@ -1,17 +1,17 @@
 """
-.. module:: artist_tag
+.. module:: release_group_tag
 
-The **Artist Tag** Model.
+The **Release Group Tag** Model.
 
 PostgreSQL Definition
 ---------------------
 
-The :code:`artist_tag` table is defined in the MusicBrainz Server as:
+The :code:`release_group_tag` table is defined in the MusicBrainz Server as:
 
 .. code-block:: sql
 
-    CREATE TABLE artist_tag ( -- replicate (verbose)
-        artist              INTEGER NOT NULL, -- PK, references artist.id
+    CREATE TABLE release_group_tag ( -- replicate (verbose)
+        release_group       INTEGER NOT NULL, -- PK, references release_group.id
         tag                 INTEGER NOT NULL, -- PK, references tag.id
         count               INTEGER NOT NULL,
         last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
@@ -25,18 +25,18 @@ from .abstract__model_tag import abstract__model_tag
 
 
 @python_2_unicode_compatible
-class artist_tag(abstract__model_tag):
+class release_group_tag(abstract__model_tag):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
-    :param artist: References :class:`artist`
+    :param release_group: References :class:`release_group`
     """
 
-    artist = models.OneToOneField('artist', primary_key=True)
+    release_group = models.OneToOneField('release_group', primary_key=True)
 
     def __str__(self):
-        return 'Artist Tag'
+        return 'Release Group Tag'
 
     class Meta:
-        db_table = 'artist_tag'
+        db_table = 'release_group_tag'

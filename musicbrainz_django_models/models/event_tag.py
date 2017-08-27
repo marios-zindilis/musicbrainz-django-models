@@ -21,19 +21,19 @@ The :code:`event_tag` table is defined in the MusicBrainz Server as:
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from .abstract__model_tag import abstract__model_tag
 
 
 @python_2_unicode_compatible
-class event_tag(models.Model):
+class event_tag(abstract__model_tag):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
+
+    :param event: References :class:`event`.
     """
 
     event = models.OneToOneField('event', primary_key=True)
-    tag = models.OneToOneField('tag')
-    count = models.IntegerField()
-    last_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return 'Event Tag'

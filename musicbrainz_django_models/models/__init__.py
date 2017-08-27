@@ -213,6 +213,13 @@ from .series_gid_redirect import series_gid_redirect
 from .track_gid_redirect import track_gid_redirect
 from .url_gid_redirect import url_gid_redirect
 from .work_gid_redirect import work_gid_redirect
+from .label_tag import label_tag
+from .place_tag import place_tag
+from .recording_tag import recording_tag
+from .release_tag import release_tag
+from .release_group_tag import release_group_tag
+from .series_tag import series_tag
+from .work_tag import work_tag
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -431,4 +438,11 @@ __all__ = [
     track_gid_redirect,
     url_gid_redirect,
     work_gid_redirect,
+    label_tag,
+    place_tag,
+    recording_tag,
+    release_tag,
+    release_group_tag,
+    series_tag,
+    work_tag,
 ]
