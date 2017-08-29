@@ -1999,11 +1999,11 @@ BEGIN;
 --       )
 -- );
 
-CREATE TABLE link_attribute ( -- replicate
-    link                INTEGER NOT NULL, -- PK, references link.id
-    attribute_type      INTEGER NOT NULL, -- PK, references link_attribute_type.id
-    created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE link_attribute ( -- replicate
+--     link                INTEGER NOT NULL, -- PK, references link.id
+--     attribute_type      INTEGER NOT NULL, -- PK, references link_attribute_type.id
+--     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 -- CREATE TABLE link_attribute_type ( -- replicate
 --     id                  SERIAL,
@@ -2016,25 +2016,25 @@ CREATE TABLE link_attribute ( -- replicate
 --     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 -- );
 
-CREATE TABLE link_creditable_attribute_type ( -- replicate
-  attribute_type INT NOT NULL -- PK, references link_attribute_type.id CASCADE
-);
+-- CREATE TABLE link_creditable_attribute_type ( -- replicate
+--   attribute_type INT NOT NULL -- PK, references link_attribute_type.id CASCADE
+-- );
 
-CREATE TABLE link_attribute_credit ( -- replicate
-  link INT NOT NULL, -- PK, references link.id
-  attribute_type INT NOT NULL, -- PK, references link_creditable_attribute_type.attribute_type
-  credited_as TEXT NOT NULL
-);
+-- CREATE TABLE link_attribute_credit ( -- replicate
+--   link INT NOT NULL, -- PK, references link.id
+--   attribute_type INT NOT NULL, -- PK, references link_creditable_attribute_type.attribute_type
+--   credited_as TEXT NOT NULL
+-- );
 
 -- CREATE TABLE link_text_attribute_type ( -- replicate
 --     attribute_type      INT NOT NULL -- PK, references link_attribute_type.id CASCADE
 -- );
 
-CREATE TABLE link_attribute_text_value ( -- replicate
-    link                INT NOT NULL, -- PK, references link.id
-    attribute_type      INT NOT NULL, -- PK, references link_text_attribute_type.attribute_type
-    text_value          TEXT NOT NULL
-);
+-- CREATE TABLE link_attribute_text_value ( -- replicate
+--     link                INT NOT NULL, -- PK, references link.id
+--     attribute_type      INT NOT NULL, -- PK, references link_text_attribute_type.attribute_type
+--     text_value          TEXT NOT NULL
+-- );
 
 -- CREATE TABLE link_type ( -- replicate
 --     id                  SERIAL,
@@ -2056,13 +2056,13 @@ CREATE TABLE link_attribute_text_value ( -- replicate
 --     entity1_cardinality INTEGER NOT NULL DEFAULT 0
 -- );
 
-CREATE TABLE link_type_attribute_type ( -- replicate
-    link_type           INTEGER NOT NULL, -- PK, references link_type.id
-    attribute_type      INTEGER NOT NULL, -- PK, references link_attribute_type.id
-    min                 SMALLINT,
-    max                 SMALLINT,
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE link_type_attribute_type ( -- replicate
+--     link_type           INTEGER NOT NULL, -- PK, references link_type.id
+--     attribute_type      INTEGER NOT NULL, -- PK, references link_attribute_type.id
+--     min                 SMALLINT,
+--     max                 SMALLINT,
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 -- CREATE TABLE editor_collection
 -- (
@@ -2085,60 +2085,60 @@ CREATE TABLE link_type_attribute_type ( -- replicate
 --     gid                 uuid NOT NULL
 -- );
 
-CREATE TABLE editor_collection_area (
-    collection INTEGER NOT NULL, -- PK, references editor_collection.id
-    area INTEGER NOT NULL -- PK, references area.id
-);
+-- CREATE TABLE editor_collection_area (
+--     collection INTEGER NOT NULL, -- PK, references editor_collection.id
+--     area INTEGER NOT NULL -- PK, references area.id
+-- );
 
-CREATE TABLE editor_collection_artist (
-    collection INTEGER NOT NULL, -- PK, references editor_collection.id
-    artist INTEGER NOT NULL -- PK, references artist.id
-);
+-- CREATE TABLE editor_collection_artist (
+--    collection INTEGER NOT NULL, -- PK, references editor_collection.id
+--     artist INTEGER NOT NULL -- PK, references artist.id
+-- );
 
-CREATE TABLE editor_collection_event (
-    collection INTEGER NOT NULL, -- PK, references editor_collection.id
-    event INTEGER NOT NULL -- PK, references event.id
-);
+-- CREATE TABLE editor_collection_event (
+--     collection INTEGER NOT NULL, -- PK, references editor_collection.id
+--     event INTEGER NOT NULL -- PK, references event.id
+-- );
 
-CREATE TABLE editor_collection_instrument (
-    collection INTEGER NOT NULL, -- PK, references editor_collection.id
-    instrument INTEGER NOT NULL -- PK, references instrument.id
-);
+-- CREATE TABLE editor_collection_instrument (
+--     collection INTEGER NOT NULL, -- PK, references editor_collection.id
+--     instrument INTEGER NOT NULL -- PK, references instrument.id
+-- );
 
-CREATE TABLE editor_collection_label (
-    collection INTEGER NOT NULL, -- PK, references editor_collection.id
-    label INTEGER NOT NULL -- PK, references label.id
-);
+-- CREATE TABLE editor_collection_label (
+--     collection INTEGER NOT NULL, -- PK, references editor_collection.id
+--     label INTEGER NOT NULL -- PK, references label.id
+-- );
 
-CREATE TABLE editor_collection_place (
-    collection INTEGER NOT NULL, -- PK, references editor_collection.id
-    place INTEGER NOT NULL -- PK, references place.id
-);
+-- CREATE TABLE editor_collection_place (
+--     collection INTEGER NOT NULL, -- PK, references editor_collection.id
+--     place INTEGER NOT NULL -- PK, references place.id
+-- );
 
-CREATE TABLE editor_collection_recording (
-    collection INTEGER NOT NULL, -- PK, references editor_collection.id
-    recording INTEGER NOT NULL -- PK, references recording.id
-);
+-- CREATE TABLE editor_collection_recording (
+--    collection INTEGER NOT NULL, -- PK, references editor_collection.id
+--     recording INTEGER NOT NULL -- PK, references recording.id
+-- );
 
-CREATE TABLE editor_collection_release (
-    collection INTEGER NOT NULL, -- PK, references editor_collection.id
-    release INTEGER NOT NULL -- PK, references release.id
-);
+-- CREATE TABLE editor_collection_release (
+--     collection INTEGER NOT NULL, -- PK, references editor_collection.id
+--     release INTEGER NOT NULL -- PK, references release.id
+-- );
 
-CREATE TABLE editor_collection_release_group (
-    collection INTEGER NOT NULL, -- PK, references editor_collection.id
-    release_group INTEGER NOT NULL -- PK, references release_group.id
-);
+-- CREATE TABLE editor_collection_release_group (
+--     collection INTEGER NOT NULL, -- PK, references editor_collection.id
+--     release_group INTEGER NOT NULL -- PK, references release_group.id
+-- );
 
-CREATE TABLE editor_collection_series (
-    collection INTEGER NOT NULL, -- PK, references editor_collection.id
-    series INTEGER NOT NULL -- PK, references series.id
-);
+-- CREATE TABLE editor_collection_series (
+--     collection INTEGER NOT NULL, -- PK, references editor_collection.id
+--     series INTEGER NOT NULL -- PK, references series.id
+-- );
 
-CREATE TABLE editor_collection_work (
-    collection INTEGER NOT NULL, -- PK, references editor_collection.id
-    work INTEGER NOT NULL -- PK, references work.id
-);
+-- CREATE TABLE editor_collection_work (
+--     collection INTEGER NOT NULL, -- PK, references editor_collection.id
+--     work INTEGER NOT NULL -- PK, references work.id
+-- );
 
 CREATE TABLE editor_collection_deleted_entity (
     collection INTEGER NOT NULL, -- PK, references editor_collection.id

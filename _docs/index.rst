@@ -14,6 +14,7 @@ Models
 .. toctree::
    :maxdepth: 1
 
+   abstract__editor_collection_model
    abstract__model_gid_redirect
    abstract__model_meta
    abstract__model_tag
@@ -60,8 +61,19 @@ Models
    edit_label
    edit_note
    edit_note_recipient
+   editor_collection_area
+   editor_collection_artist
+   editor_collection_event
+   editor_collection_instrument
+   editor_collection_label
+   editor_collection_place
    editor_collection
+   editor_collection_recording
+   editor_collection_release_group
+   editor_collection_release
+   editor_collection_series
    editor_collection_type
+   editor_collection_work
    editor_language
    editor_preference
    editor
@@ -151,9 +163,14 @@ Models
    l_event_series
    l_event_url
    l_event_work
+   link_attribute_credit
+   link_attribute
+   link_attribute_text_value
    link_attribute_type
+   link_creditable_attribute_type
    link
    link_text_attribute_type
+   link_type_attribute_type
    link_type
    l_instrument_instrument
    l_instrument_label

@@ -220,6 +220,22 @@ from .release_tag import release_tag
 from .release_group_tag import release_group_tag
 from .series_tag import series_tag
 from .work_tag import work_tag
+from .link_attribute import link_attribute
+from .link_creditable_attribute_type import link_creditable_attribute_type
+from .link_attribute_credit import link_attribute_credit
+from .link_attribute_text_value import link_attribute_text_value
+from .link_type_attribute_type import link_type_attribute_type
+from .editor_collection_area import editor_collection_area
+from .editor_collection_artist import editor_collection_artist
+from .editor_collection_event import editor_collection_event
+from .editor_collection_instrument import editor_collection_instrument
+from .editor_collection_label import editor_collection_label
+from .editor_collection_place import editor_collection_place
+from .editor_collection_recording import editor_collection_recording
+from .editor_collection_release import editor_collection_release
+from .editor_collection_release_group import editor_collection_release_group
+from .editor_collection_series import editor_collection_series
+from .editor_collection_work import editor_collection_work
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -445,4 +461,20 @@ __all__ = [
     release_group_tag,
     series_tag,
     work_tag,
+    link_attribute,
+    link_creditable_attribute_type,
+    link_attribute_credit,
+    link_attribute_text_value,
+    link_type_attribute_type,
+    editor_collection_area,
+    editor_collection_artist,
+    editor_collection_event,
+    editor_collection_instrument,
+    editor_collection_label,
+    editor_collection_place,
+    editor_collection_recording,
+    editor_collection_release,
+    editor_collection_release_group,
+    editor_collection_series,
+    editor_collection_work,
 ]

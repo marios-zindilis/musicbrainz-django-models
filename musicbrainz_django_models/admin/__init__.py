@@ -44,8 +44,19 @@ from ..models import edit_instrument
 from ..models import edit_label
 from ..models import edit_note
 from ..models import edit_note_recipient
+from ..models import editor_collection_area
+from ..models import editor_collection_artist
+from ..models import editor_collection_event
+from ..models import editor_collection_instrument
+from ..models import editor_collection_label
+from ..models import editor_collection_place
 from ..models import editor_collection
+from ..models import editor_collection_recording
+from ..models import editor_collection_release_group
+from ..models import editor_collection_release
+from ..models import editor_collection_series
 from ..models import editor_collection_type
+from ..models import editor_collection_work
 from ..models import editor_language
 from ..models import editor_preference
 from ..models import editor
@@ -135,9 +146,14 @@ from ..models import l_event_release
 from ..models import l_event_series
 from ..models import l_event_url
 from ..models import l_event_work
+from ..models import link_attribute_credit
+from ..models import link_attribute
+from ..models import link_attribute_text_value
 from ..models import link_attribute_type
+from ..models import link_creditable_attribute_type
 from ..models import link
 from ..models import link_text_attribute_type
+from ..models import link_type_attribute_type
 from ..models import link_type
 from ..models import l_instrument_instrument
 from ..models import l_instrument_label
@@ -267,8 +283,19 @@ admin.site.register(edit_instrument)
 admin.site.register(edit_label)
 admin.site.register(edit_note)
 admin.site.register(edit_note_recipient)
+admin.site.register(editor_collection_area)
+admin.site.register(editor_collection_artist)
+admin.site.register(editor_collection_event)
+admin.site.register(editor_collection_instrument)
+admin.site.register(editor_collection_label)
+admin.site.register(editor_collection_place)
 admin.site.register(editor_collection)
+admin.site.register(editor_collection_recording)
+admin.site.register(editor_collection_release_group)
+admin.site.register(editor_collection_release)
+admin.site.register(editor_collection_series)
 admin.site.register(editor_collection_type)
+admin.site.register(editor_collection_work)
 admin.site.register(editor_language)
 admin.site.register(editor_preference)
 admin.site.register(editor)
@@ -358,9 +385,14 @@ admin.site.register(l_event_release)
 admin.site.register(l_event_series)
 admin.site.register(l_event_url)
 admin.site.register(l_event_work)
+admin.site.register(link_attribute_credit)
+admin.site.register(link_attribute)
+admin.site.register(link_attribute_text_value)
 admin.site.register(link_attribute_type)
+admin.site.register(link_creditable_attribute_type)
 admin.site.register(link)
 admin.site.register(link_text_attribute_type)
+admin.site.register(link_type_attribute_type)
 admin.site.register(link_type)
 admin.site.register(l_instrument_instrument)
 admin.site.register(l_instrument_label)
