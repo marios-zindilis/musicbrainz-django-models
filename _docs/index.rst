@@ -15,6 +15,7 @@ Models
    :maxdepth: 1
 
    abstract__editor_collection_model
+   abstract__model_alias_type
    abstract__model_gid_redirect
    abstract__model_meta
    abstract__model_tag
@@ -63,6 +64,7 @@ Models
    edit_note_recipient
    editor_collection_area
    editor_collection_artist
+   editor_collection_deleted_entity
    editor_collection_event
    editor_collection_instrument
    editor_collection_label
@@ -219,16 +221,20 @@ Models
    l_work_work
    medium_format
    medium
+   place_alias_type
    place_gid_redirect
    place
    place_tag
    place_type
+   recording_alias_type
    recording_gid_redirect
    recording_meta
    recording
    recording_rating_raw
    recording_tag
+   release_alias_type
    release_gid_redirect
+   release_group_alias_type
    release_group_gid_redirect
    release_group_primary_type
    release_group
@@ -240,6 +246,7 @@ Models
    release_status
    release_tag
    script
+   series_alias_type
    series_gid_redirect
    series_ordering_type
    series
@@ -251,6 +258,7 @@ Models
    url_gid_redirect
    url
    vote
+   work_alias_type
    work_gid_redirect
    work_meta
    work

@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+import os
+import glob
+
+MODELS = 'musicbrainz_django_models/models'
+MODULES = sorted([
+    _ for _ in glob.glob(MODELS + '/*.py')
+    if not os.path.split(_)[-1].startswith('__init__')
+    and not os.path.split(_)[-1].startswith('abstract__')])
+INIT = os.path.join(MODELS, '__init__.py')
+INIT_CODE = open(INIT).read()
+
+def OK():
+    print('.', end='')
+
+def NOK():
+    print('\033[91mFAILED\033[0m')
+    exit(1)
+
+def PASSED():
+    print(' \033[32mPASSED\033[0m')
+
+print('================================================================================')
+print('                               Verifying Models                                 ')
+print('================================================================================')
+
+for module in MODULES:
+    model_name = os.path.splitext(os.path.split(module)[-1])[0]
+    model_code = open(module).read()
+    model_lines = model_code.splitlines()
+
+    print('Verifying: {0: <54}'.format(model_name), end='')
+
+    # 1: All models subclass `django.db.models` except for some that subclass abstract models:
+    if 'from django.db import models' in model_code:
+        OK()
+    else:
+        OK() if 'class {}(abstract__'.format(model_name) in model_code else NOK()
+
+    # 2: All models have a class definition with the model name:
+    OK() if 'class {}('.format(model_name) in model_code else NOK()
+
+    # 3: All models are Python 2 unicode-compactible:
+    OK() if '@python_2_unicode_compatible' in model_code else NOK()
+
+    # 4: All models define their name in RST:
+    OK() if model_lines[1] == '.. module:: {}'.format(model_name) else NOK()    
+
+    # 5: All models are imported in `__init__.py`:
+    OK() if 'from .{model_name} import {model_name}'.format(model_name=model_name) in INIT_CODE else NOK()
+
+    # 6: All models set the name of the DB table to the model name:
+    OK() if "db_table = '{}'".format(model_name) in model_code else NOK()
+
+    # 7: All Models must define `__str__`, except some that subclass abstract models:
+    if '    def __str__(self):' in model_code:
+        OK()
+    else:
+        OK() if 'class {}(abstract__'.format(model_name) in model_code else NOK()
+
+    # 8: All Models must NOT define __unicode__:
+    OK() if '    def __unicode__(self):' not in model_code else NOK()
+
+    PASSED()

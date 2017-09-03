@@ -7,17 +7,6 @@ tests="$app/tests"
 admin="$app/admin"
 modules=$(ls -1 $app/models/*.py | grep -v __init__ | grep -v abstract__)
 
-function checking() {
-    printf '  %-72s' "$1"
-}
-function OK() {
-    echo -e "\e[1;32mPASSED\e[0m"
-}
-function NOK() {
-    echo -e "\e[1;31mFAILED\e[0m"
-    exit 1
-}
-
 echo "================================================================================"
 echo "                                Building Admin                                  "
 echo "================================================================================"

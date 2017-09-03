@@ -20,7 +20,4 @@ then
     fi
 fi
 
-for build_script in $(ls -1 _build/0*)
-do
-    source $build_script "$*"
-done
+run-parts --exit-on-error _build

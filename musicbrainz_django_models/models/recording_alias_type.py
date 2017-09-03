@@ -1,19 +1,19 @@
 """
-.. module:: area_alias_type
+.. module:: recording_alias_type
 
-The **Area Alias Type** Model.
+The **Recording Alias Type** Model.
 
 PostgreSQL Definition
 ---------------------
 
-The :code:`area_alias_type` table is defined in the MusicBrainz Server as:
+The :code:`recording_alias_type` table is defined in the MusicBrainz Server as:
 
 .. code-block:: sql
 
-    CREATE TABLE area_alias_type ( -- replicate
+    CREATE TABLE recording_alias_type ( -- replicate
         id                  SERIAL, -- PK,
         name                TEXT NOT NULL,
-        parent              INTEGER, -- references area_alias_type.id
+        parent              INTEGER, -- references recording_alias_type.id
         child_order         INTEGER NOT NULL DEFAULT 0,
         description         TEXT,
         gid                 uuid NOT NULL
@@ -26,6 +26,6 @@ from .abstract__model_alias_type import abstract__model_alias_type
 
 
 @python_2_unicode_compatible
-class area_alias_type(abstract__model_alias_type):
+class recording_alias_type(abstract__model_alias_type):
     class Meta:
-        db_table = 'area_alias_type'
+        db_table = 'recording_alias_type'

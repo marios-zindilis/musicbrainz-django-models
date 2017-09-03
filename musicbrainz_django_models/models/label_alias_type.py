@@ -23,11 +23,19 @@ The :code:`label_alias_type` table is defined in the MusicBrainz Server as:
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-import uuid
+from django.core.exceptions import ValidationError
+from .abstract__model_alias_type import abstract__model_alias_type
+
+
+def pre_save_label_alias_type(sender, instance, **kwargs):
+    if instance.name not in sender.NAME_CHOICES_LIST:
+        raise ValidationError('Name "{}" not one of {}'.format(
+            instance.name,
+            ', '.join(sender.NAME_CHOICES_LIST)))
 
 
 @python_2_unicode_compatible
-class label_alias_type(models.Model):
+class label_alias_type(abstract__model_alias_type):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
@@ -44,15 +52,10 @@ class label_alias_type(models.Model):
         (SEARCH_HINT, SEARCH_HINT))
     NAME_CHOICES_LIST = [_[0] for _ in NAME_CHOICES]
 
-    id = models.AutoField(primary_key=True)
     name = models.TextField(choices=NAME_CHOICES)
-    parent = models.ForeignKey('self', null=True)
-    child_order = models.IntegerField(default=0)
-    description = models.TextField(null=True)
-    gid = models.UUIDField(default=uuid.uuid4)
-
-    def __str__(self):
-        return self.name
 
     class Meta:
         db_table = 'label_alias_type'
+
+
+models.signals.pre_save.connect(pre_save_label_alias_type, sender=label_alias_type)

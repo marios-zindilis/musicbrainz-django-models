@@ -24,7 +24,7 @@ The :code:`event_alias_type` table is defined in the MusicBrainz Server as:
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.core.exceptions import ValidationError
-import uuid
+from .abstract__model_alias_type import abstract__model_alias_type
 
 
 def pre_save_event_alias_type(sender, instance, **kwargs):
@@ -35,14 +35,13 @@ def pre_save_event_alias_type(sender, instance, **kwargs):
 
 
 @python_2_unicode_compatible
-class event_alias_type(models.Model):
+class event_alias_type(abstract__model_alias_type):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
-    :param gid: this is interesting because it cannot be NULL but a default is
-        not defined in SQL. The default `uuid.uuid4` in Django will generate a
-        UUID during the creation of an instance.
+    :param str name: This is restricted to the choices found in the
+        MusicBrainz Server database dump.
     """
 
     EVENT_NAME = 'Event name'
@@ -52,15 +51,7 @@ class event_alias_type(models.Model):
         (SEARCH_HINT, SEARCH_HINT))
     NAME_CHOICES_LIST = [_[0] for _ in NAME_CHOICES]
 
-    id = models.AutoField(primary_key=True)
     name = models.TextField(choices=NAME_CHOICES)
-    parent = models.ForeignKey('self', null=True)
-    child_order = models.IntegerField(default=0)
-    decription = models.TextField(null=True)
-    gid = models.UUIDField(default=uuid.uuid4)
-
-    def __str__(self):
-        return self.name
 
     class Meta:
         db_table = 'event_alias_type'

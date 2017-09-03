@@ -236,6 +236,13 @@ from .editor_collection_release import editor_collection_release
 from .editor_collection_release_group import editor_collection_release_group
 from .editor_collection_series import editor_collection_series
 from .editor_collection_work import editor_collection_work
+from .editor_collection_deleted_entity import editor_collection_deleted_entity
+from .place_alias_type import place_alias_type
+from .recording_alias_type import recording_alias_type
+from .release_alias_type import release_alias_type
+from .release_group_alias_type import release_group_alias_type
+from .series_alias_type import series_alias_type
+from .work_alias_type import work_alias_type
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -477,4 +484,11 @@ __all__ = [
     editor_collection_release_group,
     editor_collection_series,
     editor_collection_work,
+    editor_collection_deleted_entity,
+    place_alias_type,
+    recording_alias_type,
+    release_alias_type,
+    release_group_alias_type,
+    series_alias_type,
+    work_alias_type,
 ]

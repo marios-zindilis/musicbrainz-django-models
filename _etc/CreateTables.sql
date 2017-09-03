@@ -2140,10 +2140,10 @@ BEGIN;
 --     work INTEGER NOT NULL -- PK, references work.id
 -- );
 
-CREATE TABLE editor_collection_deleted_entity (
-    collection INTEGER NOT NULL, -- PK, references editor_collection.id
-    gid UUID NOT NULL -- PK, references deleted_entity.gid
-);
+-- CREATE TABLE editor_collection_deleted_entity (
+--     collection INTEGER NOT NULL, -- PK, references editor_collection.id
+--     gid UUID NOT NULL -- PK, references deleted_entity.gid
+-- );
 
 CREATE TABLE editor_oauth_token
 (
@@ -2219,39 +2219,39 @@ CREATE TABLE orderable_link_type ( -- replicate
     direction           SMALLINT NOT NULL DEFAULT 1 CHECK (direction = 1 OR direction = 2)
 );
 
-CREATE TABLE place ( -- replicate (verbose)
-    id                  SERIAL, -- PK
-    gid                 uuid NOT NULL,
-    name                VARCHAR NOT NULL,
-    type                INTEGER, -- references place_type.id
-    address             VARCHAR NOT NULL DEFAULT '',
-    area                INTEGER, -- references area.id
-    coordinates         POINT,
-    comment             VARCHAR(255) NOT NULL DEFAULT '',
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >=0),
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    begin_date_year     SMALLINT,
-    begin_date_month    SMALLINT,
-    begin_date_day      SMALLINT,
-    end_date_year       SMALLINT,
-    end_date_month      SMALLINT,
-    end_date_day        SMALLINT,
-    ended               BOOLEAN NOT NULL DEFAULT FALSE
-      CHECK (
-        (
-          -- If any end date fields are not null, then ended must be true
-          (end_date_year IS NOT NULL OR
-           end_date_month IS NOT NULL OR
-           end_date_day IS NOT NULL) AND
-          ended = TRUE
-        ) OR (
-          -- Otherwise, all end date fields must be null
-          (end_date_year IS NULL AND
-           end_date_month IS NULL AND
-           end_date_day IS NULL)
-        )
-      )
-);
+-- CREATE TABLE place ( -- replicate (verbose)
+--     id                  SERIAL, -- PK
+--     gid                 uuid NOT NULL,
+--     name                VARCHAR NOT NULL,
+--     type                INTEGER, -- references place_type.id
+--     address             VARCHAR NOT NULL DEFAULT '',
+--     area                INTEGER, -- references area.id
+--     coordinates         POINT,
+--     comment             VARCHAR(255) NOT NULL DEFAULT '',
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >=0),
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     begin_date_year     SMALLINT,
+--     begin_date_month    SMALLINT,
+--     begin_date_day      SMALLINT,
+--     end_date_year       SMALLINT,
+--     end_date_month      SMALLINT,
+--     end_date_day        SMALLINT,
+--     ended               BOOLEAN NOT NULL DEFAULT FALSE
+--       CHECK (
+--         (
+--           -- If any end date fields are not null, then ended must be true
+--           (end_date_year IS NOT NULL OR
+--            end_date_month IS NOT NULL OR
+--            end_date_day IS NOT NULL) AND
+--           ended = TRUE
+--         ) OR (
+--           -- Otherwise, all end date fields must be null
+--           (end_date_year IS NULL AND
+--            end_date_month IS NULL AND
+--            end_date_day IS NULL)
+--         )
+--       )
+-- );
 
 CREATE TABLE place_alias ( -- replicate (verbose)
     id                  SERIAL,
@@ -2296,14 +2296,14 @@ CREATE TABLE place_alias ( -- replicate (verbose)
       )
 );
 
-CREATE TABLE place_alias_type ( -- replicate
-    id                  SERIAL,
-    name                TEXT NOT NULL,
-    parent              INTEGER, -- references place_alias_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    description         TEXT,
-    gid                 uuid NOT NULL
-);
+-- CREATE TABLE place_alias_type ( -- replicate
+--     id                  SERIAL,
+--     name                TEXT NOT NULL,
+--     parent              INTEGER, -- references place_alias_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     description         TEXT,
+--     gid                 uuid NOT NULL
+-- );
 
 CREATE TABLE place_annotation ( -- replicate (verbose)
     place               INTEGER NOT NULL, -- PK, references place.id
@@ -2359,14 +2359,14 @@ CREATE TABLE replication_control ( -- replicate
 --     video               BOOLEAN NOT NULL DEFAULT FALSE
 -- );
 
-CREATE TABLE recording_alias_type ( -- replicate
-    id                  SERIAL, -- PK,
-    name                TEXT NOT NULL,
-    parent              INTEGER, -- references recording_alias_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    description         TEXT,
-    gid                 uuid NOT NULL
-);
+-- CREATE TABLE recording_alias_type ( -- replicate
+--     id                  SERIAL, -- PK,
+--     name                TEXT NOT NULL,
+--     parent              INTEGER, -- references recording_alias_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     description         TEXT,
+--     gid                 uuid NOT NULL
+-- );
 
 CREATE TABLE recording_alias ( -- replicate (verbose)
     id                  SERIAL, --PK
@@ -2458,14 +2458,14 @@ CREATE TABLE recording_annotation ( -- replicate (verbose)
 --     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 -- );
 
-CREATE TABLE release_alias_type ( -- replicate
-    id                  SERIAL, -- PK,
-    name                TEXT NOT NULL,
-    parent              INTEGER, -- references release_alias_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    description         TEXT,
-    gid                 uuid NOT NULL
-);
+-- CREATE TABLE release_alias_type ( -- replicate
+--     id                  SERIAL, -- PK,
+--     name                TEXT NOT NULL,
+--     parent              INTEGER, -- references release_alias_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     description         TEXT,
+--     gid                 uuid NOT NULL
+-- );
 
 CREATE TABLE release_alias ( -- replicate (verbose)
     id                  SERIAL, --PK
@@ -2610,14 +2610,14 @@ CREATE TABLE release_label ( -- replicate (verbose)
 --     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 -- );
 
-CREATE TABLE release_group_alias_type ( -- replicate
-    id                  SERIAL, -- PK,
-    name                TEXT NOT NULL,
-    parent              INTEGER, -- references release_group_alias_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    description         TEXT,
-    gid                 uuid NOT NULL
-);
+-- CREATE TABLE release_group_alias_type ( -- replicate
+--     id                  SERIAL, -- PK,
+--     name                TEXT NOT NULL,
+--     parent              INTEGER, -- references release_group_alias_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     description         TEXT,
+--     gid                 uuid NOT NULL
+-- );
 
 CREATE TABLE release_group_alias ( -- replicate (verbose)
     id                  SERIAL, --PK
@@ -2765,14 +2765,14 @@ CREATE TABLE release_group_secondary_type_join ( -- replicate (verbose)
 --     created             TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 -- );
 
-CREATE TABLE series_alias_type ( -- replicate (verbose)
-    id                  SERIAL, -- PK
-    name                TEXT NOT NULL,
-    parent              INTEGER, -- references series_alias_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    description         TEXT,
-    gid                 uuid NOT NULL
-);
+-- CREATE TABLE series_alias_type ( -- replicate (verbose)
+--     id                  SERIAL, -- PK
+--     name                TEXT NOT NULL,
+--     parent              INTEGER, -- references series_alias_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     description         TEXT,
+--     gid                 uuid NOT NULL
+-- );
 
 CREATE TABLE series_alias ( -- replicate (verbose)
     id                  SERIAL, -- PK
@@ -2935,14 +2935,14 @@ CREATE TABLE work_tag_raw
     is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
 );
 
-CREATE TABLE work_alias_type ( -- replicate
-    id                  SERIAL,
-    name                TEXT NOT NULL,
-    parent              INTEGER, -- references work_alias_type.id
-    child_order         INTEGER NOT NULL DEFAULT 0,
-    description         TEXT,
-    gid                 uuid NOT NULL
-);
+-- CREATE TABLE work_alias_type ( -- replicate
+--     id                  SERIAL,
+--     name                TEXT NOT NULL,
+--     parent              INTEGER, -- references work_alias_type.id
+--     child_order         INTEGER NOT NULL DEFAULT 0,
+--     description         TEXT,
+--     gid                 uuid NOT NULL
+-- );
 
 CREATE TABLE work_alias ( -- replicate (verbose)
     id                  SERIAL,

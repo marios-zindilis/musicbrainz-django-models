@@ -46,6 +46,7 @@ from ..models import edit_note
 from ..models import edit_note_recipient
 from ..models import editor_collection_area
 from ..models import editor_collection_artist
+from ..models import editor_collection_deleted_entity
 from ..models import editor_collection_event
 from ..models import editor_collection_instrument
 from ..models import editor_collection_label
@@ -202,16 +203,20 @@ from ..models import l_url_work
 from ..models import l_work_work
 from ..models import medium_format
 from ..models import medium
+from ..models import place_alias_type
 from ..models import place_gid_redirect
 from ..models import place
 from ..models import place_tag
 from ..models import place_type
+from ..models import recording_alias_type
 from ..models import recording_gid_redirect
 from ..models import recording_meta
 from ..models import recording
 from ..models import recording_rating_raw
 from ..models import recording_tag
+from ..models import release_alias_type
 from ..models import release_gid_redirect
+from ..models import release_group_alias_type
 from ..models import release_group_gid_redirect
 from ..models import release_group_primary_type
 from ..models import release_group
@@ -223,6 +228,7 @@ from ..models import release_raw
 from ..models import release_status
 from ..models import release_tag
 from ..models import script
+from ..models import series_alias_type
 from ..models import series_gid_redirect
 from ..models import series_ordering_type
 from ..models import series
@@ -234,6 +240,7 @@ from ..models import track
 from ..models import url_gid_redirect
 from ..models import url
 from ..models import vote
+from ..models import work_alias_type
 from ..models import work_gid_redirect
 from ..models import work_meta
 from ..models import work
@@ -285,6 +292,7 @@ admin.site.register(edit_note)
 admin.site.register(edit_note_recipient)
 admin.site.register(editor_collection_area)
 admin.site.register(editor_collection_artist)
+admin.site.register(editor_collection_deleted_entity)
 admin.site.register(editor_collection_event)
 admin.site.register(editor_collection_instrument)
 admin.site.register(editor_collection_label)
@@ -441,16 +449,20 @@ admin.site.register(l_url_work)
 admin.site.register(l_work_work)
 admin.site.register(medium_format)
 admin.site.register(medium)
+admin.site.register(place_alias_type)
 admin.site.register(place_gid_redirect)
 admin.site.register(place)
 admin.site.register(place_tag)
 admin.site.register(place_type)
+admin.site.register(recording_alias_type)
 admin.site.register(recording_gid_redirect)
 admin.site.register(recording_meta)
 admin.site.register(recording)
 admin.site.register(recording_rating_raw)
 admin.site.register(recording_tag)
+admin.site.register(release_alias_type)
 admin.site.register(release_gid_redirect)
+admin.site.register(release_group_alias_type)
 admin.site.register(release_group_gid_redirect)
 admin.site.register(release_group_primary_type)
 admin.site.register(release_group)
@@ -462,6 +474,7 @@ admin.site.register(release_raw)
 admin.site.register(release_status)
 admin.site.register(release_tag)
 admin.site.register(script)
+admin.site.register(series_alias_type)
 admin.site.register(series_gid_redirect)
 admin.site.register(series_ordering_type)
 admin.site.register(series)
@@ -473,6 +486,7 @@ admin.site.register(track)
 admin.site.register(url_gid_redirect)
 admin.site.register(url)
 admin.site.register(vote)
+admin.site.register(work_alias_type)
 admin.site.register(work_gid_redirect)
 admin.site.register(work_meta)
 admin.site.register(work)
