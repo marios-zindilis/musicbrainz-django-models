@@ -23,12 +23,12 @@ The :code:`series_alias_type` table is defined in the MusicBrainz Server as:
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from .abstract__model_alias_type import abstract__model_alias_type
-from ..signals import pre_save_model_alias_type
+from .abstract__model_type import abstract__model_type
+from ..signals import pre_save_name_is_member_of_name_choices_list
 
 
 @python_2_unicode_compatible
-class series_alias_type(abstract__model_alias_type):
+class series_alias_type(abstract__model_type):
 
     SEARCH_HINT = 'Search hint'
     NAME_CHOICES = (
@@ -41,4 +41,4 @@ class series_alias_type(abstract__model_alias_type):
         db_table = 'series_alias_type'
 
 
-models.signals.pre_save.connect(pre_save_model_alias_type, sender=series_alias_type)
+models.signals.pre_save.connect(pre_save_name_is_member_of_name_choices_list, sender=series_alias_type)

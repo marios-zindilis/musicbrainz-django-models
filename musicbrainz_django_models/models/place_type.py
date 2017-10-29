@@ -23,19 +23,12 @@ The :code:`place_type` table is defined in the MusicBrainz Server as:
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-import uuid
-
-
-def pre_save_place_type(sender, instance, **kwargs):
-    if instance.name not in sender.NAME_CHOICES_LIST:
-        from django.core.exceptions import ValidationError
-        raise ValidationError('Place Type "{}" is not one of: {}'.format(
-            instance.name,
-            ', '.join(sender.NAME_CHOICES_LIST)))
+from .abstract__model_type import abstract__model_type
+from ..signals import pre_save_name_is_member_of_name_choices_list
 
 
 @python_2_unicode_compatible
-class place_type(models.Model):
+class place_type(abstract__model_type):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
@@ -65,18 +58,10 @@ class place_type(models.Model):
         (RELIGIOUS_BUILDING, RELIGIOUS_BUILDING))
     NAME_CHOICES_LIST = [_[0] for _ in NAME_CHOICES]
 
-    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, choices=NAME_CHOICES)
-    parent = models.ForeignKey('self', null=True)
-    child_order = models.IntegerField(default=0)
-    description = models.TextField(null=True)
-    gid = models.UUIDField(default=uuid.uuid4)
-
-    def __str__(self):
-        return self.name
 
     class Meta:
         db_table = 'place_type'
 
 
-models.signals.pre_save.connect(pre_save_place_type, sender=place_type)
+models.signals.pre_save.connect(pre_save_name_is_member_of_name_choices_list, sender=place_type)

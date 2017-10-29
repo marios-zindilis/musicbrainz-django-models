@@ -22,10 +22,10 @@ The :code:`area_alias_type` table is defined in the MusicBrainz Server as:
 """
 
 from django.utils.encoding import python_2_unicode_compatible
-from .abstract__model_alias_type import abstract__model_alias_type
+from .abstract__model_type import abstract__model_type
 
 
 @python_2_unicode_compatible
-class area_alias_type(abstract__model_alias_type):
+class area_alias_type(abstract__model_type):
     class Meta:
         db_table = 'area_alias_type'

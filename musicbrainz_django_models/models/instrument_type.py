@@ -21,32 +21,12 @@ The :code:`instrument_type` table is defined in the MusicBrainz Server as:
 
 """
 
-from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-import uuid
+from .abstract__model_type import abstract__model_type
 
 
 @python_2_unicode_compatible
-class instrument_type(models.Model):
-    """
-    Not all parameters are listed here, only those that present some interest
-    in their Django implementation.
-
-    :param gid: this is interesting because it cannot be NULL but a default is
-        not defined in SQL. The default `uuid.uuid4` in Django will generate a
-        UUID during the creation of an instance.
-    """
-
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255)
-    parent = models.ForeignKey('self')
-    child_order = models.IntegerField(default=0)
-    description = models.TextField(null=True)
-    gid = models.UUIDField(default=uuid.uuid4)
-
-    def __str__(self):
-        return self.name
-
+class instrument_type(abstract__model_type):
     class Meta:
         db_table = 'instrument_type'
         verbose_name_plural = 'Instrument Types'

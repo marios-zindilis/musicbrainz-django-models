@@ -54,20 +54,12 @@ Server as:
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-import uuid
-
-
-def pre_save_release_group_secondary_type(sender, instance, **kwargs):
-    if instance.name not in sender.NAME_CHOICE_LIST:
-        from django.core.exceptions import ValidationError
-        raise ValidationError(
-            'Release Group Secondary Type "{}" is not one of: {}'.format(
-                instance.name,
-                ', '.join(sender.NAME_CHOICE_LIST)))
+from .abstract__model_type import abstract__model_type
+from ..signals import pre_save_name_is_member_of_name_choices_list
 
 
 @python_2_unicode_compatible
-class release_group_secondary_type(models.Model):
+class release_group_secondary_type(abstract__model_type):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
@@ -77,9 +69,6 @@ class release_group_secondary_type(models.Model):
         `the Release Group Type documentation <https://musicbrainz.org/doc/Release_Group/Type>`_.
         In Django, this is implemented as a `choices` parameter to the `name`
         field, and a `pre_save` signal that performs the validation.
-    :param gid: This cannot be NULL but a default is not defined in SQL. The
-        `default=uuid.uuid4` in Django will generate a UUID during the creation
-        of an instance.
     """
 
     COMPILATION = 'Compilation'
@@ -103,22 +92,13 @@ class release_group_secondary_type(models.Model):
         (DJ_MIX, DJ_MIX),
         (MIXTAPE_STREET, MIXTAPE_STREET),
         (DEMO, DEMO),)
-    NAME_CHOICE_LIST = [_[0] for _ in NAME_CHOICES]
+    NAME_CHOICES_LIST = [_[0] for _ in NAME_CHOICES]
 
-    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, choices=NAME_CHOICES)
-    parent = models.ForeignKey('self', null=True)
-    child_order = models.IntegerField(default=0)
-    description = models.TextField(null=True)
-    gid = models.UUIDField(default=uuid.uuid4)
-
-    def __str__(self):
-        return self.name
 
     class Meta:
         db_table = 'release_group_secondary_type'
         verbose_name_plural = 'Release Group Secondary Types'
 
 
-models.signals.pre_save.connect(
-    pre_save_release_group_secondary_type, sender=release_group_secondary_type)
+models.signals.pre_save.connect(pre_save_name_is_member_of_name_choices_list, sender=release_group_secondary_type)

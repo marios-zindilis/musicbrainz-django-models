@@ -22,10 +22,10 @@ The :code:`release_group_alias_type` table is defined in the MusicBrainz Server 
 """
 
 from django.utils.encoding import python_2_unicode_compatible
-from .abstract__model_alias_type import abstract__model_alias_type
+from .abstract__model_type import abstract__model_type
 
 
 @python_2_unicode_compatible
-class release_group_alias_type(abstract__model_alias_type):
+class release_group_alias_type(abstract__model_type):
     class Meta:
         db_table = 'release_group_alias_type'

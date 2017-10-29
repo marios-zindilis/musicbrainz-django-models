@@ -27,11 +27,12 @@ def pre_save_model_alias(sender, instance, **kwargs):
         instance.locale = None
 
 
-def pre_save_model_alias_type(sender, instance, **kwargs):
+def pre_save_name_is_member_of_name_choices_list(sender, instance, **kwargs):
     """
     This pre-save check verifies that the `name` attribute of a model is one
-    of a predefined list of allowed values. It applies to some of the models
-    named `<MODEL>_alias_type`, namely:
+    of a predefined list of allowed values.
+
+    It applies to some of the models named `<MODEL>_alias_type`, namely:
 
     1.  :class:`artist_alias_type`
     2.  :class:`event_alias_type`
@@ -40,6 +41,8 @@ def pre_save_model_alias_type(sender, instance, **kwargs):
     5.  :class:`place_alias_type`
     6.  :class:`release_alias_type`
     7.  :class:`series_alias_type`
+
+    It also applies to models named `<MODEL>_type`.
     """
     if instance.name not in sender.NAME_CHOICES_LIST:
         raise ValidationError('Name "{}" not one of {}'.format(
