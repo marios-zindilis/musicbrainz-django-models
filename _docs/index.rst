@@ -15,10 +15,12 @@ Models
    :maxdepth: 1
 
    abstract__editor_collection_model
+   abstract__model_alias
    abstract__model_alias_type
    abstract__model_gid_redirect
    abstract__model_meta
    abstract__model_tag
+   abstract__model_tag_raw
    alternative_medium
    alternative_medium_track
    alternative_release
@@ -77,6 +79,7 @@ Models
    editor_collection_type
    editor_collection_work
    editor_language
+   editor_oauth_token
    editor_preference
    editor
    editor_subscribe_artist_deleted
@@ -87,6 +90,10 @@ Models
    editor_subscribe_label
    editor_subscribe_series_deleted
    editor_subscribe_series
+   editor_watch_artist
+   editor_watch_preferences
+   editor_watch_release_group_type
+   editor_watch_release_status
    edit_place
    edit
    edit_recording
@@ -219,38 +226,52 @@ Models
    l_url_url
    l_url_work
    l_work_work
+   medium_cdtoc
    medium_format
    medium
+   orderable_link_type
+   place_alias
    place_alias_type
+   place_annotation
    place_gid_redirect
    place
    place_tag
+   place_tag_raw
    place_type
+   recording_alias
    recording_alias_type
    recording_gid_redirect
    recording_meta
    recording
    recording_rating_raw
    recording_tag
+   recording_tag_raw
+   release_alias
    release_alias_type
    release_gid_redirect
+   release_group_alias
    release_group_alias_type
    release_group_gid_redirect
    release_group_primary_type
    release_group
    release_group_secondary_type
    release_group_tag
+   release_group_tag_raw
    release_packaging
    release
    release_raw
    release_status
    release_tag
+   release_tag_raw
+   replication_control
    script
+   series_alias
    series_alias_type
    series_gid_redirect
    series_ordering_type
    series
    series_tag
+   series_tag_raw
    series_type
    tag
    track_gid_redirect
@@ -258,11 +279,13 @@ Models
    url_gid_redirect
    url
    vote
+   work_alias
    work_alias_type
    work_gid_redirect
    work_meta
    work
    work_tag
+   work_tag_raw
    work_type
 
 Indices and tables

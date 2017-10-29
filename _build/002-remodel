@@ -13,6 +13,6 @@ rm -rf $app/migrations/*
 rm -rf "$models/__pycache__"
 rm -rf "$app/tests/__pycache__"
 rm -rf "$app/__pycache__"
-echo 'Making Migations' && ./manage.py makemigrations $app
-echo 'Mirgating'        && ./manage.py migrate
-echo 'Loading Fixtures' && ./manage.py loaddata musicbrainz_django_models/fixtures/*
+echo 'Making Migrations' && ./manage.py makemigrations $app
+echo 'Migrating'         && ./manage.py migrate
+echo 'Loading Fixtures'  && ./manage.py loaddata musicbrainz_django_models/fixtures/*

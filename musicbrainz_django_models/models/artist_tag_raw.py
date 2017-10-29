@@ -22,19 +22,19 @@ The :code:`artist_tag_raw` table is defined in the MusicBrainz Server as:
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from .abstract__model_tag_raw import abstract__model_tag_raw
 
 
 @python_2_unicode_compatible
-class artist_tag_raw(models.Model):
+class artist_tag_raw(abstract__model_tag_raw):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
+
+    :param artist: References :class:`artist`.
     """
 
     artist = models.OneToOneField('artist', primary_key=True)
-    editor = models.OneToOneField('editor')
-    tag = models.OneToOneField('tag')
-    is_upvote = models.BooleanField(default=True)
 
     def __str__(self):
         return 'Artist Tag Raw'

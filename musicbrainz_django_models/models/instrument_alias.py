@@ -57,43 +57,17 @@ The :code:`instrument_alias` table is defined in the MusicBrainz Server as:
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-
-
-def pre_save_instrument_alias(sender, instance, **kwargs):
-    # `ended` must be True if any of the end dates is not empty:
-    instance.ended = (
-        instance.end_date_year is not None or
-        instance.end_date_month is not None or
-        instance.end_date_day is not None)
-
-    # `primary_for_locale` cannot be True if locale is empty:
-    if instance.locale is None:
-        instance.primary_for_locale = False
-
-    from .instrument_alias_type import instrument_alias_type
-    if instance.type.name == instrument_alias_type.SEARCH_HINT:
-        instance.sort_name = instance.name
-        instance.begin_date_year = None
-        instance.begin_date_month = None
-        instance.begin_date_day = None
-        instance.end_date_year = None
-        instance.end_date_month = None
-        instance.end_date_day = None
-        instance.primary_for_locale = False
-        instance.locale = None
+from .abstract__model_alias import abstract__model_alias
+from ..signals import pre_save_model_alias
 
 
 @python_2_unicode_compatible
-class instrument_alias(models.Model):
+class instrument_alias(abstract__model_alias):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
-    :param str name: `max_length` is mandatory in Django models but not in
-        PostgreSQL.
-    :param int edits_pending: the MusicBrainz Server uses a PostgreSQL `check`
-        to validate that the value is a positive integer. In Django, this is
-        done with `models.PositiveIntegerField()`.
+    :param instrument: References :class:`instrument`.
     :param type: In the PostgreSQL definition of the `instrument_alias` table,
         there is a `check` on the `type`, that uses a hardcoded value of `2`.
         The `type` with `id=2` in the `instrument_alias_type` table is the
@@ -103,38 +77,10 @@ class instrument_alias(models.Model):
         `end_date_year`, `end_date_month`, `end_date_day` and `locale` must all
         be empty. `primary_for_locale` must be False. In Django, this is
         implemented in a `pre_save` signal.
-    :param str sort_name: `max_length` is mandatory in Django models but not in
-        PostgreSQL.
-    :param smallint begin_date_month: You'd think this would be validated as a
-        range of 1-12 or similar...
-    :param smallint end_date_month: ditto
-    :param smallint begin_date_day: You'd think this would be validated as a
-        range of 1-31 or similar...
-    :param smallint end_date_day: ditto
-    :param boolean primary_for_locale: The MusicBrainz Server uses a
-        PostgreSQL `check` to validate that this field is False, if the
-        `locale` field is empty. In Django, this is implemented with a
-        `pre_save` signal.
-    :param boolean ended: the MusicBrainz Server uses a PostgreSQL `check` to
-        set this to `True` if any of the `end_*` fields has any value. This is
-        implemented in Django with a `pre_save` signal.
     """
 
-    id = models.AutoField(primary_key=True)
     instrument = models.ForeignKey('instrument')
-    name = models.CharField(max_length=255)
-    locale = models.TextField(null=True)
-    edits_pending = models.PositiveIntegerField(default=0)
     type = models.ForeignKey('instrument_alias_type', null=True)
-    sort_name = models.CharField(max_length=255)
-    begin_date_year = models.SmallIntegerField(null=True)
-    begin_date_month = models.SmallIntegerField(null=True)
-    begin_date_day = models.SmallIntegerField(null=True)
-    end_date_year = models.SmallIntegerField(null=True)
-    end_date_month = models.SmallIntegerField(null=True)
-    end_date_day = models.SmallIntegerField(null=True)
-    primary_for_locale = models.BooleanField(default=False)
-    ended = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -144,4 +90,4 @@ class instrument_alias(models.Model):
         verbose_name_plural = 'Instrument Aliases'
 
 
-models.signals.pre_save.connect(pre_save_instrument_alias, sender=instrument_alias)
+models.signals.pre_save.connect(pre_save_model_alias, sender=instrument_alias)

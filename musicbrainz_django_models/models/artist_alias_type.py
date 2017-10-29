@@ -39,15 +39,7 @@ The :code:`artist_alias_type` table is defined in the MusicBrainz Server as:
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from .abstract__model_alias_type import abstract__model_alias_type
-
-
-def pre_save_artist_alias_type(sender, instance, **kwargs):
-    if instance.name not in sender.NAME_CHOICES_LIST:
-        from django.core.exceptions import ValidationError
-        raise ValidationError(
-            'Artist Alias Type "{}" is not one of: {}'.format(
-                instance.name,
-                ', '.join(sender.NAME_CHOICES_LIST)))
+from ..signals import pre_save_model_alias_type
 
 
 @python_2_unicode_compatible
@@ -81,5 +73,4 @@ class artist_alias_type(abstract__model_alias_type):
         verbose_name_plural = 'Artist Alias Types'
 
 
-models.signals.pre_save.connect(
-    pre_save_artist_alias_type, sender=artist_alias_type)
+models.signals.pre_save.connect(pre_save_model_alias_type, sender=artist_alias_type)

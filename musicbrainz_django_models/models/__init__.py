@@ -243,6 +243,27 @@ from .release_alias_type import release_alias_type
 from .release_group_alias_type import release_group_alias_type
 from .series_alias_type import series_alias_type
 from .work_alias_type import work_alias_type
+from .place_alias import place_alias
+from .editor_oauth_token import editor_oauth_token
+from .editor_watch_preferences import editor_watch_preferences
+from .editor_watch_artist import editor_watch_artist
+from .editor_watch_release_group_type import editor_watch_release_group_type
+from .editor_watch_release_status import editor_watch_release_status
+from .medium_cdtoc import medium_cdtoc
+from .orderable_link_type import orderable_link_type
+from .place_annotation import place_annotation
+from .place_tag_raw import place_tag_raw
+from .recording_tag_raw import recording_tag_raw
+from .release_tag_raw import release_tag_raw
+from .release_group_tag_raw import release_group_tag_raw
+from .series_tag_raw import series_tag_raw
+from .work_tag_raw import work_tag_raw
+from .replication_control import replication_control
+from .recording_alias import recording_alias
+from .release_alias import release_alias
+from .release_group_alias import release_group_alias
+from .series_alias import series_alias
+from .work_alias import work_alias
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -491,4 +512,25 @@ __all__ = [
     release_group_alias_type,
     series_alias_type,
     work_alias_type,
+    place_alias,
+    editor_oauth_token,
+    editor_watch_preferences,
+    editor_watch_artist,
+    editor_watch_release_group_type,
+    editor_watch_release_status,
+    medium_cdtoc,
+    orderable_link_type,
+    place_annotation,
+    place_tag_raw,
+    recording_tag_raw,
+    release_tag_raw,
+    release_group_tag_raw,
+    series_tag_raw,
+    work_tag_raw,
+    replication_control,
+    recording_alias,
+    release_alias,
+    release_group_alias,
+    series_alias,
+    work_alias,
 ]

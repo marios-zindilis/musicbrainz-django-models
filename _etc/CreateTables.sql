@@ -2145,44 +2145,44 @@ BEGIN;
 --     gid UUID NOT NULL -- PK, references deleted_entity.gid
 -- );
 
-CREATE TABLE editor_oauth_token
-(
-    id                  SERIAL,
-    editor              INTEGER NOT NULL, -- references editor.id
-    application         INTEGER NOT NULL, -- references application.id
-    authorization_code  TEXT,
-    refresh_token       TEXT,
-    access_token        TEXT,
-    expire_time         TIMESTAMP WITH TIME ZONE NOT NULL,
-    scope               INTEGER NOT NULL DEFAULT 0,
-    granted             TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
-);
+-- CREATE TABLE editor_oauth_token
+-- (
+--     id                  SERIAL,
+--     editor              INTEGER NOT NULL, -- references editor.id
+--     application         INTEGER NOT NULL, -- references application.id
+--     authorization_code  TEXT,
+--     refresh_token       TEXT,
+--     access_token        TEXT,
+--     expire_time         TIMESTAMP WITH TIME ZONE NOT NULL,
+--     scope               INTEGER NOT NULL DEFAULT 0,
+--     granted             TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+-- );
 
-CREATE TABLE editor_watch_preferences
-(
-    editor INTEGER NOT NULL, -- PK, references editor.id CASCADE
-    notify_via_email BOOLEAN NOT NULL DEFAULT TRUE,
-    notification_timeframe INTERVAL NOT NULL DEFAULT '1 week',
-    last_checked TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
-);
+-- CREATE TABLE editor_watch_preferences
+-- (
+--     editor INTEGER NOT NULL, -- PK, references editor.id CASCADE
+--     notify_via_email BOOLEAN NOT NULL DEFAULT TRUE,
+--     notification_timeframe INTERVAL NOT NULL DEFAULT '1 week',
+--     last_checked TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+-- );
 
-CREATE TABLE editor_watch_artist
-(
-    artist INTEGER NOT NULL, -- PK, references artist.id CASCADE
-    editor INTEGER NOT NULL  -- PK, references editor.id CASCADE
-);
+-- CREATE TABLE editor_watch_artist
+-- (
+--     artist INTEGER NOT NULL, -- PK, references artist.id CASCADE
+--     editor INTEGER NOT NULL  -- PK, references editor.id CASCADE
+-- );
 
-CREATE TABLE editor_watch_release_group_type
-(
-    editor INTEGER NOT NULL, -- PK, references editor.id CASCADE
-    release_group_type INTEGER NOT NULL -- PK, references release_group_primary_type.id
-);
+-- CREATE TABLE editor_watch_release_group_type
+-- (
+--     editor INTEGER NOT NULL, -- PK, references editor.id CASCADE
+--     release_group_type INTEGER NOT NULL -- PK, references release_group_primary_type.id
+-- );
 
-CREATE TABLE editor_watch_release_status
-(
-    editor INTEGER NOT NULL, -- PK, references editor.id CASCADE
-    release_status INTEGER NOT NULL -- PK, references release_status.id
-);
+-- CREATE TABLE editor_watch_release_status
+-- (
+--     editor INTEGER NOT NULL, -- PK, references editor.id CASCADE
+--     release_status INTEGER NOT NULL -- PK, references release_status.id
+-- );
 
 -- CREATE TABLE medium ( -- replicate (verbose)
 --     id                  SERIAL,
@@ -2195,13 +2195,13 @@ CREATE TABLE editor_watch_release_status
 --     track_count         INTEGER NOT NULL DEFAULT 0
 -- );
 
-CREATE TABLE medium_cdtoc ( -- replicate (verbose)
-    id                  SERIAL,
-    medium              INTEGER NOT NULL, -- references medium.id
-    cdtoc               INTEGER NOT NULL, -- references cdtoc.id
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- CREATE TABLE medium_cdtoc ( -- replicate (verbose)
+--     id                  SERIAL,
+--     medium              INTEGER NOT NULL, -- references medium.id
+--     cdtoc               INTEGER NOT NULL, -- references cdtoc.id
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+-- );
 
 -- CREATE TABLE medium_format ( -- replicate
 --     id                  SERIAL,
@@ -2214,10 +2214,10 @@ CREATE TABLE medium_cdtoc ( -- replicate (verbose)
 --     gid                 uuid NOT NULL
 -- );
 
-CREATE TABLE orderable_link_type ( -- replicate
-    link_type           INTEGER NOT NULL, -- PK, references link_type.id
-    direction           SMALLINT NOT NULL DEFAULT 1 CHECK (direction = 1 OR direction = 2)
-);
+-- CREATE TABLE orderable_link_type ( -- replicate
+--     link_type           INTEGER NOT NULL, -- PK, references link_type.id
+--     direction           SMALLINT NOT NULL DEFAULT 1 CHECK (direction = 1 OR direction = 2)
+-- );
 
 -- CREATE TABLE place ( -- replicate (verbose)
 --     id                  SERIAL, -- PK
@@ -2253,48 +2253,48 @@ CREATE TABLE orderable_link_type ( -- replicate
 --       )
 -- );
 
-CREATE TABLE place_alias ( -- replicate (verbose)
-    id                  SERIAL,
-    place               INTEGER NOT NULL, -- references place.id
-    name                VARCHAR NOT NULL,
-    locale              TEXT,
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    type                INTEGER, -- references place_alias_type.id
-    sort_name           VARCHAR NOT NULL,
-    begin_date_year     SMALLINT,
-    begin_date_month    SMALLINT,
-    begin_date_day      SMALLINT,
-    end_date_year       SMALLINT,
-    end_date_month      SMALLINT,
-    end_date_day        SMALLINT,
-    primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
-    ended               BOOLEAN NOT NULL DEFAULT FALSE
-      CHECK (
-        (
-          -- If any end date fields are not null, then ended must be true
-          (end_date_year IS NOT NULL OR
-           end_date_month IS NOT NULL OR
-           end_date_day IS NOT NULL) AND
-          ended = TRUE
-        ) OR (
-          -- Otherwise, all end date fields must be null
-          (end_date_year IS NULL AND
-           end_date_month IS NULL AND
-           end_date_day IS NULL)
-        )
-      ),
-    CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),
-    CONSTRAINT search_hints_are_empty
-      CHECK (
-        (type <> 2) OR (
-          type = 2 AND sort_name = name AND
-          begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND
-          end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND
-          primary_for_locale IS FALSE AND locale IS NULL
-        )
-      )
-);
+-- CREATE TABLE place_alias ( -- replicate (verbose)
+--     id                  SERIAL,
+--     place               INTEGER NOT NULL, -- references place.id
+--     name                VARCHAR NOT NULL,
+--     locale              TEXT,
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     type                INTEGER, -- references place_alias_type.id
+--     sort_name           VARCHAR NOT NULL,
+--     begin_date_year     SMALLINT,
+--     begin_date_month    SMALLINT,
+--     begin_date_day      SMALLINT,
+--     end_date_year       SMALLINT,
+--     end_date_month      SMALLINT,
+--     end_date_day        SMALLINT,
+--     primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
+--     ended               BOOLEAN NOT NULL DEFAULT FALSE
+--       CHECK (
+--         (
+--           -- If any end date fields are not null, then ended must be true
+--           (end_date_year IS NOT NULL OR
+--            end_date_month IS NOT NULL OR
+--            end_date_day IS NOT NULL) AND
+--           ended = TRUE
+--         ) OR (
+--           -- Otherwise, all end date fields must be null
+--           (end_date_year IS NULL AND
+--            end_date_month IS NULL AND
+--            end_date_day IS NULL)
+--         )
+--       ),
+--     CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),
+--     CONSTRAINT search_hints_are_empty
+--       CHECK (
+--         (type <> 2) OR (
+--           type = 2 AND sort_name = name AND
+--           begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND
+--           end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND
+--           primary_for_locale IS FALSE AND locale IS NULL
+--         )
+--       )
+-- );
 
 -- CREATE TABLE place_alias_type ( -- replicate
 --     id                  SERIAL,
@@ -2305,10 +2305,10 @@ CREATE TABLE place_alias ( -- replicate (verbose)
 --     gid                 uuid NOT NULL
 -- );
 
-CREATE TABLE place_annotation ( -- replicate (verbose)
-    place               INTEGER NOT NULL, -- PK, references place.id
-    annotation          INTEGER NOT NULL -- PK, references annotation.id
-);
+-- CREATE TABLE place_annotation ( -- replicate (verbose)
+--     place               INTEGER NOT NULL, -- PK, references place.id
+--     annotation          INTEGER NOT NULL -- PK, references annotation.id
+-- );
 
 -- CREATE TABLE place_gid_redirect ( -- replicate (verbose)
 --     gid                 UUID NOT NULL, -- PK
@@ -2323,13 +2323,13 @@ CREATE TABLE place_annotation ( -- replicate (verbose)
 --     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 -- );
 
-CREATE TABLE place_tag_raw
-(
-    place               INTEGER NOT NULL, -- PK, references place.id
-    editor              INTEGER NOT NULL, -- PK, references editor.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
-);
+-- CREATE TABLE place_tag_raw
+-- (
+--     place               INTEGER NOT NULL, -- PK, references place.id
+--     editor              INTEGER NOT NULL, -- PK, references editor.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
+-- );
 
 -- CREATE TABLE place_type ( -- replicate
 --     id                  SERIAL, -- PK
@@ -2340,12 +2340,12 @@ CREATE TABLE place_tag_raw
 --     gid                 uuid NOT NULL
 -- );
 
-CREATE TABLE replication_control ( -- replicate
-    id                              SERIAL,
-    current_schema_sequence         INTEGER NOT NULL,
-    current_replication_sequence    INTEGER,
-    last_replication_date           TIMESTAMP WITH TIME ZONE
-);
+-- CREATE TABLE replication_control ( -- replicate
+--     id                              SERIAL,
+--     current_schema_sequence         INTEGER NOT NULL,
+--     current_replication_sequence    INTEGER,
+--     last_replication_date           TIMESTAMP WITH TIME ZONE
+-- );
 
 -- CREATE TABLE recording ( -- replicate (verbose)
 --     id                  SERIAL,
@@ -2368,39 +2368,39 @@ CREATE TABLE replication_control ( -- replicate
 --     gid                 uuid NOT NULL
 -- );
 
-CREATE TABLE recording_alias ( -- replicate (verbose)
-    id                  SERIAL, --PK
-    recording           INTEGER NOT NULL, -- references recording.id
-    name                VARCHAR NOT NULL,
-    locale              TEXT,
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >=0),
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    type                INTEGER, -- references recording_alias_type.id
-    sort_name           VARCHAR NOT NULL,
-    begin_date_year     SMALLINT,
-    begin_date_month    SMALLINT,
-    begin_date_day      SMALLINT,
-    end_date_year       SMALLINT,
-    end_date_month      SMALLINT,
-    end_date_day        SMALLINT,
-    primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
-    ended               BOOLEAN NOT NULL DEFAULT FALSE
-      CHECK (
-        (
-          -- If any end date fields are not null, then ended must be true
-          (end_date_year IS NOT NULL OR
-           end_date_month IS NOT NULL OR
-           end_date_day IS NOT NULL) AND
-          ended = TRUE
-        ) OR (
-          -- Otherwise, all end date fields must be null
-          (end_date_year IS NULL AND
-           end_date_month IS NULL AND
-           end_date_day IS NULL)
-        )
-      ),
-             CONSTRAINT primary_check
-                 CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)));
+-- CREATE TABLE recording_alias ( -- replicate (verbose)
+--     id                  SERIAL, --PK
+--     recording           INTEGER NOT NULL, -- references recording.id
+--     name                VARCHAR NOT NULL,
+--     locale              TEXT,
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >=0),
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     type                INTEGER, -- references recording_alias_type.id
+--     sort_name           VARCHAR NOT NULL,
+--     begin_date_year     SMALLINT,
+--     begin_date_month    SMALLINT,
+--     begin_date_day      SMALLINT,
+--     end_date_year       SMALLINT,
+--     end_date_month      SMALLINT,
+--     end_date_day        SMALLINT,
+--     primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
+--     ended               BOOLEAN NOT NULL DEFAULT FALSE
+--       CHECK (
+--         (
+--           -- If any end date fields are not null, then ended must be true
+--           (end_date_year IS NOT NULL OR
+--            end_date_month IS NOT NULL OR
+--            end_date_day IS NOT NULL) AND
+--           ended = TRUE
+--         ) OR (
+--           -- Otherwise, all end date fields must be null
+--           (end_date_year IS NULL AND
+--            end_date_month IS NULL AND
+--            end_date_day IS NULL)
+--         )
+--       ),
+--              CONSTRAINT primary_check
+--                  CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)));
 
 -- CREATE TABLE recording_rating_raw
 -- (
@@ -2409,13 +2409,13 @@ CREATE TABLE recording_alias ( -- replicate (verbose)
 --     rating              SMALLINT NOT NULL CHECK (rating >= 0 AND rating <= 100)
 -- );
 
-CREATE TABLE recording_tag_raw
-(
-    recording           INTEGER NOT NULL, -- PK, references recording.id
-    editor              INTEGER NOT NULL, -- PK, references editor.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
-);
+-- CREATE TABLE recording_tag_raw
+-- (
+--     recording           INTEGER NOT NULL, -- PK, references recording.id
+--     editor              INTEGER NOT NULL, -- PK, references editor.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
+-- );
 
 CREATE TABLE recording_annotation ( -- replicate (verbose)
     recording           INTEGER NOT NULL, -- PK, references recording.id
@@ -2467,39 +2467,39 @@ CREATE TABLE recording_annotation ( -- replicate (verbose)
 --     gid                 uuid NOT NULL
 -- );
 
-CREATE TABLE release_alias ( -- replicate (verbose)
-    id                  SERIAL, --PK
-    release             INTEGER NOT NULL, -- references release.id
-    name                VARCHAR NOT NULL,
-    locale              TEXT,
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >=0),
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    type                INTEGER, -- references release_alias_type.id
-    sort_name           VARCHAR NOT NULL,
-    begin_date_year     SMALLINT,
-    begin_date_month    SMALLINT,
-    begin_date_day      SMALLINT,
-    end_date_year       SMALLINT,
-    end_date_month      SMALLINT,
-    end_date_day        SMALLINT,
-    primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
-    ended               BOOLEAN NOT NULL DEFAULT FALSE
-      CHECK (
-        (
-          -- If any end date fields are not null, then ended must be true
-          (end_date_year IS NOT NULL OR
-           end_date_month IS NOT NULL OR
-           end_date_day IS NOT NULL) AND
-          ended = TRUE
-        ) OR (
-          -- Otherwise, all end date fields must be null
-          (end_date_year IS NULL AND
-           end_date_month IS NULL AND
-           end_date_day IS NULL)
-        )
-      ),
-             CONSTRAINT primary_check
-                 CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)));
+-- CREATE TABLE release_alias ( -- replicate (verbose)
+--     id                  SERIAL, --PK
+--     release             INTEGER NOT NULL, -- references release.id
+--     name                VARCHAR NOT NULL,
+--     locale              TEXT,
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >=0),
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     type                INTEGER, -- references release_alias_type.id
+--     sort_name           VARCHAR NOT NULL,
+--     begin_date_year     SMALLINT,
+--     begin_date_month    SMALLINT,
+--     begin_date_day      SMALLINT,
+--     end_date_year       SMALLINT,
+--     end_date_month      SMALLINT,
+--     end_date_day        SMALLINT,
+--     primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
+--     ended               BOOLEAN NOT NULL DEFAULT FALSE
+--       CHECK (
+--         (
+--           -- If any end date fields are not null, then ended must be true
+--           (end_date_year IS NOT NULL OR
+--            end_date_month IS NOT NULL OR
+--            end_date_day IS NOT NULL) AND
+--           ended = TRUE
+--         ) OR (
+--           -- Otherwise, all end date fields must be null
+--           (end_date_year IS NULL AND
+--            end_date_month IS NULL AND
+--            end_date_day IS NULL)
+--         )
+--       ),
+--              CONSTRAINT primary_check
+--                  CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)));
 
 CREATE TABLE release_country ( -- replicate (verbose)
   release INTEGER NOT NULL,  -- PK, references release.id
@@ -2529,13 +2529,13 @@ CREATE TABLE release_unknown_country ( -- replicate (verbose)
 --     comment             VARCHAR(255) NOT NULL DEFAULT ''
 -- );
 
-CREATE TABLE release_tag_raw
-(
-    release             INTEGER NOT NULL, -- PK, references release.id
-    editor              INTEGER NOT NULL, -- PK, references editor.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
-);
+-- CREATE TABLE release_tag_raw
+-- (
+--     release             INTEGER NOT NULL, -- PK, references release.id
+--     editor              INTEGER NOT NULL, -- PK, references editor.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
+-- );
 
 CREATE TABLE release_annotation ( -- replicate (verbose)
     release             INTEGER NOT NULL, -- PK, references release.id
@@ -2619,39 +2619,39 @@ CREATE TABLE release_label ( -- replicate (verbose)
 --     gid                 uuid NOT NULL
 -- );
 
-CREATE TABLE release_group_alias ( -- replicate (verbose)
-    id                  SERIAL, --PK
-    release_group       INTEGER NOT NULL, -- references release_group.id
-    name                VARCHAR NOT NULL,
-    locale              TEXT,
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >=0),
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    type                INTEGER, -- references release_group_alias_type.id
-    sort_name           VARCHAR NOT NULL,
-    begin_date_year     SMALLINT,
-    begin_date_month    SMALLINT,
-    begin_date_day      SMALLINT,
-    end_date_year       SMALLINT,
-    end_date_month      SMALLINT,
-    end_date_day        SMALLINT,
-    primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
-    ended               BOOLEAN NOT NULL DEFAULT FALSE
-      CHECK (
-        (
-          -- If any end date fields are not null, then ended must be true
-          (end_date_year IS NOT NULL OR
-           end_date_month IS NOT NULL OR
-           end_date_day IS NOT NULL) AND
-          ended = TRUE
-        ) OR (
-          -- Otherwise, all end date fields must be null
-          (end_date_year IS NULL AND
-           end_date_month IS NULL AND
-           end_date_day IS NULL)
-        )
-      ),
-             CONSTRAINT primary_check
-                 CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)));
+-- CREATE TABLE release_group_alias ( -- replicate (verbose)
+--     id                  SERIAL, --PK
+--     release_group       INTEGER NOT NULL, -- references release_group.id
+--     name                VARCHAR NOT NULL,
+--     locale              TEXT,
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >=0),
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     type                INTEGER, -- references release_group_alias_type.id
+--     sort_name           VARCHAR NOT NULL,
+--     begin_date_year     SMALLINT,
+--     begin_date_month    SMALLINT,
+--     begin_date_day      SMALLINT,
+--     end_date_year       SMALLINT,
+--     end_date_month      SMALLINT,
+--     end_date_day        SMALLINT,
+--     primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
+--     ended               BOOLEAN NOT NULL DEFAULT FALSE
+--       CHECK (
+--         (
+--           -- If any end date fields are not null, then ended must be true
+--           (end_date_year IS NOT NULL OR
+--            end_date_month IS NOT NULL OR
+--            end_date_day IS NOT NULL) AND
+--           ended = TRUE
+--         ) OR (
+--           -- Otherwise, all end date fields must be null
+--           (end_date_year IS NULL AND
+--            end_date_month IS NULL AND
+--            end_date_day IS NULL)
+--         )
+--       ),
+--              CONSTRAINT primary_check
+--                  CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)));
 
 CREATE TABLE release_group_rating_raw
 (
@@ -2660,13 +2660,13 @@ CREATE TABLE release_group_rating_raw
     rating              SMALLINT NOT NULL CHECK (rating >= 0 AND rating <= 100)
 );
 
-CREATE TABLE release_group_tag_raw
-(
-    release_group       INTEGER NOT NULL, -- PK, references release_group.id
-    editor              INTEGER NOT NULL, -- PK, references editor.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
-);
+-- CREATE TABLE release_group_tag_raw
+-- (
+--     release_group       INTEGER NOT NULL, -- PK, references release_group.id
+--     editor              INTEGER NOT NULL, -- PK, references editor.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
+-- );
 
 CREATE TABLE release_group_annotation ( -- replicate (verbose)
     release_group       INTEGER NOT NULL, -- PK, references release_group.id
@@ -2774,48 +2774,48 @@ CREATE TABLE release_group_secondary_type_join ( -- replicate (verbose)
 --     gid                 uuid NOT NULL
 -- );
 
-CREATE TABLE series_alias ( -- replicate (verbose)
-    id                  SERIAL, -- PK
-    series              INTEGER NOT NULL, -- references series.id
-    name                VARCHAR NOT NULL,
-    locale              TEXT,
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    type                INTEGER, -- references series_alias_type.id
-    sort_name           VARCHAR NOT NULL,
-    begin_date_year     SMALLINT,
-    begin_date_month    SMALLINT,
-    begin_date_day      SMALLINT,
-    end_date_year       SMALLINT,
-    end_date_month      SMALLINT,
-    end_date_day        SMALLINT,
-    primary_for_locale  BOOLEAN NOT NULL DEFAULT FALSE,
-    ended               BOOLEAN NOT NULL DEFAULT FALSE
-      CHECK (
-        (
-          -- If any end date fields are not null, then ended must be true
-          (end_date_year IS NOT NULL OR
-           end_date_month IS NOT NULL OR
-           end_date_day IS NOT NULL) AND
-          ended = TRUE
-        ) OR (
-          -- Otherwise, all end date fields must be null
-          (end_date_year IS NULL AND
-           end_date_month IS NULL AND
-           end_date_day IS NULL)
-        )
-      ),
-    CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),
-    CONSTRAINT search_hints_are_empty
-      CHECK (
-        (type <> 2) OR (
-          type = 2 AND sort_name = name AND
-          begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND
-          end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND
-          primary_for_locale IS FALSE AND locale IS NULL
-        )
-      )
-);
+-- CREATE TABLE series_alias ( -- replicate (verbose)
+--     id                  SERIAL, -- PK
+--     series              INTEGER NOT NULL, -- references series.id
+--     name                VARCHAR NOT NULL,
+--     locale              TEXT,
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     type                INTEGER, -- references series_alias_type.id
+--     sort_name           VARCHAR NOT NULL,
+--     begin_date_year     SMALLINT,
+--     begin_date_month    SMALLINT,
+--     begin_date_day      SMALLINT,
+--     end_date_year       SMALLINT,
+--     end_date_month      SMALLINT,
+--     end_date_day        SMALLINT,
+--     primary_for_locale  BOOLEAN NOT NULL DEFAULT FALSE,
+--     ended               BOOLEAN NOT NULL DEFAULT FALSE
+--       CHECK (
+--         (
+--           -- If any end date fields are not null, then ended must be true
+--           (end_date_year IS NOT NULL OR
+--            end_date_month IS NOT NULL OR
+--            end_date_day IS NOT NULL) AND
+--           ended = TRUE
+--         ) OR (
+--           -- Otherwise, all end date fields must be null
+--           (end_date_year IS NULL AND
+--            end_date_month IS NULL AND
+--            end_date_day IS NULL)
+--         )
+--       ),
+--     CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),
+--     CONSTRAINT search_hints_are_empty
+--       CHECK (
+--         (type <> 2) OR (
+--           type = 2 AND sort_name = name AND
+--           begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND
+--           end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND
+--           primary_for_locale IS FALSE AND locale IS NULL
+--         )
+--       )
+-- );
 
 CREATE TABLE series_annotation ( -- replicate (verbose)
     series              INTEGER NOT NULL, -- PK, references series.id
@@ -2829,12 +2829,12 @@ CREATE TABLE series_annotation ( -- replicate (verbose)
 --     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 -- );
 
-CREATE TABLE series_tag_raw (
-    series              INTEGER NOT NULL, -- PK, references series.id
-    editor              INTEGER NOT NULL, -- PK, references editor.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
-);
+-- CREATE TABLE series_tag_raw (
+--     series              INTEGER NOT NULL, -- PK, references series.id
+--     editor              INTEGER NOT NULL, -- PK, references editor.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
+-- );
 
 CREATE TABLE tag ( -- replicate (verbose)
     id                  SERIAL,
@@ -2927,13 +2927,13 @@ CREATE TABLE work_rating_raw
     rating              SMALLINT NOT NULL CHECK (rating >= 0 AND rating <= 100)
 );
 
-CREATE TABLE work_tag_raw
-(
-    work                INTEGER NOT NULL, -- PK, references work.id
-    editor              INTEGER NOT NULL, -- PK, references editor.id
-    tag                 INTEGER NOT NULL, -- PK, references tag.id
-    is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
-);
+-- CREATE TABLE work_tag_raw
+-- (
+--     work                INTEGER NOT NULL, -- PK, references work.id
+--     editor              INTEGER NOT NULL, -- PK, references editor.id
+--     tag                 INTEGER NOT NULL, -- PK, references tag.id
+--     is_upvote           BOOLEAN NOT NULL DEFAULT TRUE
+-- );
 
 -- CREATE TABLE work_alias_type ( -- replicate
 --     id                  SERIAL,
@@ -2944,48 +2944,48 @@ CREATE TABLE work_tag_raw
 --     gid                 uuid NOT NULL
 -- );
 
-CREATE TABLE work_alias ( -- replicate (verbose)
-    id                  SERIAL,
-    work                INTEGER NOT NULL, -- references work.id
-    name                VARCHAR NOT NULL,
-    locale              TEXT,
-    edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
-    last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    type                INTEGER, -- references work_alias_type.id
-    sort_name           VARCHAR NOT NULL,
-    begin_date_year     SMALLINT,
-    begin_date_month    SMALLINT,
-    begin_date_day      SMALLINT,
-    end_date_year       SMALLINT,
-    end_date_month      SMALLINT,
-    end_date_day        SMALLINT,
-    primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
-    ended               BOOLEAN NOT NULL DEFAULT FALSE
-      CHECK (
-        (
-          -- If any end date fields are not null, then ended must be true
-          (end_date_year IS NOT NULL OR
-           end_date_month IS NOT NULL OR
-           end_date_day IS NOT NULL) AND
-          ended = TRUE
-        ) OR (
-          -- Otherwise, all end date fields must be null
-          (end_date_year IS NULL AND
-           end_date_month IS NULL AND
-           end_date_day IS NULL)
-        )
-      ),
-    CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),
-    CONSTRAINT search_hints_are_empty
-      CHECK (
-        (type <> 2) OR (
-          type = 2 AND sort_name = name AND
-          begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND
-          end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND
-          primary_for_locale IS FALSE AND locale IS NULL
-        )
-      )
-);
+-- CREATE TABLE work_alias ( -- replicate (verbose)
+--     id                  SERIAL,
+--     work                INTEGER NOT NULL, -- references work.id
+--     name                VARCHAR NOT NULL,
+--     locale              TEXT,
+--     edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
+--     last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+--     type                INTEGER, -- references work_alias_type.id
+--     sort_name           VARCHAR NOT NULL,
+--     begin_date_year     SMALLINT,
+--     begin_date_month    SMALLINT,
+--     begin_date_day      SMALLINT,
+--     end_date_year       SMALLINT,
+--     end_date_month      SMALLINT,
+--     end_date_day        SMALLINT,
+--     primary_for_locale  BOOLEAN NOT NULL DEFAULT false,
+--     ended               BOOLEAN NOT NULL DEFAULT FALSE
+--       CHECK (
+--         (
+--           -- If any end date fields are not null, then ended must be true
+--           (end_date_year IS NOT NULL OR
+--            end_date_month IS NOT NULL OR
+--            end_date_day IS NOT NULL) AND
+--           ended = TRUE
+--         ) OR (
+--           -- Otherwise, all end date fields must be null
+--           (end_date_year IS NULL AND
+--            end_date_month IS NULL AND
+--            end_date_day IS NULL)
+--         )
+--       ),
+--     CONSTRAINT primary_check CHECK ((locale IS NULL AND primary_for_locale IS FALSE) OR (locale IS NOT NULL)),
+--     CONSTRAINT search_hints_are_empty
+--       CHECK (
+--         (type <> 2) OR (
+--           type = 2 AND sort_name = name AND
+--           begin_date_year IS NULL AND begin_date_month IS NULL AND begin_date_day IS NULL AND
+--           end_date_year IS NULL AND end_date_month IS NULL AND end_date_day IS NULL AND
+--           primary_for_locale IS FALSE AND locale IS NULL
+--         )
+--       )
+-- );
 
 CREATE TABLE work_annotation ( -- replicate (verbose)
     work                INTEGER NOT NULL, -- PK, references work.id

@@ -57,64 +57,25 @@ The :code:`event_alias` table is defined in the MusicBrainz Server as:
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from .event_alias_type import event_alias_type
-
-
-def pre_save_event_alias(sender, instance, **kwargs):
-    # `ended` must be True if any of the `end_date_*` fields has a value:
-    instance.ended = (
-        instance.end_date_year is not None or
-        instance.end_date_month is not None or
-        instance.end_date_day is not None)
-
-    # `primary_for_locale` cannot be True if `locale` has no value:
-    if instance.locale is None:
-        instance.primary_for_locale = False
-
-    # if `event_alias` is a search hint, some fields should have specific values:
-    if instance.type.name == event_alias_type.SEARCH_HINT:
-        instance.sort_name = instance.name
-        instance.begin_date_year = None
-        instance.begin_date_month = None
-        instance.begin_date_day = None
-        instance.end_date_year = None
-        instance.end_date_month = None
-        instance.end_date_day = None
-        instance.primary_for_locale = False
-        instance.locale = None
+from .abstract__model_alias import abstract__model_alias
+from ..signals import pre_save_model_alias
 
 
 @python_2_unicode_compatible
-class event_alias(models.Model):
+class event_alias(abstract__model_alias):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
-    :param event: references :class:`.event`
+    :param event: References :class:`.event`
+    :param type: References :class:`event_alias_type`.
     """
 
-    id = models.AutoField(primary_key=True)
     event = models.ForeignKey('event')
-    name = models.CharField(max_length=255)
-    locale = models.TextField(null=True)
-    edits_pending = models.PositiveIntegerField(default=0)
-    last_updated = models.DateTimeField(auto_now=True)
     type = models.ForeignKey('event_alias_type')
-    sort_name = models.CharField(max_length=255)
-    begin_date_year = models.SmallIntegerField(null=True)
-    begin_date_month = models.SmallIntegerField(null=True)
-    begin_date_day = models.SmallIntegerField(null=True)
-    end_date_year = models.SmallIntegerField(null=True)
-    end_date_month = models.SmallIntegerField(null=True)
-    end_date_day = models.SmallIntegerField(null=True)
-    primary_for_locale = models.BooleanField(default=False)
-    ended = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.name
 
     class Meta:
         db_table = 'event_alias'
 
 
-models.signals.pre_save.connect(pre_save_event_alias, sender=event_alias)
+models.signals.pre_save.connect(pre_save_model_alias, sender=event_alias)

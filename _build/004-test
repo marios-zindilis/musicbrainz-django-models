@@ -40,7 +40,7 @@ done
 flake8 . --exclude musicbrainz_django_models/migrations --max-line-length 120
 [ $? -ne 0 ] && echo "flake8 failed" && exit 1
 
-coverage run --source='.' ./manage.py test $app.tests --verbosity 2 --failfast
+python3-coverage run --source='.' ./manage.py test $app.tests --verbosity 2 --failfast
 [ "$?" -ne 0 ] && exit
-coverage report
-coverage html
+python3-coverage report
+python3-coverage html

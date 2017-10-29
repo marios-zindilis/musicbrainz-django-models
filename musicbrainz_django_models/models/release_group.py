@@ -47,7 +47,7 @@ class release_group(models.Model):
     gid = models.UUIDField(default=uuid.uuid4)
     name = models.CharField(max_length=255)
     artist_credit = models.ForeignKey('artist_credit')
-    type = models.ForeignKey('release_group_primary_type')
+    type = models.ForeignKey('release_group_primary_type', null=True)
     comment = models.CharField(max_length=255, default='')
     edits_pending = models.PositiveIntegerField(default=0)
     last_updated = models.DateTimeField(auto_now=True)

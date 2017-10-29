@@ -37,7 +37,7 @@ class test_model_alias_type(TestCase):
         for model in self.MODELS:
             self.subject = model(name=self.subject_name)
             self.assertIsInstance(self.subject, model)
-            self.assertEquals(str(self.subject), self.subject.name)
+            self.assertEquals(str(self.subject), self.subject_name)
 
             if hasattr(self.subject, 'NAME_CHOICES_LIST'):
                 with self.assertRaises(ValidationError):

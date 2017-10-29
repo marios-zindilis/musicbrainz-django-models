@@ -58,60 +58,21 @@ The :code:`label_alias` table is defined in the MusicBrainz Server as:
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-
-
-def pre_save_label_alias(sender, instance, **kwargs):
-    instance.ended = (
-        instance.end_date_year is not None or
-        instance.end_date_month is not None or
-        instance.end_date_day is not None)
-
-    # primary_for_locale cannot be True if locale is empty:
-    if instance.locale is None:
-        instance.primary_for_locale = False
-
-    from .label_alias_type import label_alias_type
-    if instance.type and instance.type.name == label_alias_type.SEARCH_HINT:
-        instance.sort_name = instance.name
-        instance.begin_date_year = None
-        instance.begin_date_month = None
-        instance.begin_date_day = None
-        instance.end_date_year = None
-        instance.end_date_month = None
-        instance.end_date_day = None
-        instance.primary_for_locale = False
-        instance.locale = None
+from .abstract__model_alias import abstract__model_alias
+from ..signals import pre_save_model_alias
 
 
 @python_2_unicode_compatible
-class label_alias(models.Model):
+class label_alias(abstract__model_alias):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.
 
-    :param str name: `max_length` is mandatory in Django models but not in
-        PostgreSQL.
-    :param int edits_pending: the MusicBrainz Server uses a PostgreSQL `check`
-        to validate that the value is a positive integer. In Django, this is
-        done with `models.PositiveIntegerField()`.
+    :param label: References :class:`label`.
     """
 
-    id = models.AutoField(primary_key=True)
     label = models.ForeignKey('label')
-    name = models.CharField(max_length=255)
-    locale = models.TextField(null=True)
-    edits_pending = models.PositiveIntegerField(default=0)
-    last_updated = models.DateTimeField(auto_now=True)
     type = models.ForeignKey('label_alias_type', null=True)
-    sort_name = models.CharField(max_length=255)
-    begin_date_year = models.SmallIntegerField(null=True)
-    begin_date_month = models.SmallIntegerField(null=True)
-    begin_date_day = models.SmallIntegerField(null=True)
-    end_date_year = models.SmallIntegerField(null=True)
-    end_date_month = models.SmallIntegerField(null=True)
-    end_date_day = models.SmallIntegerField(null=True)
-    primary_for_locale = models.BooleanField(default=False)
-    ended = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -120,4 +81,4 @@ class label_alias(models.Model):
         db_table = 'label_alias'
 
 
-models.signals.pre_save.connect(pre_save_label_alias, sender=label_alias)
+models.signals.pre_save.connect(pre_save_model_alias, sender=label_alias)
