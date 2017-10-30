@@ -94,7 +94,7 @@ db.sqlite3
 
 # Django migration files are irrelevant to this project:
 musicbrainz_django_models/migrations/
-_etc
+_etc*
 
 # PyCharm:
 .idea

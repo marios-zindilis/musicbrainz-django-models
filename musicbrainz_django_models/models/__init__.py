@@ -264,6 +264,28 @@ from .release_alias import release_alias
 from .release_group_alias import release_group_alias
 from .series_alias import series_alias
 from .work_alias import work_alias
+from .recording_annotation import recording_annotation
+from .release_annotation import release_annotation
+from .release_group_annotation import release_group_annotation
+from .series_annotation import series_annotation
+from .work_annotation import work_annotation
+from .tag_relation import tag_relation
+from .track_raw import track_raw
+from .medium_index import medium_index
+from .release_group_rating_raw import release_group_rating_raw
+from .work_rating_raw import work_rating_raw
+from .release_country import release_country
+from .release_unknown_country import release_unknown_country
+from .release_meta import release_meta
+from .release_coverart import release_coverart
+from .release_label import release_label
+from .release_group_meta import release_group_meta
+from .release_group_secondary_type_join import release_group_secondary_type_join
+from .work_attribute_type import work_attribute_type
+from .work_attribute_type_allowed_value import work_attribute_type_allowed_value
+from .work_attribute import work_attribute
+from .work_language import work_language
+from .old_editor_name import old_editor_name
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -533,4 +555,26 @@ __all__ = [
     release_group_alias,
     series_alias,
     work_alias,
+    recording_annotation,
+    release_annotation,
+    release_group_annotation,
+    series_annotation,
+    work_annotation,
+    tag_relation,
+    track_raw,
+    medium_index,
+    release_group_rating_raw,
+    work_rating_raw,
+    release_country,
+    release_unknown_country,
+    release_meta,
+    release_coverart,
+    release_label,
+    release_group_meta,
+    release_group_secondary_type_join,
+    work_attribute_type,
+    work_attribute_type_allowed_value,
+    work_attribute,
+    work_language,
+    old_editor_name,
 ]

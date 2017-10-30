@@ -16,11 +16,12 @@ Models
 
    abstract__editor_collection_model
    abstract__model_alias
-   abstract__model_alias_type
    abstract__model_gid_redirect
    abstract__model_meta
+   abstract__model_rating_raw
    abstract__model_tag
    abstract__model_tag_raw
+   abstract__model_type
    alternative_medium
    alternative_medium_track
    alternative_release
@@ -228,6 +229,7 @@ Models
    l_work_work
    medium_cdtoc
    medium_format
+   medium_index
    medium
    orderable_link_type
    place_alias
@@ -240,6 +242,7 @@ Models
    place_type
    recording_alias
    recording_alias_type
+   recording_annotation
    recording_gid_redirect
    recording_meta
    recording
@@ -248,12 +251,15 @@ Models
    recording_tag_raw
    release_alias
    release_alias_type
+   release_annotation
    release_gid_redirect
    release_group_alias
    release_group_alias_type
+   release_group_annotation
    release_group_gid_redirect
    release_group_primary_type
    release_group
+   release_group_rating_raw
    release_group_secondary_type
    release_group_tag
    release_group_tag_raw
@@ -267,6 +273,7 @@ Models
    script
    series_alias
    series_alias_type
+   series_annotation
    series_gid_redirect
    series_ordering_type
    series
@@ -274,16 +281,20 @@ Models
    series_tag_raw
    series_type
    tag
+   tag_relation
    track_gid_redirect
    track
+   track_raw
    url_gid_redirect
    url
    vote
    work_alias
    work_alias_type
+   work_annotation
    work_gid_redirect
    work_meta
    work
+   work_rating_raw
    work_tag
    work_tag_raw
    work_type

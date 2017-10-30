@@ -208,7 +208,9 @@ from ..models import l_url_work
 from ..models import l_work_work
 from ..models import medium_cdtoc
 from ..models import medium_format
+from ..models import medium_index
 from ..models import medium
+from ..models import old_editor_name
 from ..models import orderable_link_type
 from ..models import place_alias
 from ..models import place_alias_type
@@ -220,6 +222,7 @@ from ..models import place_tag_raw
 from ..models import place_type
 from ..models import recording_alias
 from ..models import recording_alias_type
+from ..models import recording_annotation
 from ..models import recording_gid_redirect
 from ..models import recording_meta
 from ..models import recording
@@ -228,25 +231,36 @@ from ..models import recording_tag
 from ..models import recording_tag_raw
 from ..models import release_alias
 from ..models import release_alias_type
+from ..models import release_annotation
+from ..models import release_country
+from ..models import release_coverart
 from ..models import release_gid_redirect
 from ..models import release_group_alias
 from ..models import release_group_alias_type
+from ..models import release_group_annotation
 from ..models import release_group_gid_redirect
+from ..models import release_group_meta
 from ..models import release_group_primary_type
 from ..models import release_group
+from ..models import release_group_rating_raw
+from ..models import release_group_secondary_type_join
 from ..models import release_group_secondary_type
 from ..models import release_group_tag
 from ..models import release_group_tag_raw
+from ..models import release_label
+from ..models import release_meta
 from ..models import release_packaging
 from ..models import release
 from ..models import release_raw
 from ..models import release_status
 from ..models import release_tag
 from ..models import release_tag_raw
+from ..models import release_unknown_country
 from ..models import replication_control
 from ..models import script
 from ..models import series_alias
 from ..models import series_alias_type
+from ..models import series_annotation
 from ..models import series_gid_redirect
 from ..models import series_ordering_type
 from ..models import series
@@ -254,16 +268,24 @@ from ..models import series_tag
 from ..models import series_tag_raw
 from ..models import series_type
 from ..models import tag
+from ..models import tag_relation
 from ..models import track_gid_redirect
 from ..models import track
+from ..models import track_raw
 from ..models import url_gid_redirect
 from ..models import url
 from ..models import vote
 from ..models import work_alias
 from ..models import work_alias_type
+from ..models import work_annotation
+from ..models import work_attribute
+from ..models import work_attribute_type_allowed_value
+from ..models import work_attribute_type
 from ..models import work_gid_redirect
+from ..models import work_language
 from ..models import work_meta
 from ..models import work
+from ..models import work_rating_raw
 from ..models import work_tag
 from ..models import work_tag_raw
 from ..models import work_type
@@ -475,7 +497,9 @@ admin.site.register(l_url_work)
 admin.site.register(l_work_work)
 admin.site.register(medium_cdtoc)
 admin.site.register(medium_format)
+admin.site.register(medium_index)
 admin.site.register(medium)
+admin.site.register(old_editor_name)
 admin.site.register(orderable_link_type)
 admin.site.register(place_alias)
 admin.site.register(place_alias_type)
@@ -487,6 +511,7 @@ admin.site.register(place_tag_raw)
 admin.site.register(place_type)
 admin.site.register(recording_alias)
 admin.site.register(recording_alias_type)
+admin.site.register(recording_annotation)
 admin.site.register(recording_gid_redirect)
 admin.site.register(recording_meta)
 admin.site.register(recording)
@@ -495,25 +520,36 @@ admin.site.register(recording_tag)
 admin.site.register(recording_tag_raw)
 admin.site.register(release_alias)
 admin.site.register(release_alias_type)
+admin.site.register(release_annotation)
+admin.site.register(release_country)
+admin.site.register(release_coverart)
 admin.site.register(release_gid_redirect)
 admin.site.register(release_group_alias)
 admin.site.register(release_group_alias_type)
+admin.site.register(release_group_annotation)
 admin.site.register(release_group_gid_redirect)
+admin.site.register(release_group_meta)
 admin.site.register(release_group_primary_type)
 admin.site.register(release_group)
+admin.site.register(release_group_rating_raw)
+admin.site.register(release_group_secondary_type_join)
 admin.site.register(release_group_secondary_type)
 admin.site.register(release_group_tag)
 admin.site.register(release_group_tag_raw)
+admin.site.register(release_label)
+admin.site.register(release_meta)
 admin.site.register(release_packaging)
 admin.site.register(release)
 admin.site.register(release_raw)
 admin.site.register(release_status)
 admin.site.register(release_tag)
 admin.site.register(release_tag_raw)
+admin.site.register(release_unknown_country)
 admin.site.register(replication_control)
 admin.site.register(script)
 admin.site.register(series_alias)
 admin.site.register(series_alias_type)
+admin.site.register(series_annotation)
 admin.site.register(series_gid_redirect)
 admin.site.register(series_ordering_type)
 admin.site.register(series)
@@ -521,16 +557,24 @@ admin.site.register(series_tag)
 admin.site.register(series_tag_raw)
 admin.site.register(series_type)
 admin.site.register(tag)
+admin.site.register(tag_relation)
 admin.site.register(track_gid_redirect)
 admin.site.register(track)
+admin.site.register(track_raw)
 admin.site.register(url_gid_redirect)
 admin.site.register(url)
 admin.site.register(vote)
 admin.site.register(work_alias)
 admin.site.register(work_alias_type)
+admin.site.register(work_annotation)
+admin.site.register(work_attribute)
+admin.site.register(work_attribute_type_allowed_value)
+admin.site.register(work_attribute_type)
 admin.site.register(work_gid_redirect)
+admin.site.register(work_language)
 admin.site.register(work_meta)
 admin.site.register(work)
+admin.site.register(work_rating_raw)
 admin.site.register(work_tag)
 admin.site.register(work_tag_raw)
 admin.site.register(work_type)

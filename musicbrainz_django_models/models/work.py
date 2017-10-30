@@ -18,7 +18,6 @@ The `work` table is defined in the MusicBrainz Server as:
         comment             VARCHAR(255) NOT NULL DEFAULT '',
         edits_pending       INTEGER NOT NULL DEFAULT 0 CHECK (edits_pending >= 0),
         last_updated        TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-        language            INTEGER  -- references language.id
     );
 
 """
@@ -48,7 +47,6 @@ class work(models.Model):
     comment = models.CharField(max_length=255, default='')
     edits_pending = models.PositiveIntegerField(default=0)
     last_updated = models.DateTimeField(auto_now=True)
-    language = models.ForeignKey('language')
 
     def __str__(self):
         return self.name
