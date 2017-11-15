@@ -10,6 +10,9 @@ from ..models import application
 from ..models import area_alias
 from ..models import area_alias_type
 from ..models import area_annotation
+from ..models import area_attribute
+from ..models import area_attribute_type_allowed_value
+from ..models import area_attribute_type
 from ..models import area_gid_redirect
 from ..models import area
 from ..models import area_tag
@@ -19,6 +22,9 @@ from ..models import artist_alias
 from ..models import artist_alias_type
 from .artist_alias_type_admin import artist_alias_type_admin
 from ..models import artist_annotation
+from ..models import artist_attribute
+from ..models import artist_attribute_type_allowed_value
+from ..models import artist_attribute_type
 from ..models import artist_credit_name
 from ..models import artist_credit
 from ..models import artist_gid_redirect
@@ -85,6 +91,9 @@ from ..models import edit_work
 from ..models import event_alias
 from ..models import event_alias_type
 from ..models import event_annotation
+from ..models import event_attribute
+from ..models import event_attribute_type_allowed_value
+from ..models import event_attribute_type
 from ..models import event_gid_redirect
 from ..models import event_meta
 from ..models import event
@@ -96,6 +105,9 @@ from ..models import gender
 from ..models import instrument_alias
 from ..models import instrument_alias_type
 from ..models import instrument_annotation
+from ..models import instrument_attribute
+from ..models import instrument_attribute_type_allowed_value
+from ..models import instrument_attribute_type
 from ..models import instrument_gid_redirect
 from ..models import instrument
 from ..models import instrument_tag
@@ -109,6 +121,9 @@ from ..models import iswc
 from ..models import label_alias
 from ..models import label_alias_type
 from ..models import label_annotation
+from ..models import label_attribute
+from ..models import label_attribute_type_allowed_value
+from ..models import label_attribute_type
 from ..models import label_gid_redirect
 from ..models import label_ipi
 from ..models import label_isni
@@ -206,6 +221,11 @@ from ..models import l_series_work
 from ..models import l_url_url
 from ..models import l_url_work
 from ..models import l_work_work
+from ..models import medium_attribute
+from ..models import medium_attribute_type_allowed_format
+from ..models import medium_attribute_type_allowed_value_allowed_format
+from ..models import medium_attribute_type_allowed_value
+from ..models import medium_attribute_type
 from ..models import medium_cdtoc
 from ..models import medium_format
 from ..models import medium_index
@@ -215,6 +235,9 @@ from ..models import orderable_link_type
 from ..models import place_alias
 from ..models import place_alias_type
 from ..models import place_annotation
+from ..models import place_attribute
+from ..models import place_attribute_type_allowed_value
+from ..models import place_attribute_type
 from ..models import place_gid_redirect
 from ..models import place
 from ..models import place_tag
@@ -223,6 +246,9 @@ from ..models import place_type
 from ..models import recording_alias
 from ..models import recording_alias_type
 from ..models import recording_annotation
+from ..models import recording_attribute
+from ..models import recording_attribute_type_allowed_value
+from ..models import recording_attribute_type
 from ..models import recording_gid_redirect
 from ..models import recording_meta
 from ..models import recording
@@ -232,12 +258,18 @@ from ..models import recording_tag_raw
 from ..models import release_alias
 from ..models import release_alias_type
 from ..models import release_annotation
+from ..models import release_attribute
+from ..models import release_attribute_type_allowed_value
+from ..models import release_attribute_type
 from ..models import release_country
 from ..models import release_coverart
 from ..models import release_gid_redirect
 from ..models import release_group_alias
 from ..models import release_group_alias_type
 from ..models import release_group_annotation
+from ..models import release_group_attribute
+from ..models import release_group_attribute_type_allowed_value
+from ..models import release_group_attribute_type
 from ..models import release_group_gid_redirect
 from ..models import release_group_meta
 from ..models import release_group_primary_type
@@ -261,6 +293,9 @@ from ..models import script
 from ..models import series_alias
 from ..models import series_alias_type
 from ..models import series_annotation
+from ..models import series_attribute
+from ..models import series_attribute_type_allowed_value
+from ..models import series_attribute_type
 from ..models import series_gid_redirect
 from ..models import series_ordering_type
 from ..models import series
@@ -300,6 +335,9 @@ admin.site.register(application)
 admin.site.register(area_alias)
 admin.site.register(area_alias_type)
 admin.site.register(area_annotation)
+admin.site.register(area_attribute)
+admin.site.register(area_attribute_type_allowed_value)
+admin.site.register(area_attribute_type)
 admin.site.register(area_gid_redirect)
 admin.site.register(area)
 admin.site.register(area_tag)
@@ -308,6 +346,9 @@ admin.site.register(area_type)
 admin.site.register(artist_alias)
 admin.site.register(artist_alias_type, artist_alias_type_admin)
 admin.site.register(artist_annotation)
+admin.site.register(artist_attribute)
+admin.site.register(artist_attribute_type_allowed_value)
+admin.site.register(artist_attribute_type)
 admin.site.register(artist_credit_name)
 admin.site.register(artist_credit)
 admin.site.register(artist_gid_redirect)
@@ -374,6 +415,9 @@ admin.site.register(edit_work)
 admin.site.register(event_alias)
 admin.site.register(event_alias_type)
 admin.site.register(event_annotation)
+admin.site.register(event_attribute)
+admin.site.register(event_attribute_type_allowed_value)
+admin.site.register(event_attribute_type)
 admin.site.register(event_gid_redirect)
 admin.site.register(event_meta)
 admin.site.register(event)
@@ -385,6 +429,9 @@ admin.site.register(gender)
 admin.site.register(instrument_alias)
 admin.site.register(instrument_alias_type)
 admin.site.register(instrument_annotation)
+admin.site.register(instrument_attribute)
+admin.site.register(instrument_attribute_type_allowed_value)
+admin.site.register(instrument_attribute_type)
 admin.site.register(instrument_gid_redirect)
 admin.site.register(instrument)
 admin.site.register(instrument_tag)
@@ -398,6 +445,9 @@ admin.site.register(iswc)
 admin.site.register(label_alias)
 admin.site.register(label_alias_type)
 admin.site.register(label_annotation)
+admin.site.register(label_attribute)
+admin.site.register(label_attribute_type_allowed_value)
+admin.site.register(label_attribute_type)
 admin.site.register(label_gid_redirect)
 admin.site.register(label_ipi)
 admin.site.register(label_isni)
@@ -495,6 +545,11 @@ admin.site.register(l_series_work)
 admin.site.register(l_url_url)
 admin.site.register(l_url_work)
 admin.site.register(l_work_work)
+admin.site.register(medium_attribute)
+admin.site.register(medium_attribute_type_allowed_format)
+admin.site.register(medium_attribute_type_allowed_value_allowed_format)
+admin.site.register(medium_attribute_type_allowed_value)
+admin.site.register(medium_attribute_type)
 admin.site.register(medium_cdtoc)
 admin.site.register(medium_format)
 admin.site.register(medium_index)
@@ -504,6 +559,9 @@ admin.site.register(orderable_link_type)
 admin.site.register(place_alias)
 admin.site.register(place_alias_type)
 admin.site.register(place_annotation)
+admin.site.register(place_attribute)
+admin.site.register(place_attribute_type_allowed_value)
+admin.site.register(place_attribute_type)
 admin.site.register(place_gid_redirect)
 admin.site.register(place)
 admin.site.register(place_tag)
@@ -512,6 +570,9 @@ admin.site.register(place_type)
 admin.site.register(recording_alias)
 admin.site.register(recording_alias_type)
 admin.site.register(recording_annotation)
+admin.site.register(recording_attribute)
+admin.site.register(recording_attribute_type_allowed_value)
+admin.site.register(recording_attribute_type)
 admin.site.register(recording_gid_redirect)
 admin.site.register(recording_meta)
 admin.site.register(recording)
@@ -521,12 +582,18 @@ admin.site.register(recording_tag_raw)
 admin.site.register(release_alias)
 admin.site.register(release_alias_type)
 admin.site.register(release_annotation)
+admin.site.register(release_attribute)
+admin.site.register(release_attribute_type_allowed_value)
+admin.site.register(release_attribute_type)
 admin.site.register(release_country)
 admin.site.register(release_coverart)
 admin.site.register(release_gid_redirect)
 admin.site.register(release_group_alias)
 admin.site.register(release_group_alias_type)
 admin.site.register(release_group_annotation)
+admin.site.register(release_group_attribute)
+admin.site.register(release_group_attribute_type_allowed_value)
+admin.site.register(release_group_attribute_type)
 admin.site.register(release_group_gid_redirect)
 admin.site.register(release_group_meta)
 admin.site.register(release_group_primary_type)
@@ -550,6 +617,9 @@ admin.site.register(script)
 admin.site.register(series_alias)
 admin.site.register(series_alias_type)
 admin.site.register(series_annotation)
+admin.site.register(series_attribute)
+admin.site.register(series_attribute_type_allowed_value)
+admin.site.register(series_attribute_type)
 admin.site.register(series_gid_redirect)
 admin.site.register(series_ordering_type)
 admin.site.register(series)

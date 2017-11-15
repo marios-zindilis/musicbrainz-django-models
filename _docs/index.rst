@@ -32,6 +32,8 @@ Models
    area_alias
    area_alias_type
    area_annotation
+   area_attribute_type_allowed_value
+   area_attribute_type
    area_gid_redirect
    area
    area_tag
@@ -40,6 +42,8 @@ Models
    artist_alias
    artist_alias_type
    artist_annotation
+   artist_attribute_type_allowed_value
+   artist_attribute_type
    artist_credit_name
    artist_credit
    artist_gid_redirect
@@ -106,6 +110,8 @@ Models
    event_alias
    event_alias_type
    event_annotation
+   event_attribute_type_allowed_value
+   event_attribute_type
    event_gid_redirect
    event_meta
    event
@@ -117,6 +123,8 @@ Models
    instrument_alias
    instrument_alias_type
    instrument_annotation
+   instrument_attribute_type_allowed_value
+   instrument_attribute_type
    instrument_gid_redirect
    instrument
    instrument_tag
@@ -130,6 +138,8 @@ Models
    label_alias
    label_alias_type
    label_annotation
+   label_attribute_type_allowed_value
+   label_attribute_type
    label_gid_redirect
    label_ipi
    label_isni
@@ -227,14 +237,19 @@ Models
    l_url_url
    l_url_work
    l_work_work
+   medium_attribute_type_allowed_value
+   medium_attribute_type
    medium_cdtoc
    medium_format
    medium_index
    medium
+   old_editor_name
    orderable_link_type
    place_alias
    place_alias_type
    place_annotation
+   place_attribute_type_allowed_value
+   place_attribute_type
    place_gid_redirect
    place
    place_tag
@@ -243,6 +258,8 @@ Models
    recording_alias
    recording_alias_type
    recording_annotation
+   recording_attribute_type_allowed_value
+   recording_attribute_type
    recording_gid_redirect
    recording_meta
    recording
@@ -252,28 +269,41 @@ Models
    release_alias
    release_alias_type
    release_annotation
+   release_attribute_type_allowed_value
+   release_attribute_type
+   release_country
+   release_coverart
    release_gid_redirect
    release_group_alias
    release_group_alias_type
    release_group_annotation
+   release_group_attribute_type_allowed_value
+   release_group_attribute_type
    release_group_gid_redirect
+   release_group_meta
    release_group_primary_type
    release_group
    release_group_rating_raw
+   release_group_secondary_type_join
    release_group_secondary_type
    release_group_tag
    release_group_tag_raw
+   release_label
+   release_meta
    release_packaging
    release
    release_raw
    release_status
    release_tag
    release_tag_raw
+   release_unknown_country
    replication_control
    script
    series_alias
    series_alias_type
    series_annotation
+   series_attribute_type_allowed_value
+   series_attribute_type
    series_gid_redirect
    series_ordering_type
    series
@@ -291,7 +321,11 @@ Models
    work_alias
    work_alias_type
    work_annotation
+   work_attribute
+   work_attribute_type_allowed_value
+   work_attribute_type
    work_gid_redirect
+   work_language
    work_meta
    work
    work_rating_raw

@@ -286,6 +286,41 @@ from .work_attribute_type_allowed_value import work_attribute_type_allowed_value
 from .work_attribute import work_attribute
 from .work_language import work_language
 from .old_editor_name import old_editor_name
+from .area_attribute_type import area_attribute_type
+from .artist_attribute_type import artist_attribute_type
+from .event_attribute_type import event_attribute_type
+from .instrument_attribute_type import instrument_attribute_type
+from .label_attribute_type import label_attribute_type
+from .medium_attribute_type import medium_attribute_type
+from .place_attribute_type import place_attribute_type
+from .recording_attribute_type import recording_attribute_type
+from .release_attribute_type import release_attribute_type
+from .release_group_attribute_type import release_group_attribute_type
+from .series_attribute_type import series_attribute_type
+from .area_attribute_type_allowed_value import area_attribute_type_allowed_value
+from .artist_attribute_type_allowed_value import artist_attribute_type_allowed_value
+from .event_attribute_type_allowed_value import event_attribute_type_allowed_value
+from .instrument_attribute_type_allowed_value import instrument_attribute_type_allowed_value
+from .label_attribute_type_allowed_value import label_attribute_type_allowed_value
+from .medium_attribute_type_allowed_value import medium_attribute_type_allowed_value
+from .place_attribute_type_allowed_value import place_attribute_type_allowed_value
+from .recording_attribute_type_allowed_value import recording_attribute_type_allowed_value
+from .release_attribute_type_allowed_value import release_attribute_type_allowed_value
+from .release_group_attribute_type_allowed_value import release_group_attribute_type_allowed_value
+from .series_attribute_type_allowed_value import series_attribute_type_allowed_value
+from .area_attribute import area_attribute
+from .artist_attribute import artist_attribute
+from .medium_attribute_type_allowed_format import medium_attribute_type_allowed_format
+from .medium_attribute_type_allowed_value_allowed_format import medium_attribute_type_allowed_value_allowed_format
+from .event_attribute import event_attribute
+from .instrument_attribute import instrument_attribute
+from .label_attribute import label_attribute
+from .medium_attribute import medium_attribute
+from .place_attribute import place_attribute
+from .recording_attribute import recording_attribute
+from .release_attribute import release_attribute
+from .release_group_attribute import release_group_attribute
+from .series_attribute import series_attribute
 
 # __all__ silences PEP8 `module imported but unused`:
 __all__ = [
@@ -577,4 +612,39 @@ __all__ = [
     work_attribute,
     work_language,
     old_editor_name,
+    area_attribute_type,
+    artist_attribute_type,
+    event_attribute_type,
+    instrument_attribute_type,
+    label_attribute_type,
+    medium_attribute_type,
+    place_attribute_type,
+    recording_attribute_type,
+    release_attribute_type,
+    release_group_attribute_type,
+    series_attribute_type,
+    area_attribute_type_allowed_value,
+    artist_attribute_type_allowed_value,
+    event_attribute_type_allowed_value,
+    instrument_attribute_type_allowed_value,
+    label_attribute_type_allowed_value,
+    medium_attribute_type_allowed_value,
+    place_attribute_type_allowed_value,
+    recording_attribute_type_allowed_value,
+    release_attribute_type_allowed_value,
+    release_group_attribute_type_allowed_value,
+    series_attribute_type_allowed_value,
+    area_attribute,
+    artist_attribute,
+    medium_attribute_type_allowed_format,
+    medium_attribute_type_allowed_value_allowed_format,
+    event_attribute,
+    instrument_attribute,
+    label_attribute,
+    medium_attribute,
+    place_attribute,
+    recording_attribute,
+    release_attribute,
+    release_group_attribute,
+    series_attribute,
 ]

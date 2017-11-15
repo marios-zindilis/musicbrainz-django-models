@@ -27,7 +27,7 @@ The :code:`work_attribute` table is defined in the MusicBrainz Server as:
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from django.core.exceptions import ValidationError
+from ..signals import pre_save_model_attribute
 
 
 @python_2_unicode_compatible
@@ -45,21 +45,11 @@ class work_attribute(models.Model):
     work_attribute_type_allowed_value = models.ForeignKey('work_attribute_type_allowed_value', null=True)
     work_attribute_text = models.TextField(null=True)
 
-    def save(self, *args, **kwargs):
-        # Both `work_attribute_type_allowed_value` and `work_attribute_text`
-        # cannot be empty:
-        if not any((self.work_attribute_type_allowed_value, self.work_attribute_text)):
-            raise ValidationError(
-                'work_attribute_type_allowed_value and work_attribute_text cannot both be empty.')
-        # Both `work_attribute_type_allowed_value` and `work_attribute_text`
-        # cannot both have value:
-        if all((self.work_attribute_type_allowed_value, self.work_attribute_text)):
-            raise ValidationError(
-                'work_attribute_type_allowed_value and work_attribute_text cannot both have values.')
-        super(work_attribute, self).save(*args, **kwargs)
-
     def __str__(self):
         return 'Work Attribute'
 
     class Meta:
         db_table = 'work_attribute'
+
+
+models.signals.pre_save.connect(pre_save_model_attribute, sender=work_attribute)
