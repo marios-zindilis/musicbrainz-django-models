@@ -23,8 +23,10 @@ the *type* of other models, or the *type* of other models' aliases, namely:
 17. :class:`place_type`
 18. :class:`series_type`
 19. :class:`work_type`
-21. :class:`release_group_primary_type`
-22. :class:`release_group_secondary_type`
+20. :class:`release_group_primary_type`
+21. :class:`release_group_secondary_type`
+22. :class:`alternative_release_type`
+23. :class:`series_ordering_type`
 
 These models are defined in the MusicBrainz Server as:
 
@@ -45,7 +47,7 @@ from django.db import models
 import uuid
 
 
-class abstract__model_type(models.Model):
+class model_type(models.Model):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.

@@ -1,13 +1,1 @@
-from django.test import TestCase
-from ..models import event_type
-
-
-class test_event_type(TestCase):
-    def setUp(self):
-        self.subject = event_type(name='Name')
-
-    def test__event_type__instance(self):
-        self.assertIsInstance(self.subject, event_type)
-
-    def test__event_type__str(self):
-        self.assertEqual(str(self.subject), self.subject.name)
+# Tests for this model are in musicbrainz_django_models/tests/test_model_type.py

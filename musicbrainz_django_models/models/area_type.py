@@ -26,11 +26,11 @@ The :code:`area_type` table is defined in the MusicBrainz Server as:
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from ..signals import pre_save_name_is_member_of_name_choices_list
-from .abstract__model_type import abstract__model_type
+from . import abstract
 
 
 @python_2_unicode_compatible
-class area_type(abstract__model_type):
+class area_type(abstract.model_type):
     """
     Not all parameters are listed here, only those that present some interest
     in their Django implementation.

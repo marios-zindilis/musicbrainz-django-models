@@ -22,10 +22,10 @@ The :code:`event_type` table is defined in the MusicBrainz Server as:
 """
 
 from django.utils.encoding import python_2_unicode_compatible
-from .abstract__model_type import abstract__model_type
+from . import abstract
 
 
 @python_2_unicode_compatible
-class event_type(abstract__model_type):
+class event_type(abstract.model_type):
     class Meta:
         db_table = 'event_type'

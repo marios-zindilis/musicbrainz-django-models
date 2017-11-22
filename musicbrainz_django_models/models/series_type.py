@@ -24,12 +24,12 @@ The :code:`series_type` table is defined in the MusicBrainz Server as:
 
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from .abstract__model_type import abstract__model_type
+from . import abstract
 from ..signals import pre_save_name_is_member_of_name_choices_list
 
 
 @python_2_unicode_compatible
-class series_type(abstract__model_type):
+class series_type(abstract.model_type):
     RELEASE_GROUP = 'Release Group'
     RELEASE = 'Release'
     RECORDING = 'Recording'

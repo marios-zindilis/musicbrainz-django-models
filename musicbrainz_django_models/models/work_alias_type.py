@@ -22,10 +22,10 @@ The :code:`work_alias_type` table is defined in the MusicBrainz Server as:
 """
 
 from django.utils.encoding import python_2_unicode_compatible
-from .abstract__model_type import abstract__model_type
+from . import abstract
 
 
 @python_2_unicode_compatible
-class work_alias_type(abstract__model_type):
+class work_alias_type(abstract.model_type):
     class Meta:
         db_table = 'work_alias_type'

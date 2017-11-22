@@ -1,8 +1,1 @@
-from django.test import TestCase
-from ..models import work_type
-
-
-class test_work_type(TestCase):
-    def test__work_type__str(self):
-        subject = work_type(name='Song')
-        self.assertEqual(str(subject), subject.name)
+# Tests for this model are in musicbrainz_django_models/tests/test_model_type.py
