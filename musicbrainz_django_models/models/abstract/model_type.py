@@ -1,8 +1,26 @@
 """
 .. module:: abstract__model_type
 
-This is an Abstract Django Model, meant to be subclassed by Models that store
-the *type* of other models, or the *type* of other models' aliases, namely:
+This is an Abstract Django Model, meant to be subclassed by other Models.
+
+Model Types
+~~~~~~~~~~~
+
+1.  :class:`area_type`
+2.  :class:`artist_type`
+3.  :class:`event_type`
+4.  :class:`instrument_type`
+5.  :class:`label_type`
+6.  :class:`place_type`
+7.  :class:`series_type`
+8.  :class:`work_type`
+9.  :class:`release_group_primary_type`
+10. :class:`release_group_secondary_type`
+11. :class:`alternative_release_type`
+12. :class:`series_ordering_type`
+
+Model Alias Types
+~~~~~~~~~~~~~~~~~
 
 1.  :class:`area_alias_type`
 2.  :class:`artist_alias_type`
@@ -15,18 +33,11 @@ the *type* of other models, or the *type* of other models' aliases, namely:
 9.  :class:`release_group_alias_type`
 10. :class:`series_alias_type`
 11. :class:`work_alias_type`
-12. :class:`area_type`
-13. :class:`artist_type`
-14. :class:`event_type`
-15. :class:`instrument_type`
-16. :class:`label_type`
-17. :class:`place_type`
-18. :class:`series_type`
-19. :class:`work_type`
-20. :class:`release_group_primary_type`
-21. :class:`release_group_secondary_type`
-22. :class:`alternative_release_type`
-23. :class:`series_ordering_type`
+
+Other
+~~~~~
+
+1.  :class:`gender`
 
 These models are defined in the MusicBrainz Server as:
 
